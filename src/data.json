@@ -1,32 +1,32 @@
 [
-    {
-        "name": "Idaten Jump",
-        "thumbnail": "https://bit.ly/2LJbdDk",
-        "slideshowImages": [
-            "https://bit.ly/2LJbdDk",
-            "https://bit.ly/2WIvwar",
-            "https://bit.ly/2WIUqqk"
-        ],
-        "description": "Idaten Jump is a Japanese manga series created by Toshihiro Fujiwara. It was serialized in Kodansha's Comic BomBom. The manga tells the story about a boy named Sho Yamato who loves mountain biking. It was adapted into a 52-episode anime series, produced by Aniplex, Production I.G. and Trans Arts. It aired from October 1, 2005 to September 30, 2006. A toyline was also made by Tomy.",
-        "datePublished": 1589894098635,
-        "isMovie": false,
-        "seasons": [
-            {
-                "name": "The Introduction",
-                "episodes": [
-                    "episode 1 ref",
-                    "episode 2 ref",
-                    "episode 3 ref"
-                ]
-            },
-            {
-                "name": "The Aweakening of world",
-                "episodes": [
-                    "episode 1 ref",
-                    "episode 2 ref",
-                    "episode 3 ref"
-                ]
-            }
-        ]
-    }
+	{
+		"name": "Idaten Jump",
+		"thumbnail": "https://bit.ly/2LJbdDk",
+		"slideshowImages": [
+			"https://bit.ly/2LJbdDk",
+			"https://bit.ly/2WIvwar",
+			"https://bit.ly/2WIUqqk"
+		],
+		"description": "Idaten Jump is a Japanese manga series created by Toshihiro Fujiwara. It was serialized in Kodansha's Comic BomBom. The manga tells the story about a boy named Sho Yamato who loves mountain biking. It was adapted into a 52-episode anime series, produced by Aniplex, Production I.G. and Trans Arts. It aired from October 1, 2005 to September 30, 2006. A toyline was also made by Tomy.",
+		"datePublished": 1589894098635,
+		"isMovie": false,
+		"seasons": [
+			{
+				"name": "The Introduction",
+				"episodes": [
+					"episode 1 ref",
+					"episode 2 ref",
+					"episode 3 ref"
+				]
+			},
+			{
+				"name": "The Aweakening of world",
+				"episodes": [
+					"episode 1 ref",
+					"episode 2 ref",
+					"episode 3 ref"
+				]
+			}
+		]
+	}
 ]
