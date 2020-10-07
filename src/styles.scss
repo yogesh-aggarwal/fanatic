@@ -5,9 +5,15 @@
   box-sizing: border-box;
   font-family: "Poppins", "Verdana", "Geneva", "Tahoma", sans-serif;
   color: $color;
+  transition: 0.1s all ease-in;
 }
 
 html,
 body {
   background: $background;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }

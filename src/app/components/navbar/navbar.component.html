@@ -1,5 +1,29 @@
 <div class="container">
-  <div class="logo">
+  <div class="logo" routerLink="/">
     <img src="../../../assets/logo.png" alt="" />
+  </div>
+
+  <div class="search">
+    <i class="las la-search"></i>
+    <input type="text" placeholder="Search your anime" />
+  </div>
+
+  <div class="routes">
+    <div class="route" routerLink="/trends">
+      <i class="las la-fire-alt"></i>
+      <div class="name">Trends</div>
+    </div>
+    <div class="route" routerLink="/movies">
+      <i class="las la-ticket-alt"></i>
+      <div class="name">Movies</div>
+    </div>
+    <div class="route" routerLink="/series">
+      <i class="las la-film"></i>
+      <div class="name">Series</div>
+    </div>
+    <div class="route" routerLink="/">
+      <i class="las la-home"></i>
+      <div class="name">Home</div>
+    </div>
   </div>
 </div>
