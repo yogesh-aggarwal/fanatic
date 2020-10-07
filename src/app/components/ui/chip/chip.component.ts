@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'UIChip',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chip.component.scss']
 })
 export class ChipComponent implements OnInit {
+  @Input("isActive")
+  isActive: boolean = false;
 
   constructor() { }
 
