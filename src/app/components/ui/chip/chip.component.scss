@@ -5,6 +5,7 @@
   padding: 0.3rem 2rem;
   border: 2px solid $primary;
   border-radius: 5rem;
+  user-select: none;
   cursor: default;
 
   &.active {
