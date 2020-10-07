@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './routes/home/home.component';
 import { LibraryComponent } from './routes/library/library.component';
 import { SeriesModule } from './routes/series/series.module';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    LibraryComponent
+    LibraryComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
