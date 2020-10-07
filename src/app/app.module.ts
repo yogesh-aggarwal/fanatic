@@ -1,19 +1,25 @@
+/// Modules
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
-
-import { environment } from "src/environments/environment.prod";
-
 import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AppRoutingModule } from "./app-routing.module";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+
+/// Components
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./routes/home/home.component";
 import { LibraryComponent } from "./routes/library/library.component";
 import { SeriesModule } from "./routes/series/series.module";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { UiModule } from "./components/ui/ui.module";
-import { QuantityPipe } from './pipes/quantity/quantity.pipe';
-import { LoginComponent } from './routes/login/login.component';
+import { LoginComponent } from "./routes/login/login.component";
+
+/// Pipes
+import { QuantityPipe } from "./pipes/quantity/quantity.pipe";
+
+/// Environment
+import { environment } from "src/environments/environment.prod";
 
 @NgModule({
   declarations: [
@@ -26,6 +32,7 @@ import { LoginComponent } from './routes/login/login.component';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     SeriesModule,
     UiModule,
