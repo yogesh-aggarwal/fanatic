@@ -19,7 +19,7 @@ export class DataService {
   getSeriesByTopic(topic: string) {
     this.firestore
       .collection("series", (ref) => {
-        return ref.where("topics", "array-contains", topic);
+        return ref.where("topics", "array-contains", topic).limit(20);
       })
       .snapshotChanges()
       .subscribe((docs) => {

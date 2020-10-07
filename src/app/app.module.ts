@@ -12,6 +12,7 @@ import { LibraryComponent } from "./routes/library/library.component";
 import { SeriesModule } from "./routes/series/series.module";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { UiModule } from "./components/ui/ui.module";
+import { QuantityPipe } from './pipes/quantity/quantity.pipe';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { UiModule } from "./components/ui/ui.module";
     HomeComponent,
     LibraryComponent,
     NavbarComponent,
+    QuantityPipe,
   ],
   imports: [
     BrowserModule,
