@@ -14,7 +14,6 @@ import { LibraryComponent } from "./routes/library/library.component";
 import { SeriesModule } from "./routes/series/series.module";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { UiModule } from "./components/ui/ui.module";
-import { LoginComponent } from "./routes/login/login.component";
 
 /// Pipes
 import { QuantityPipe } from "./pipes/quantity/quantity.pipe";
@@ -29,7 +28,6 @@ import { environment } from "src/environments/environment.prod";
     LibraryComponent,
     NavbarComponent,
     QuantityPipe,
-    LoginComponent,
   ],
   imports: [
     BrowserModule,

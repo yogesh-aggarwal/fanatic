@@ -14,30 +14,20 @@ export class AuthService {
   ) {}
 
   async getCurrentUser() {
-    this.userService.parseUserData(
-      await this.auth.authState.pipe(take(1)).toPromise()
-    );
+    // let user = await this.auth.authState.pipe(take(1)).toPromise();
+    // if (user) {
+    //   user = (await this.auth.signInWithCustomToken(user.refreshToken)).user;
+    //   this.userService.parseUserData(user);
+    // }
   }
 
-  async signoutUser() {
+  async signOut() {
     await this.auth.signOut();
   }
 
-  async googleSignIn() {
-    console.log("Google login!");
+  async signIn() {
     const provider = new auth.GoogleAuthProvider();
     const credentials = await this.auth.signInWithPopup(provider);
     return this.userService.parseUserData(credentials.user);
   }
-
-  async githubSignIn() {
-    console.log("GitHub login!");
-    const provider = new auth.GithubAuthProvider();
-    const credentials = await this.auth.signInWithPopup(provider);
-    return this.userService.parseUserData(credentials.user);
-  }
-
-  async facebookSignIn() {}
-
-  async customSignIn() {}
 }

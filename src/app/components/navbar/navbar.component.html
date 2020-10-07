@@ -13,6 +13,7 @@
       class="route"
       [ngClass]="{ outlined: route.isOutlined }"
       [routerLink]="route.path"
+      (click)="route.action ? route.action() : route.action"
       *ngFor="let route of routes"
     >
       <i [class]="'las la-' + route.icon"></i>

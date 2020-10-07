@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
 import { AnimationsService } from "./animations/animations.service";
+import { AuthService } from "./services/auth/auth.service";
 import { DataService } from "./services/data/data.service";
 
 @Component({
@@ -10,9 +11,13 @@ import { DataService } from "./services/data/data.service";
   animations: [AnimationsService.routeAnimation],
 })
 export class AppComponent implements OnInit {
-  constructor(private dataService: DataService) {}
+  constructor(
+    private dataService: DataService,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {
+    this.authService.getCurrentUser();
     this.dataService.prepareData();
   }
 
