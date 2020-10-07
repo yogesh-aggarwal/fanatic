@@ -1,32 +1,13 @@
-import {
-  animate,
-  query,
-  style,
-  transition,
-  trigger,
-} from "@angular/animations";
 import { Component, OnInit } from "@angular/core";
 import { RouterOutlet } from "@angular/router";
+import { AnimationsService } from "./animations/animations.service";
 import { DataService } from "./services/data/data.service";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"],
-  animations: [
-    trigger("routeAnimation", [
-      transition("* <=> *", [
-        query(":enter, :leave", [
-          style({
-            position: "absolute",
-            opacity: 0,
-            filter: "blur(1px)",
-          }),
-        ]),
-        query(":enter", [animate("300ms ease-in-out", style({ opacity: 1 }))]),
-      ]),
-    ]),
-  ],
+  animations: [AnimationsService.routeAnimation],
 })
 export class AppComponent implements OnInit {
   constructor(private dataService: DataService) {}
