@@ -11,15 +11,16 @@ export interface SeriesEpisodeInterface {
 
 export interface SeriesSeasonInterface {
   name: string;
-  episodes: SeriesEpisodeInterface[]
+  episodes: SeriesEpisodeInterface[];
 }
 
 export interface SeriesInterface {
   id: string;
   name: string;
   description: string;
+  topics: string[];
   thumbnail: string;
   slideshowImages: string[];
   fans: string[];
-  seasons: SeriesSeasonInterface[]
+  seasons: SeriesSeasonInterface[];
 }
