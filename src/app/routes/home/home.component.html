@@ -1,2 +1,12 @@
-<p>home works!</p>
-<UIChip isActive="true">dsds</UIChip>
+<div class="chips">
+  <ng-container *ngIf="topics">
+    <UIChip
+      class="chip"
+      [isActive]="activeTopics.includes(topic)"
+      *ngFor="let topic of topics"
+      (click)="toggleTopic(topic)"
+    >
+      {{ topic }}
+    </UIChip>
+  </ng-container>
+</div>
