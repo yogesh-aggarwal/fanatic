@@ -8,4 +8,8 @@ export class UserService {
   user: UserInterface;
 
   constructor() {}
+
+  parseUserData(data: any) {
+    console.log(data);
+  }
 }
