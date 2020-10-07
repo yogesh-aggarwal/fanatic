@@ -1,4 +1,4 @@
-import { Injectable, Query } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { BehaviorSubject } from "rxjs";
 import { PublicTopicsInterface, SeriesInterface } from "./interfaces";
