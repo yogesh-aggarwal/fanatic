@@ -10,8 +10,6 @@ import { AngularFireAuthModule } from "@angular/fire/auth";
 /// Components
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./routes/home/home.component";
-import { LibraryComponent } from "./routes/library/library.component";
-import { SeriesModule } from "./routes/series/series.module";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { UiModule } from "./components/ui/ui.module";
 
@@ -20,20 +18,16 @@ import { QuantityPipe } from "./pipes/quantity/quantity.pipe";
 
 /// Environment
 import { environment } from "src/environments/environment.prod";
+import { TrendsComponent } from './routes/trends/trends.component';
+import { SeriesComponent } from './routes/series/series.component';
+import { MoviesComponent } from './routes/movies/movies.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    LibraryComponent,
-    NavbarComponent,
-    QuantityPipe,
-  ],
+  declarations: [AppComponent, HomeComponent, NavbarComponent, QuantityPipe, TrendsComponent, SeriesComponent, MoviesComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    SeriesModule,
     UiModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
