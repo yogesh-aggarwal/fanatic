@@ -17,7 +17,7 @@
       <i class="las la-sign-in-alt"></i>
       <div class="name">Login</div>
     </div>
-    <div class="user" *ngIf="user">
+    <div class="user" *ngIf="user" routerLink="/me">
       <div class="profile">
         <img [src]="user.profileImg" alt="" />
       </div>
