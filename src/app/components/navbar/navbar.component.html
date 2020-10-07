@@ -5,25 +5,18 @@
 
   <div class="search">
     <i class="las la-search"></i>
-    <input type="text" placeholder="Search your anime" />
+    <input type="text" placeholder="Search your anime" #search />
   </div>
 
   <div class="routes">
-    <div class="route" routerLink="/trends">
-      <i class="las la-fire-alt"></i>
-      <div class="name">Trends</div>
-    </div>
-    <div class="route" routerLink="/movies">
-      <i class="las la-ticket-alt"></i>
-      <div class="name">Movies</div>
-    </div>
-    <div class="route" routerLink="/series">
-      <i class="las la-film"></i>
-      <div class="name">Series</div>
-    </div>
-    <div class="route" routerLink="/">
-      <i class="las la-home"></i>
-      <div class="name">Home</div>
+    <div
+      class="route"
+      [ngClass]="{ outlined: route.isOutlined }"
+      [routerLink]="route.path"
+      *ngFor="let route of routes"
+    >
+      <i [class]="'las la-' + route.icon"></i>
+      <div class="name">{{ route.name }}</div>
     </div>
   </div>
 </div>

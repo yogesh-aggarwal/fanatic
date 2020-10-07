@@ -54,6 +54,10 @@
         font-size: 1.3rem;
       }
 
+      &.outlined {
+        border: 2px solid $color-disabled;
+      }
+
       &:hover {
         background: $hover-background;
       }
