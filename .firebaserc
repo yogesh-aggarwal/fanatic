@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "anime-fanatic": {
+      "hosting": {
+        "fanatic": [
+          "anime-fanatic"
+        ]
+      }
+    }
+  }
+}
