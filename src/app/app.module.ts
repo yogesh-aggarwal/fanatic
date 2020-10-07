@@ -13,6 +13,7 @@ import { SeriesModule } from "./routes/series/series.module";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { UiModule } from "./components/ui/ui.module";
 import { QuantityPipe } from './pipes/quantity/quantity.pipe';
+import { LoginComponent } from './routes/login/login.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { QuantityPipe } from './pipes/quantity/quantity.pipe';
     LibraryComponent,
     NavbarComponent,
     QuantityPipe,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
