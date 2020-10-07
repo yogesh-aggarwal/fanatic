@@ -13,7 +13,7 @@ export interface SeriesEpisodeInterface {
 export interface SeasonInterface {
   id: string;
   name: string;
-  episodes: SeriesEpisodeInterface[];
+  episodes?: SeriesEpisodeInterface[];
 }
 
 export interface SeriesInterface {
@@ -25,5 +25,5 @@ export interface SeriesInterface {
   slideshowImages: string[];
   fans: string[];
   diamonds: string[];
-  seasons: SeasonInterface[];
+  seasons?: SeasonInterface[];
 }
