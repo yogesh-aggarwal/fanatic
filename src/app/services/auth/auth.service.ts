@@ -2,7 +2,6 @@ import { Injectable } from "@angular/core";
 import { auth } from "firebase/app";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { UserService } from "../user/user.service";
-import { take } from "rxjs/operators";
 
 @Injectable({
   providedIn: "root",
@@ -14,11 +13,9 @@ export class AuthService {
   ) {}
 
   async getCurrentUser() {
-    // let user = await this.auth.authState.pipe(take(1)).toPromise();
-    // if (user) {
-    //   user = (await this.auth.signInWithCustomToken(user.refreshToken)).user;
-    //   this.userService.parseUserData(user);
-    // }
+    this.auth.authState.subscribe((user) => {
+      this.userService.parseUserData(user);
+    });
   }
 
   async signOut() {
