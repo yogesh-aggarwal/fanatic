@@ -9,15 +9,18 @@
   </div>
 
   <div class="routes">
-    <div
-      class="route"
-      [ngClass]="{ outlined: route.isOutlined }"
-      [routerLink]="route.path"
-      (click)="route.action ? route.action() : route.action"
-      *ngFor="let route of routes"
-    >
+    <div class="route" [routerLink]="route.path" *ngFor="let route of routes">
       <i [class]="'las la-' + route.icon"></i>
       <div class="name">{{ route.name }}</div>
+    </div>
+    <div class="route outlined" *ngIf="!user" (click)="authService.signIn()">
+      <i class="las la-sign-in-alt"></i>
+      <div class="name">Login</div>
+    </div>
+    <div class="user" *ngIf="user">
+      <div class="profile">
+        <img [src]="user.profileImg" alt="" />
+      </div>
     </div>
   </div>
 </div>
