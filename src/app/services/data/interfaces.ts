@@ -3,13 +3,15 @@ export interface PublicTopicsInterface {
 }
 
 export interface SeriesEpisodeInterface {
+  id: string;
   name: string;
   description: string;
   videoId: string;
   diamonds: string[];
 }
 
-export interface SeriesSeasonInterface {
+export interface SeasonInterface {
+  id: string;
   name: string;
   episodes: SeriesEpisodeInterface[];
 }
@@ -22,5 +24,6 @@ export interface SeriesInterface {
   thumbnail: string;
   slideshowImages: string[];
   fans: string[];
-  seasons: SeriesSeasonInterface[];
+  diamonds: string[];
+  seasons: SeasonInterface[];
 }
