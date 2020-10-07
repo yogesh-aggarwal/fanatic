@@ -1,5 +1,5 @@
 @mixin hidden-scroll {
-  scrollbar-width: none;
+  overflow-x: auto;
 
   /* width */
   &::-webkit-scrollbar {
