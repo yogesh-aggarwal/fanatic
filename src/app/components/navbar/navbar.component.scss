@@ -75,17 +75,19 @@
         justify-content: center;
         align-items: center;
 
-        height: 2.2rem;
-        width: 2.2rem;
+        height: 2rem;
+        width: 2rem;
+        padding: 1.5rem;
         border-radius: 5rem;
+        cursor: pointer;
 
         &:hover {
-          background: $color-disabled;
+          background: $hover-background;
         }
 
         img {
-          width: 2rem;
-          height: 2rem;
+          width: inherit;
+          height: inherit;
         }
       }
     }
