@@ -18,13 +18,22 @@ import { QuantityPipe } from "./pipes/quantity/quantity.pipe";
 
 /// Environment
 import { environment } from "src/environments/environment.prod";
-import { TrendsComponent } from './routes/trends/trends.component';
-import { SeriesComponent } from './routes/series/series.component';
-import { MoviesComponent } from './routes/movies/movies.component';
-import { UserComponent } from './routes/user/user.component';
+import { TrendsComponent } from "./routes/trends/trends.component";
+import { SeriesComponent } from "./routes/series/series.component";
+import { MoviesComponent } from "./routes/movies/movies.component";
+import { UserComponent } from "./routes/user/user.component";
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, NavbarComponent, QuantityPipe, TrendsComponent, SeriesComponent, MoviesComponent, UserComponent],
+  declarations: [
+    AppComponent,
+    HomeComponent,
+    NavbarComponent,
+    QuantityPipe,
+    TrendsComponent,
+    SeriesComponent,
+    MoviesComponent,
+    UserComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
