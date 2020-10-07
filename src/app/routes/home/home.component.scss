@@ -1,4 +1,10 @@
+@import "../../../classes";
+
 .chips {
+  @include hidden-scroll;
+  overflow-x: auto;
+  white-space: nowrap;
+
   .chip {
     margin: 0 0.5rem;
   }
