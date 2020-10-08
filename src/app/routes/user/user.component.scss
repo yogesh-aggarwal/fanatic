@@ -1,12 +1,27 @@
 @import "../../../constants";
+@import "../../../theme";
+
+@mixin align-seperately-to-bottom {
+  display: flex;
+  align-items: flex-end;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
 
 .container {
   .profile {
+    border-radius: 2rem;
+    position: relative;
+
     .cover {
       height: 60vh;
       min-height: 25rem;
       width: calc(100vw - (#{$lr-padding} * 2));
-      border-radius: 2rem;
+      border-radius: inherit;
 
       img {
         width: inherit;
@@ -14,6 +29,68 @@
         min-height: inherit;
         border-radius: inherit;
         object-fit: cover;
+      }
+    }
+
+    .img {
+      @include align-seperately-to-bottom();
+
+      .wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        margin-left: 2rem;
+        margin-bottom: -6rem;
+        padding: 1.5rem;
+        border-radius: 10rem;
+        border: 3px solid $color;
+        backdrop-filter: $backdrop;
+
+        img {
+          border-radius: inherit;
+          width: 15rem;
+          height: 15rem;
+        }
+      }
+    }
+
+    .routes {
+      @include align-seperately-to-bottom();
+      justify-content: flex-end;
+      border-radius: inherit;
+
+      .wrapper {
+        backdrop-filter: $backdrop;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 0.5rem;
+
+        .route {
+          padding: 0.8rem 2rem;
+          display: flex;
+          align-items: center;
+          border-radius: inherit;
+          cursor: pointer;
+
+          i {
+            margin-right: 0.5rem;
+            font-size: 1.3rem;
+          }
+
+          .name {
+            white-space: nowrap;
+          }
+
+          &.outlined {
+            border: 2px solid $color-disabled;
+          }
+
+          &:hover {
+            background: $hover-background;
+          }
+        }
       }
     }
   }
