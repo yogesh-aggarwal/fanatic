@@ -1,0 +1,20 @@
+@import "../../../constants";
+
+.container {
+  .profile {
+    .cover {
+      height: 60vh;
+      min-height: 25rem;
+      width: calc(100vw - (#{$lr-padding} * 2));
+      border-radius: 2rem;
+
+      img {
+        width: inherit;
+        height: inherit;
+        min-height: inherit;
+        border-radius: inherit;
+        object-fit: cover;
+      }
+    }
+  }
+}

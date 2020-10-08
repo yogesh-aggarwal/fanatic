@@ -1,1 +1,9 @@
-<p>user works!</p>
+<div class="container">
+  <ng-container *ngIf="user">
+    <div class="profile">
+      <div class="cover">
+        <img [src]="user.coverImg" alt="" />
+      </div>
+    </div>
+  </ng-container>
+</div>
