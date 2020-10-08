@@ -20,10 +20,10 @@ export class NavbarComponent implements OnInit {
   user: UserInterface;
 
   routes: RouteInterface[] = [
-    { name: "Home", icon: "fire-alt", path: "" },
+    { name: "Home", icon: "home", path: "" },
     { name: "Trends", icon: "fire-alt", path: "trends" },
-    { name: "Series", icon: "fire-alt", path: "series" },
-    { name: "Movies", icon: "fire-alt", path: "movies" },
+    { name: "Series", icon: "film", path: "series" },
+    { name: "Movies", icon: "ticket-alt", path: "movies" },
   ];
 
   constructor(public authService: AuthService) {}
