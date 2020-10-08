@@ -14,7 +14,8 @@ export class UserService {
 
   constructor(
     private firestore: AngularFirestore,
-    private dataService: DataService
+    private dataService: DataService,
+    private toolsService: ToolsService
   ) {}
 
   async parseUserData(user: firebase.User) {
@@ -29,7 +30,7 @@ export class UserService {
       name: user.displayName,
       email: user.email,
       profileImg: user.photoURL,
-      coverImg: ToolsService.pickRandom(
+      coverImg: this.toolsService.pickRandom(
         this.dataService.generalData.value.coverImages
       ),
       achievements: [],

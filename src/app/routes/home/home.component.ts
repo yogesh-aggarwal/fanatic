@@ -8,11 +8,13 @@ import { ToolsService } from "src/app/services/tools/tools.service";
   styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent implements OnInit {
-  activeTopics: string[] = [];
+  activeTopics: string[] = ["Action"];
   topics: string[];
-  toolsService: ToolsService;
 
-  constructor(public dataService: DataService) {}
+  constructor(
+    public dataService: DataService,
+    public toolsService: ToolsService
+  ) {}
 
   ngOnInit(): void {
     this.dataService.publicTopics.subscribe((res) => {

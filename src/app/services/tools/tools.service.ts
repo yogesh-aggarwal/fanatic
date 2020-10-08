@@ -6,11 +6,11 @@ import { Injectable } from "@angular/core";
 export class ToolsService {
   constructor() {}
 
-  static pickRandom(array: any[]): any {
+  pickRandom(array: any[]): any {
     return array[Math.floor(Math.random() * array.length)];
   }
 
-  static arraysOverlap(...arrays: any[][]) {
+  arraysOverlap(...arrays: any[][]): any[] {
     let concated: any[] = [];
     let count: { [key: string]: number } = {};
     arrays.forEach((array) => {
@@ -24,6 +24,6 @@ export class ToolsService {
         commonValues.push(value);
       }
     });
-    console.log(commonValues);
+    return commonValues;
   }
 }
