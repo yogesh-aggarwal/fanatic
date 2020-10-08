@@ -15,6 +15,7 @@
     <ng-container *ngFor="let card of dataService.series | async | keyvalue">
       <div
         class="card"
+        [routerLink]="'/series/' + card.value.id"
         *ngIf="
           toolsService.arraysOverlap(card.value.topics, activeTopics).length
         "
