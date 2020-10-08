@@ -47,5 +47,13 @@ export class UserService {
     } else {
       UserService.user.next(cloudUser);
     }
+
+    this.firestore
+      .collection("users")
+      .doc(user.uid)
+      .snapshotChanges()
+      .subscribe((user) => {
+        UserService.user.next(user.payload.data() as UserInterface);
+      });
   }
 }
