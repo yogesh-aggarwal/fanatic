@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { SeriesInterface } from "src/app/services/series/interfaces";
 import { SeriesService } from "src/app/services/series/series.service";
 
 @Component({
@@ -8,6 +9,8 @@ import { SeriesService } from "src/app/services/series/series.service";
   styleUrls: ["./series-view.component.scss"],
 })
 export class SeriesViewComponent implements OnInit {
+  series: SeriesInterface;
+
   constructor(
     private route: ActivatedRoute,
     private seriesService: SeriesService
@@ -16,6 +19,7 @@ export class SeriesViewComponent implements OnInit {
   ngOnInit(): void {
     const id: string = this.route.snapshot.params["id"];
     this.seriesService.getSeriesById(id).subscribe((series) => {
+      this.series = series;
       console.log(series);
     });
   }

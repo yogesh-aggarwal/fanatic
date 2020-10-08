@@ -1,13 +1,16 @@
 import { Injectable } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
-import { Observable, Subject } from "rxjs";
-import { DataService } from "../data/data.service";
+import { BehaviorSubject, Observable, Subject } from "rxjs";
 import { SeriesInterface } from "./interfaces";
 
 @Injectable({
   providedIn: "root",
 })
 export class SeriesService {
+  series: BehaviorSubject<{
+    [key: string]: SeriesInterface;
+  }> = new BehaviorSubject({});
+
   constructor(private firestore: AngularFirestore) {}
 
   getSeriesByTopic(topic: string) {
@@ -17,21 +20,23 @@ export class SeriesService {
       })
       .snapshotChanges()
       .subscribe((docs) => {
-        let newSeries = DataService.series.value;
+        let newSeries = this.series.value;
         for (const doc of docs) {
           const id: string = doc.payload.doc.id;
           const data = doc.payload.doc.data() as object;
           const newDoc = { id: id, ...data } as SeriesInterface;
           newSeries[id] = newDoc;
         }
-        DataService.series.next(newSeries);
+        this.series.next(newSeries);
       });
   }
 
   getSeriesById(id: string): Observable<SeriesInterface> {
-    const valueNotifier: Subject<SeriesInterface> = new Subject();
-    if (DataService.series.value[id]) {
-      valueNotifier.next(DataService.series.value[id]);
+    const valueNotifier: BehaviorSubject<SeriesInterface> = new BehaviorSubject(
+      null
+    );
+    if (this.series.value[id]) {
+      valueNotifier.next(this.series.value[id]);
     } else {
       this.firestore
         .collection("series")
@@ -41,12 +46,12 @@ export class SeriesService {
           const id: string = doc.payload.id;
           const data = doc.payload.data() as object;
           const newDoc = { id: id, ...data } as SeriesInterface;
-          let newSeries = DataService.series.value;
+          let newSeries = this.series.value;
           newSeries[id] = newDoc;
-          DataService.series.next(newSeries);
+          this.series.next(newSeries);
           valueNotifier.next(newDoc);
         });
     }
-    return valueNotifier;
+    return valueNotifier.asObservable();
   }
 }

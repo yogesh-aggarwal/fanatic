@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { DataService } from "src/app/services/data/data.service";
 import { SeriesInterface } from "src/app/services/series/interfaces";
+import { SeriesService } from "src/app/services/series/series.service";
 import { ToolsService } from "src/app/services/tools/tools.service";
 
 @Component({
@@ -15,6 +16,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     public dataService: DataService,
+    public seriesService: SeriesService,
     public toolsService: ToolsService
   ) {}
 
@@ -22,10 +24,6 @@ export class HomeComponent implements OnInit {
     this.dataService.publicTopics.subscribe((res) => {
       if (res) this.topics = res.series;
     });
-  }
-
-  getSeriesObservable(): BehaviorSubject<{ [key: string]: SeriesInterface }> {
-    return DataService.series;
   }
 
   toggleTopic(topic: string) {

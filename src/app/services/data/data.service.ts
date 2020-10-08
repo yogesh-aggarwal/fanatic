@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { BehaviorSubject } from "rxjs";
-import { SeriesInterface } from "../series/interfaces";
 import { SeriesService } from "../series/series.service";
 import { GeneralDataInterface, PublicTopicsInterface } from "./interfaces";
 
@@ -15,9 +14,6 @@ export class DataService {
   generalData: BehaviorSubject<GeneralDataInterface> = new BehaviorSubject({
     coverImages: [],
   });
-  static series: BehaviorSubject<{
-    [key: string]: SeriesInterface;
-  }> = new BehaviorSubject({});
 
   constructor(
     private firestore: AngularFirestore,
