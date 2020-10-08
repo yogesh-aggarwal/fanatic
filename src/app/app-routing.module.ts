@@ -1,5 +1,4 @@
 import { NgModule } from "@angular/core";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { Routes, RouterModule } from "@angular/router";
 import { HomeComponent } from "./routes/home/home.component";
 import { MoviesComponent } from "./routes/movies/movies.component";
