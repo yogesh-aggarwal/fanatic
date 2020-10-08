@@ -23,5 +23,6 @@ body {
 
 .container {
   padding: 0 $lr-padding;
+  overflow: hidden;
   overflow-y: auto;
 }

@@ -21,6 +21,7 @@ export interface SeriesInterface {
   thumbnail: string;
   slideshowImages: string[];
   fans: string[];
+  views: string[];
   diamonds: string[];
   seasons?: SeasonInterface[];
 }

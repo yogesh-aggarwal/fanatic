@@ -27,16 +27,16 @@
     top: 0;
     left: 0;
     z-index: 100;
-    padding: 0 $lr-padding;
+    padding: 4rem $lr-padding;
     width: 100%;
     height: 100%;
     overflow-y: auto;
 
     .info {
       display: grid;
-      grid-template-columns: 22rem auto 22rem;
+      grid-template-columns: 22rem auto 30rem;
       grid-template-rows: 33rem auto;
-      grid-column-gap: 4rem;
+      grid-column-gap: 5rem;
 
       img {
         border-radius: 1rem;
@@ -60,11 +60,11 @@
           .stat {
             display: flex;
             align-items: center;
-            margin-right: 2rem;
+            margin-right: 3rem;
 
             i {
               font-size: 1.5rem;
-              margin-right: 0.5rem;
+              margin-right: 1rem;
             }
 
             .quantity {
@@ -82,7 +82,43 @@
       }
 
       .seasons {
+        .heading {
+          font-weight: 600;
+          font-size: 2rem;
+          margin-bottom: 1rem;
+        }
+
         .season {
+          padding: 1rem 2rem;
+          border-radius: 1rem;
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+
+          &:hover {
+            background: $hover-background;
+          }
+
+          i {
+            font-size: 2rem;
+            margin-right: 1.5rem;
+          }
+
+          .info {
+            all: unset;
+
+            .name {
+              margin-bottom: 0.1rem;
+              font-weight: 600;
+              font-size: 1.1rem;
+            }
+
+            .n-episodes {
+              font-weight: 500;
+              font-size: 0.9rem;
+              color: $color-disabled;
+            }
+          }
         }
       }
     }
