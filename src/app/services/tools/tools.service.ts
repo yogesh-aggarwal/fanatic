@@ -1,9 +1,12 @@
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class ToolsService {
+  constructor() {}
 
-  constructor() { }
+  pickRandom(array: any[]): any {
+    return array[Math.floor(Math.random() * array.length)];
+  }
 }

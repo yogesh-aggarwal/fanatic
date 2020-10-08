@@ -3,6 +3,8 @@ import { AngularFirestore } from "@angular/fire/firestore";
 import { BehaviorSubject } from "rxjs";
 import { UserInterface } from "./interfaces";
 import { take } from "rxjs/operators";
+import { ToolsService } from "../tools/tools.service";
+import { DataService } from "../data/data.service";
 
 @Injectable({
   providedIn: "root",
@@ -10,7 +12,11 @@ import { take } from "rxjs/operators";
 export class UserService {
   static user: BehaviorSubject<UserInterface> = new BehaviorSubject(null);
 
-  constructor(private firestore: AngularFirestore) {}
+  constructor(
+    private firestore: AngularFirestore,
+    private toolsService: ToolsService,
+    private dataService: DataService
+  ) {}
 
   async parseUserData(user: firebase.User) {
     const cloudUser: UserInterface = ((await this.firestore
@@ -24,6 +30,12 @@ export class UserService {
       name: user.displayName,
       email: user.email,
       profileImg: user.photoURL,
+      coverImg: this.toolsService.pickRandom(
+        this.dataService.generalData.value.coverImages
+      ),
+      achievements: [],
+      dateJoined: new Date(),
+      diamonds: 0,
     };
 
     if (!cloudUser) {
@@ -31,7 +43,9 @@ export class UserService {
         .collection("users")
         .doc(currentUser.uid)
         .set(currentUser);
+      UserService.user.next(currentUser);
+    } else {
+      UserService.user.next(cloudUser);
     }
-    UserService.user.next(currentUser);
   }
 }

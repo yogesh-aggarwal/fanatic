@@ -2,6 +2,10 @@ export interface PublicTopicsInterface {
   series: string[];
 }
 
+export interface GeneralDataInterface {
+  coverImages: string[];
+}
+
 export interface SeriesEpisodeInterface {
   id: string;
   name: string;

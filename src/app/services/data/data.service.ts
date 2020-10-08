@@ -1,7 +1,11 @@
 import { Injectable } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { BehaviorSubject } from "rxjs";
-import { PublicTopicsInterface, SeriesInterface } from "./interfaces";
+import {
+  GeneralDataInterface,
+  PublicTopicsInterface,
+  SeriesInterface,
+} from "./interfaces";
 
 @Injectable({
   providedIn: "root",
@@ -10,6 +14,9 @@ export class DataService {
   publicTopics: BehaviorSubject<PublicTopicsInterface> = new BehaviorSubject(
     null
   );
+  generalData: BehaviorSubject<GeneralDataInterface> = new BehaviorSubject({
+    coverImages: [],
+  });
   series: BehaviorSubject<{
     [key: string]: SeriesInterface;
   }> = new BehaviorSubject({});
@@ -42,6 +49,14 @@ export class DataService {
       .subscribe((res) => {
         const data: PublicTopicsInterface = res.payload.data() as PublicTopicsInterface;
         this.publicTopics.next(data);
+      });
+    this.firestore
+      .collection("public")
+      .doc("generalData")
+      .snapshotChanges()
+      .subscribe((res) => {
+        const data: GeneralDataInterface = res.payload.data() as GeneralDataInterface;
+        this.generalData.next(data);
       });
     this.getSeriesByTopic("Action");
   }
