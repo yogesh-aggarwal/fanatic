@@ -41,7 +41,9 @@ export class SeriesViewComponent implements OnInit {
     this.seriesService.getSeriesById(id).subscribe((series) => {
       if (!series) return;
       this.series = series;
-      this.currentBackgroundImage = this.series.slideshowImages[0];
+      if (!series.seasons) {
+        this.seriesService.getSeasons(id);
+      }
     });
   }
 }

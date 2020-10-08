@@ -9,6 +9,7 @@ export interface SeriesEpisodeInterface {
 export interface SeasonInterface {
   id: string;
   name: string;
+  nEpisodes: number;
   episodes?: SeriesEpisodeInterface[];
 }
 

@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { BehaviorSubject, Observable, Subject } from "rxjs";
-import { SeriesInterface } from "./interfaces";
+import { SeasonInterface, SeriesInterface } from "./interfaces";
 
 @Injectable({
   providedIn: "root",
@@ -31,6 +31,21 @@ export class SeriesService {
       });
   }
 
+  getSeasons(id: string) {
+    this.firestore
+      .collection(`series/${id}/seasons`)
+      .get()
+      .subscribe((docs) => {
+        let seasons: SeasonInterface[] = [];
+        docs.forEach((doc) => {
+          seasons.push(doc.data() as SeasonInterface);
+        });
+        let newSeries = this.series.value;
+        newSeries[id].seasons = seasons;
+        this.series.next(newSeries);
+      });
+  }
+
   getSeriesById(id: string): Observable<SeriesInterface> {
     const valueNotifier: BehaviorSubject<SeriesInterface> = new BehaviorSubject(
       null
@@ -44,12 +59,11 @@ export class SeriesService {
         .snapshotChanges()
         .subscribe((doc) => {
           const id: string = doc.payload.id;
-          const data = doc.payload.data() as object;
-          const newDoc = { id: id, ...data } as SeriesInterface;
+          const data = doc.payload.data() as SeriesInterface;
           let newSeries = this.series.value;
-          newSeries[id] = newDoc;
+          newSeries[id] = data;
           this.series.next(newSeries);
-          valueNotifier.next(newDoc);
+          valueNotifier.next(data);
         });
     }
     return valueNotifier.asObservable();
