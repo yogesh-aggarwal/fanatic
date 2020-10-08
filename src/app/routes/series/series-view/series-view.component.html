@@ -39,17 +39,19 @@
             </UIButton>
           </div>
         </div>
-        <div class="seasons">
+        <div class="sidebar">
           <div class="heading">Seasons</div>
-          <div
-            class="season"
-            *ngFor="let season of series.seasons"
-            [routerLink]="season.id"
-          >
-            <i class="las la-pizza-slice"></i>
-            <div class="info">
-              <div class="name">{{ season.name }}</div>
-              <div class="n-episodes">{{ season.nEpisodes }} episodes</div>
+          <div class="seasons">
+            <div
+              class="season"
+              *ngFor="let season of series.seasons"
+              [routerLink]="season.id"
+            >
+              <i class="las la-pizza-slice"></i>
+              <div class="info">
+                <div class="name">{{ season.name }}</div>
+                <div class="n-episodes">{{ season.nEpisodes }} episodes</div>
+              </div>
             </div>
           </div>
         </div>

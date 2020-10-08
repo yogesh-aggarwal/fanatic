@@ -100,42 +100,47 @@
         }
       }
 
-      .seasons {
+      .sidebar {
         .heading {
           font-weight: 600;
           font-size: 2rem;
           margin-bottom: 1rem;
         }
 
-        .season {
-          padding: 1rem 2rem;
-          border-radius: 1rem;
-          cursor: pointer;
-          display: flex;
-          align-items: center;
+        .seasons {
+          overflow-y: auto;
+          max-height: 100%;
 
-          &:hover {
-            background: $hover-background;
-          }
+          .season {
+            padding: 1rem 2rem;
+            border-radius: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
 
-          i {
-            font-size: 2rem;
-            margin-right: 1.5rem;
-          }
-
-          .info {
-            all: unset;
-
-            .name {
-              margin-bottom: 0.1rem;
-              font-weight: 600;
-              font-size: 1.1rem;
+            &:hover {
+              background: $hover-background;
             }
 
-            .n-episodes {
-              font-weight: 500;
-              font-size: 0.9rem;
-              color: $color-disabled;
+            i {
+              font-size: 2rem;
+              margin-right: 1.5rem;
+            }
+
+            .info {
+              all: unset;
+
+              .name {
+                margin-bottom: 0.1rem;
+                font-weight: 600;
+                font-size: 1.1rem;
+              }
+
+              .n-episodes {
+                font-weight: 500;
+                font-size: 0.9rem;
+                color: $color-disabled;
+              }
             }
           }
         }
