@@ -3,6 +3,32 @@
     <div class="background">
       <img [src]="currentBackgroundImage" alt="" />
     </div>
-    <main>fdfsdf</main>
+    <main>
+      <div class="info">
+        <img [src]="series.thumbnail" alt="" />
+        <div class="about">
+          <div class="name">{{ series.name }}</div>
+          <div class="desc">{{ series.description }}</div>
+          <div class="stats">
+            <div class="stat">
+              <i class="las la-gem"></i>
+              <div class="quantity">{{ series.diamonds.length }}</div>
+            </div>
+            <div class="stat">
+              <i class="las la-hand-paper"></i>
+              <div class="quantity">{{ series.fans.length }}</div>
+            </div>
+          </div>
+          <div class="actions">
+            <UIButton>Play</UIButton>
+          </div>
+        </div>
+        <div class="season-switch">
+          <ol>
+            <li>Season 1</li>
+          </ol>
+        </div>
+      </div>
+    </main>
   </ng-container>
 </div>

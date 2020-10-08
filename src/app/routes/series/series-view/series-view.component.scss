@@ -5,7 +5,6 @@
   position: relative;
   width: 100vw;
   height: calc(100vh - 7rem);
-  overflow-y: auto;
 
   .background {
     width: 100%;
@@ -30,5 +29,56 @@
     padding: 0 $lr-padding;
     width: 100%;
     height: 100%;
+    overflow-y: auto;
+
+    .info {
+      display: grid;
+      grid-template-columns: 22rem auto 22rem;
+      grid-template-rows: 33rem auto;
+      grid-column-gap: 4rem;
+
+      img {
+        border-radius: 1rem;
+        width: 100%;
+        height: 100%;
+      }
+
+      .about {
+        .name {
+          font-weight: 600;
+          font-size: 2rem;
+          margin-bottom: 1rem;
+        }
+
+        .stats {
+          display: flex;
+          align-items: center;
+
+          margin-top: 2rem;
+
+          .stat {
+            display: flex;
+            align-items: center;
+            margin-right: 2rem;
+
+            i {
+              font-size: 1.5rem;
+              margin-right: 0.5rem;
+            }
+
+            .quantity {
+              font-size: 1.3rem;
+            }
+          }
+        }
+
+        .actions {
+          display: flex;
+          align-items: center;
+
+          margin-top: 2rem;
+        }
+      }
+    }
   }
 }
