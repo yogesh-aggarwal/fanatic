@@ -25,7 +25,7 @@
           <main>
             <div class="tags">
               <div class="tag" *ngFor="let tag of card.value.topics">
-                <UIChip> {{ tag }} </UIChip>
+                <UIChip [isActive]="true"> {{ tag }} </UIChip>
               </div>
             </div>
             <div class="stats">
