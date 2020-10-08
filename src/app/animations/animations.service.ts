@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import {
   animate,
   query,
+  state,
   style,
   transition,
   trigger,
@@ -29,6 +30,11 @@ export class AnimationsService {
         optional: true,
       }),
     ]),
+  ]);
+  static fade = trigger("fade", [
+    state("in", style({ opacity: "1" })),
+    state("out", style({ opacity: "0" })),
+    transition("* <=> *", [animate(1000)]),
   ]);
 
   prepareRoute(outlet: RouterOutlet) {

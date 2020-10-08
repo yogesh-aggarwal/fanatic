@@ -1,3 +1,10 @@
 .container {
   padding: 0;
+
+  img {
+    height: 87.4vh;
+    width: 100vw;
+    object-fit: cover;
+    filter: blur(8px) brightness(20%);
+  }
 }
