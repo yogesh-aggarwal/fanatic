@@ -44,9 +44,9 @@
 
         margin-left: 2rem;
         margin-bottom: -$profile-img-offset;
-        padding: 1.5rem;
+        // padding: 1.5rem;
         border-radius: 10rem;
-        border: 3px solid $color;
+        border: 5px solid $primary;
         backdrop-filter: $backdrop;
 
         img {
