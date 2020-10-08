@@ -11,11 +11,11 @@
       </div>
       <div class="routes">
         <div class="wrapper">
-          <div class="route">
+          <div class="route" routerLink="/me">
             <i class="las la-stream"></i>
             <div class="name">Timeline</div>
           </div>
-          <div class="route">
+          <div class="route" routerLink="/me/library">
             <i class="las la-layer-group"></i>
             <div class="name">Library</div>
           </div>
@@ -33,7 +33,9 @@
           </div>
         </div>
       </div>
-      <main>jofdjs</main>
+      <main [@routeAnimation]="animationService.prepareRoute(outlet)">
+        <router-outlet #outlet="outlet"></router-outlet>
+      </main>
     </div>
   </ng-container>
 </div>

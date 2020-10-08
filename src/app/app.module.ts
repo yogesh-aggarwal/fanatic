@@ -22,6 +22,8 @@ import { TrendsComponent } from "./routes/trends/trends.component";
 import { SeriesComponent } from "./routes/series/series.component";
 import { MoviesComponent } from "./routes/movies/movies.component";
 import { UserComponent } from "./routes/user/user.component";
+import { TimelineComponent } from "./routes/user/timeline/timeline.component";
+import { LibraryComponent } from "./routes/user/library/library.component";
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { UserComponent } from "./routes/user/user.component";
     SeriesComponent,
     MoviesComponent,
     UserComponent,
+    TimelineComponent,
+    LibraryComponent,
   ],
   imports: [
     BrowserModule,

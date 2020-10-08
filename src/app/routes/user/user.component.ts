@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { ChangeDetectionStrategy, Component, OnInit } from "@angular/core";
+import { AnimationsService } from "src/app/animations/animations.service";
 import { UserInterface } from "src/app/services/user/interfaces";
 import { UserService } from "src/app/services/user/user.service";
 
@@ -6,11 +7,13 @@ import { UserService } from "src/app/services/user/user.service";
   selector: "app-user",
   templateUrl: "./user.component.html",
   styleUrls: ["./user.component.scss"],
+  animations: [AnimationsService.routeAnimation],
 })
 export class UserComponent implements OnInit {
   user: UserInterface;
+  subRoute: string;
 
-  constructor() {}
+  constructor(public animationService: AnimationsService) {}
 
   ngOnInit(): void {
     UserService.user.subscribe((user) => {

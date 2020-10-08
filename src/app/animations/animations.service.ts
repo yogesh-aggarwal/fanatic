@@ -6,6 +6,7 @@ import {
   transition,
   trigger,
 } from "@angular/animations";
+import { RouterOutlet } from "@angular/router";
 
 @Injectable({
   providedIn: "root",
@@ -29,4 +30,8 @@ export class AnimationsService {
       }),
     ]),
   ]);
+
+  prepareRoute(outlet: RouterOutlet) {
+    return outlet.isActivated ? outlet.activatedRoute : "";
+  }
 }
