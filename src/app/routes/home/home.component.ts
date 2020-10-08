@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { DataService } from "src/app/services/data/data.service";
+import { ToolsService } from "src/app/services/tools/tools.service";
 
 @Component({
   selector: "app-home",
@@ -9,6 +10,7 @@ import { DataService } from "src/app/services/data/data.service";
 export class HomeComponent implements OnInit {
   activeTopics: string[] = [];
   topics: string[];
+  toolsService: ToolsService;
 
   constructor(public dataService: DataService) {}
 
