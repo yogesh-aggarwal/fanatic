@@ -26,13 +26,10 @@ export class NavbarComponent implements OnInit {
     { name: "Movies", icon: "fire-alt", path: "movies" },
   ];
 
-  constructor(
-    private userService: UserService,
-    public authService: AuthService
-  ) {}
+  constructor(public authService: AuthService) {}
 
   ngOnInit(): void {
-    this.userService.user.subscribe((user) => {
+    UserService.user.subscribe((user) => {
       this.user = user;
     });
 
