@@ -21,6 +21,22 @@ body {
   transition: 0;
 }
 
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff00;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #707070;
+}
+
 .container {
   padding: 0 $lr-padding;
   overflow: hidden;
