@@ -24,8 +24,19 @@
             </div>
           </div>
           <div class="actions">
-            <UIButton [isPrimary]="true">Play</UIButton>
-            <UIButton>Add to Library</UIButton>
+            <UIButton [isPrimary]="true">
+              <div class="action">
+                <i class="las la-play"></i>
+                <div class="name">Play</div>
+              </div>
+            </UIButton>
+            <div class="spacer"></div>
+            <UIButton>
+              <div class="action">
+                <i class="las la-film"></i>
+                <div class="name">Add to Library</div>
+              </div>
+            </UIButton>
           </div>
         </div>
         <div class="seasons">
