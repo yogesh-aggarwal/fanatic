@@ -13,6 +13,8 @@
 }
 
 .container {
+  $profile-img-offset: 6rem;
+
   .profile {
     border-radius: 2rem;
     position: relative;
@@ -41,7 +43,7 @@
         align-items: center;
 
         margin-left: 2rem;
-        margin-bottom: -6rem;
+        margin-bottom: -$profile-img-offset;
         padding: 1.5rem;
         border-radius: 10rem;
         border: 3px solid $color;
@@ -89,6 +91,46 @@
 
           &:hover {
             background: $hover-background;
+          }
+        }
+      }
+    }
+  }
+
+  .content {
+    padding-top: calc(#{$profile-img-offset} + 1rem);
+
+    display: grid;
+    grid-template-columns: 22rem auto;
+    grid-column-gap: 3rem;
+
+    .sidebar {
+      .name {
+        text-align: center;
+        font-size: 2rem;
+        font-weight: 600;
+      }
+
+      .heading {
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-top: 1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .stats {
+        .stat {
+          display: flex;
+          align-items: center;
+
+          i {
+            font-size: 1.5rem;
+            margin-right: 1rem;
+          }
+
+          .name {
+            font-weight: 500;
+            font-size: 1.3rem;
           }
         }
       }
