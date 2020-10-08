@@ -6,7 +6,11 @@ import { Injectable } from "@angular/core";
 export class ToolsService {
   constructor() {}
 
-  pickRandom(array: any[]): any {
+  static pickRandom(array: any[]): any {
     return array[Math.floor(Math.random() * array.length)];
+  }
+
+  static arraysOverlap(...arrays: any[][]) {
+    console.log(arrays);
   }
 }

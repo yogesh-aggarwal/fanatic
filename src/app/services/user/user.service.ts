@@ -14,7 +14,6 @@ export class UserService {
 
   constructor(
     private firestore: AngularFirestore,
-    private toolsService: ToolsService,
     private dataService: DataService
   ) {}
 
@@ -30,7 +29,7 @@ export class UserService {
       name: user.displayName,
       email: user.email,
       profileImg: user.photoURL,
-      coverImg: this.toolsService.pickRandom(
+      coverImg: ToolsService.pickRandom(
         this.dataService.generalData.value.coverImages
       ),
       achievements: [],
