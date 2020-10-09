@@ -9,7 +9,7 @@
   $item-top-padding: 0.8rem;
 
   &.hidden {
-    transform: translateY(-7rem);
+    margin-top: -7rem;
   }
 
   .logo {
