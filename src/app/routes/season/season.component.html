@@ -1,1 +1,7 @@
-<p>season works!</p>
+<div class="container">
+  <ng-container *ngIf="season">
+    <pre>
+        {{ season.episodes | json }}
+    </pre>
+  </ng-container>
+</div>

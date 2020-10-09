@@ -10,6 +10,7 @@ export interface SeasonInterface {
   id: string;
   name: string;
   nEpisodes: number;
+  diamonds: string[];
   episodes?: SeriesEpisodeInterface[];
 }
 

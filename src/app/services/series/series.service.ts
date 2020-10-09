@@ -66,30 +66,38 @@ export class SeriesService {
     const valueNotifier: BehaviorSubject<
       SeriesEpisodeInterface[]
     > = new BehaviorSubject(null);
-    this.firestore
-      .collection(`series/${seriesId}/seasons/${seasonId}/episodes`)
-      .get()
-      .subscribe((docs) => {
-        let newSeries = this.series.value;
 
-        /// Prepare episodes
-        let episodes: SeriesEpisodeInterface[] = [];
-        docs.forEach((doc) => {
-          episodes.push(doc.data() as SeriesEpisodeInterface);
+    let seasonIndex: number = this.toolsService.findInArrayByObjectId(
+      this.series.value[seriesId].seasons,
+      "id",
+      seasonId
+    );
+    if (!seasonIndex) seasonIndex = 0;
+    if (this.series.value[seriesId].seasons[seasonIndex].episodes) {
+      valueNotifier.next(
+        this.series.value[seriesId].seasons[seasonIndex].episodes
+      );
+    } else {
+      this.firestore
+        .collection(`series/${seriesId}/seasons/${seasonId}/episodes`)
+        .get()
+        .subscribe((docs) => {
+          let newSeries = this.series.value;
+
+          /// Prepare episodes
+          let episodes: SeriesEpisodeInterface[] = [];
+          docs.forEach((doc) => {
+            episodes.push(doc.data() as SeriesEpisodeInterface);
+          });
+
+          /// Update the season.episodes
+          newSeries[seriesId].seasons[seasonIndex].episodes = episodes;
+
+          /// Notify the value
+          this.series.next(newSeries);
+          valueNotifier.next(episodes);
         });
-
-        /// Update the season.episodes
-        const seasonIndex: number = this.toolsService.findInArrayByObjectId(
-          newSeries[seriesId].seasons,
-          "id",
-          seasonId
-        );
-        newSeries[seriesId].seasons[seasonIndex].episodes = episodes;
-
-        /// Notify the value
-        this.series.next(newSeries);
-        valueNotifier.next(episodes);
-      });
+    }
     return valueNotifier.asObservable();
   }
 
