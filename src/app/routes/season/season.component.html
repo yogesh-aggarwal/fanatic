@@ -1,5 +1,13 @@
 <div class="container">
   <ng-container *ngIf="season">
-    <button (click)="goBack()">Back</button>
+    <div class="sidebar">
+      <div class="header">
+        <UIButton (click)="goBack()">
+          <div class="back-btn">
+            <i class="las la-angle-left"></i>
+          </div>
+        </UIButton>
+      </div>
+    </div>
   </ng-container>
 </div>

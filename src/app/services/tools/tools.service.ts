@@ -1,10 +1,11 @@
-import { Injectable } from "@angular/core";
+import { DOCUMENT } from "@angular/common";
+import { Inject, Injectable } from "@angular/core";
 
 @Injectable({
   providedIn: "root",
 })
 export class ToolsService {
-  constructor() {}
+  constructor(@Inject(DOCUMENT) private document: any) {}
 
   pickRandom(array: any[]): any {
     return array[Math.floor(Math.random() * array.length)];
@@ -40,5 +41,17 @@ export class ToolsService {
       }
     });
     return commonValues;
+  }
+
+  openFullscreen() {
+    try {
+      document.documentElement.requestFullscreen();
+    } catch {}
+  }
+
+  exitFullscreen() {
+    try {
+      this.document.exitFullscreen();
+    } catch {}
   }
 }

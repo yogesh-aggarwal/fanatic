@@ -1,0 +1,15 @@
+@import "../../../theme";
+@import "../../../constants";
+
+.container {
+  padding: 0;
+
+  .sidebar {
+    .header {
+      padding: 1rem $lr-padding;
+      .back-btn {
+        font-size: 1.3rem;
+      }
+    }
+  }
+}

@@ -27,7 +27,11 @@ export class SeasonComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    /// Prepare Environment
     this.navbarService.isHidden.next(true);
+    this.toolsService.openFullscreen();
+
+    /// Fetch Season
     const seriesId: string = this.route.snapshot.params["id"];
     const seasonId: string = this.route.snapshot.params["season"];
     this.seriesService
@@ -62,6 +66,7 @@ export class SeasonComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.navbarService.isHidden.next(false);
+    this.toolsService.exitFullscreen();
   }
 
   goBack() {
