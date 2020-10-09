@@ -44,8 +44,7 @@ export class ToolsService {
   }
 
   openFullscreen() {
-    if (!document.fullscreenElement)
-      document.documentElement.requestFullscreen().catch(() => {});
+    document.documentElement.requestFullscreen().catch(() => {});
   }
 
   exitFullscreen() {

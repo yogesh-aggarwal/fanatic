@@ -17,6 +17,7 @@ import { ToolsService } from "src/app/services/tools/tools.service";
 })
 export class SeasonComponent implements OnInit, OnDestroy {
   season: SeasonInterface;
+  isSidebarHidden: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,6 +33,19 @@ export class SeasonComponent implements OnInit, OnDestroy {
     this.toolsService.openFullscreen();
 
     /// Fetch Season
+    this.prepareData();
+  }
+
+  ngOnDestroy(): void {
+    this.navbarService.isHidden.next(false);
+    this.toolsService.exitFullscreen();
+  }
+
+  goBack() {
+    this.router.navigate(["/series", this.route.snapshot.params["id"]]);
+  }
+
+  prepareData() {
     const seriesId: string = this.route.snapshot.params["id"];
     const seasonId: string = this.route.snapshot.params["season"];
     this.seriesService
@@ -62,14 +76,5 @@ export class SeasonComponent implements OnInit, OnDestroy {
         }
         this.season = season;
       });
-  }
-
-  ngOnDestroy(): void {
-    this.navbarService.isHidden.next(false);
-    this.toolsService.exitFullscreen();
-  }
-
-  goBack() {
-    this.router.navigate(["/series", this.route.snapshot.params["id"]]);
   }
 }

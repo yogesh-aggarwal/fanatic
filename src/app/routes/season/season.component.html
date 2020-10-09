@@ -1,14 +1,38 @@
 <div class="container">
   <ng-container *ngIf="season">
-    <div class="sidebar">
+    <div class="sidebar" [ngClass]="{ hide: isSidebarHidden }">
       <div class="header">
-        <UIButton (click)="goBack()">
-          <div class="back-btn">
+        <UIButton (click)="isSidebarHidden = !isSidebarHidden">
+          <div class="btn">
             <i class="las la-angle-left"></i>
+            <div class="name">Hide</div>
+          </div>
+        </UIButton>
+        <UIButton [isPointed]="true" (click)="goBack()">
+          <div class="btn">
+            <i class="las la-door-open"></i>
+            <div class="name">Exit World</div>
           </div>
         </UIButton>
       </div>
+      <div class="season">
+        <div class="name">{{ season.name }}</div>
+        <div class="episodes">
+          <div class="episode" *ngFor="let episode of season.episodes">
+            {{ episode.name }}
+          </div>
+        </div>
+      </div>
     </div>
-    <main>jofido</main>
+    <main>
+      <!-- <iframe
+        width="1280"
+        height="720"
+        [src]="'https://www.youtube.com/embed/jUklCapWN5w' | sanitizeUrl"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe> -->
+    </main>
   </ng-container>
 </div>
