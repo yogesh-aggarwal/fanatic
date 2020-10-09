@@ -40,20 +40,25 @@
           </div>
         </div>
         <div class="sidebar">
-          <div class="heading">Seasons</div>
-          <div class="seasons">
-            <div
-              class="season"
-              *ngFor="let season of series.seasons"
-              [routerLink]="season.id"
-            >
-              <i class="las la-pizza-slice"></i>
-              <div class="info">
-                <div class="name">{{ season.name }}</div>
-                <div class="n-episodes">{{ season.nEpisodes }} episodes</div>
+          <ng-container *ngIf="series.seasons.length > 0">
+            <div class="heading">{{ series.seasons.length }} Seasons</div>
+            <div class="seasons">
+              <div
+                class="season"
+                *ngFor="let season of series.seasons"
+                [routerLink]="season.id"
+              >
+                <i class="las la-pizza-slice"></i>
+                <div class="info">
+                  <div class="name">{{ season.name }}</div>
+                  <div class="n-episodes">{{ season.nEpisodes }} episodes</div>
+                </div>
               </div>
             </div>
-          </div>
+          </ng-container>
+          <ng-container *ngIf="series.seasons.length === 0">
+            <div class="heading">Coming Soon!</div>
+          </ng-container>
         </div>
       </div>
     </main>
