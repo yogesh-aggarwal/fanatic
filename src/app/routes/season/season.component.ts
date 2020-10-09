@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
 import { take } from "rxjs/operators";
 import { NavbarService } from "src/app/services/navbar/navbar.service";
 import {
@@ -15,17 +15,19 @@ import { ToolsService } from "src/app/services/tools/tools.service";
   templateUrl: "./season.component.html",
   styleUrls: ["./season.component.scss"],
 })
-export class SeasonComponent implements OnInit {
+export class SeasonComponent implements OnInit, OnDestroy {
   season: SeasonInterface;
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private seriesService: SeriesService,
     private toolsService: ToolsService,
-    public navbarService: NavbarService
+    private navbarService: NavbarService
   ) {}
 
   ngOnInit(): void {
+    this.navbarService.isHidden.next(true);
     const seriesId: string = this.route.snapshot.params["id"];
     const seasonId: string = this.route.snapshot.params["season"];
     this.seriesService
@@ -56,5 +58,13 @@ export class SeasonComponent implements OnInit {
         }
         this.season = season;
       });
+  }
+
+  ngOnDestroy(): void {
+    this.navbarService.isHidden.next(false);
+  }
+
+  goBack() {
+    this.router.navigate(["/series", this.route.snapshot.params["id"]]);
   }
 }

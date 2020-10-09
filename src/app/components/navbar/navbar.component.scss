@@ -2,15 +2,16 @@
 @import "../../../constants";
 
 .container {
+  $item-top-padding: 0.8rem;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 2rem;
   height: $navbar-height;
 
-  $item-top-padding: 0.8rem;
-
   &.hidden {
+    opacity: 0;
     margin-top: -7rem;
   }
 
