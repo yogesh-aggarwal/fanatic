@@ -21,6 +21,11 @@ body {
   transition: 0;
 }
 
+img {
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
 ::selection {
   background: $primary;
 }
