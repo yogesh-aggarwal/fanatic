@@ -24,7 +24,12 @@
             </div>
           </div>
           <div class="actions">
-            <UIButton [isPrimary]="true" [isPointed]="true">
+            <UIButton
+              [isPrimary]="true"
+              [isPointed]="true"
+              (click)="playSeries()"
+              *ngIf="series.seasons.length > 0"
+            >
               <div class="action">
                 <i class="las la-play"></i>
                 <div class="name">Play</div>

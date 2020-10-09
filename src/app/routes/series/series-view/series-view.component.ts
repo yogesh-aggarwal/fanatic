@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Observable, timer } from "rxjs";
 import { take } from "rxjs/operators";
 import { AnimationsService } from "src/app/animations/animations.service";
@@ -19,6 +19,7 @@ export class SeriesViewComponent implements OnInit {
   currentBackgroundIndex: number = 0;
 
   constructor(
+    private router: Router,
     private route: ActivatedRoute,
     private seriesService: SeriesService
   ) {}
@@ -49,5 +50,13 @@ export class SeriesViewComponent implements OnInit {
       }
       this.series = series;
     });
+  }
+
+  playSeries() {
+    this.router.navigate([
+      "/series",
+      this.series.id,
+      this.series.seasons[0].id,
+    ]);
   }
 }
