@@ -25,8 +25,9 @@ import { UserComponent } from "./routes/user/user.component";
 import { TimelineComponent } from "./routes/user/timeline/timeline.component";
 import { LibraryComponent } from "./routes/user/library/library.component";
 import { SeriesListComponent } from "./routes/series/series-list/series-list.component";
-import { SeriesViewComponent } from './routes/series/series-view/series-view.component';
-import { SeasonComponent } from './routes/season/season.component';
+import { SeriesViewComponent } from "./routes/series/series-view/series-view.component";
+import { SeasonComponent } from "./routes/season/season.component";
+import { SanitizeUrlPipe } from "./pipes/sanitize-url/sanitize-url.pipe";
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { SeasonComponent } from './routes/season/season.component';
     SeriesListComponent,
     SeriesViewComponent,
     SeasonComponent,
+    SanitizeUrlPipe,
   ],
   imports: [
     BrowserModule,
