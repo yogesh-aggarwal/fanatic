@@ -2,8 +2,9 @@
 @import "../../../constants";
 
 .container {
+  width: 100vw;
+  height: 100vh;
   padding: 0;
-
   .sidebar {
     .header {
       padding: 1rem $lr-padding;
