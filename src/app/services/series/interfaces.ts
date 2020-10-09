@@ -22,6 +22,7 @@ export interface SeriesInterface {
   achievement: string;
   topics: string[];
   thumbnail: string;
+  minAge: number;
   slideshowImages: string[];
   fans: string[];
   views: string[];
