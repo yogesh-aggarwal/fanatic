@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { AuthService } from "src/app/services/auth/auth.service";
+import { NavbarService } from "src/app/services/navbar/navbar.service";
 import { UserInterface } from "src/app/services/user/interfaces";
 import { UserService } from "src/app/services/user/user.service";
 
@@ -26,7 +27,10 @@ export class NavbarComponent implements OnInit {
     { name: "Movies", icon: "ticket-alt", path: "movies" },
   ];
 
-  constructor(public authService: AuthService) {}
+  constructor(
+    public authService: AuthService,
+    public navbarService: NavbarService
+  ) {}
 
   ngOnInit(): void {
     UserService.user.subscribe((user) => {

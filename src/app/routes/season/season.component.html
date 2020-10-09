@@ -1,3 +1,9 @@
 <div class="container">
-  <ng-container *ngIf="season"></ng-container>
+  <ng-container *ngIf="season">
+    <button
+      (click)="navbarService.isHidden.next(!navbarService.isHidden.value)"
+    >
+      Hide
+    </button>
+  </ng-container>
 </div>

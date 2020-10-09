@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { take } from "rxjs/operators";
+import { NavbarService } from "src/app/services/navbar/navbar.service";
 import {
   SeasonInterface,
   SeriesEpisodeInterface,
@@ -20,7 +21,8 @@ export class SeasonComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private seriesService: SeriesService,
-    private toolsService: ToolsService
+    private toolsService: ToolsService,
+    public navbarService: NavbarService
   ) {}
 
   ngOnInit(): void {
