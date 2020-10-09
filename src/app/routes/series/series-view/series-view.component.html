@@ -7,6 +7,11 @@
       <div class="info">
         <img [src]="series.thumbnail" alt="" />
         <div class="about">
+          <div class="tags">
+            <div class="tag" *ngFor="let tag of series.topics">
+              <UIChip>{{ tag }}</UIChip>
+            </div>
+          </div>
           <div class="name">{{ series.name }}</div>
           <div class="desc">{{ series.description }}</div>
           <div class="stats">
