@@ -2,7 +2,10 @@
   <ng-container *ngIf="season">
     <div class="sidebar" [ngClass]="{ hide: isSidebarHidden }">
       <div class="header">
-        <UIButton (click)="isSidebarHidden = !isSidebarHidden">
+        <UIButton
+          [isPointed]="true"
+          (click)="isSidebarHidden = !isSidebarHidden"
+        >
           <div class="btn">
             <i class="las la-angle-left"></i>
             <div class="name">Hide</div>
@@ -18,21 +21,25 @@
       <div class="season">
         <div class="name">{{ season.name }}</div>
         <div class="episodes">
-          <div class="episode" *ngFor="let episode of season.episodes">
-            {{ episode.name }}
+          <div
+            class="episode"
+            *ngFor="let episode of season.episodes; let i = index"
+            [ngClass]="{ active: episode.id === currentEpisodeId }"
+          >
+            {{ i + 1 }}. {{ episode.name }}
           </div>
         </div>
       </div>
     </div>
     <main>
-      <!-- <iframe
+      <iframe
         width="1280"
         height="720"
         [src]="'https://www.youtube.com/embed/jUklCapWN5w' | sanitizeUrl"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
-      ></iframe> -->
+      ></iframe>
     </main>
   </ng-container>
 </div>

@@ -18,6 +18,7 @@ import { ToolsService } from "src/app/services/tools/tools.service";
 export class SeasonComponent implements OnInit, OnDestroy {
   season: SeasonInterface;
   isSidebarHidden: boolean = false;
+  currentEpisodeId: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -48,6 +49,7 @@ export class SeasonComponent implements OnInit, OnDestroy {
   prepareData() {
     const seriesId: string = this.route.snapshot.params["id"];
     const seasonId: string = this.route.snapshot.params["season"];
+    let episodeIndex: number = this.route.snapshot.params["episodeIndex"];
     this.seriesService
       .getSeriesById(seriesId)
       .subscribe(async (series: SeriesInterface) => {
@@ -75,6 +77,10 @@ export class SeasonComponent implements OnInit, OnDestroy {
           season.episodes = episodes;
         }
         this.season = season;
+
+        /// Adjust episode
+        if (this.season.episodes.length >= episodeIndex) episodeIndex = 0;
+        this.currentEpisodeId = this.season.episodes[episodeIndex].id;
       });
   }
 }

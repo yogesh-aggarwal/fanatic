@@ -20,7 +20,7 @@ const routes: Routes = [
     children: [
       { path: "", component: SeriesListComponent },
       { path: ":id", component: SeriesViewComponent },
-      { path: ":id/:season", component: SeasonComponent },
+      { path: ":id/:season/:episodeIndex", component: SeasonComponent },
     ],
   },
   { path: "movies", component: MoviesComponent },

@@ -80,7 +80,7 @@
               <div
                 class="season"
                 *ngFor="let season of series.seasons"
-                [routerLink]="season.id"
+                [routerLink]="season.id + '/' + 0"
               >
                 <i class="las la-pizza-slice"></i>
                 <div class="info">
