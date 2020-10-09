@@ -21,6 +21,10 @@ body {
   transition: 0;
 }
 
+::selection {
+  background: $primary;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
