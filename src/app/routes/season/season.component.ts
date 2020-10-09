@@ -47,9 +47,12 @@ export class SeasonComponent implements OnInit, OnDestroy {
   }
 
   prepareData() {
+    /// Get Route Params
     const seriesId: string = this.route.snapshot.params["id"];
     const seasonId: string = this.route.snapshot.params["season"];
     let episodeIndex: number = this.route.snapshot.params["episodeIndex"];
+
+    /// Fetch season
     this.seriesService
       .getSeriesById(seriesId)
       .subscribe(async (series: SeriesInterface) => {
