@@ -2,10 +2,13 @@
 @import "../../../../theme";
 
 .container {
+  $height: calc(100vh - 7rem);
+
   padding: 0;
   position: relative;
   width: 100vw;
-  height: calc(100vh - 7rem);
+  height: $height;
+  overflow: hidden;
 
   .background {
     width: 100%;
@@ -23,25 +26,38 @@
   }
 
   main {
+    $tb-padding: 4rem;
     position: absolute;
     top: 0;
     left: 0;
     z-index: 100;
-    padding: 4rem $lr-padding;
+    padding: $tb-padding $lr-padding;
     width: 100%;
     height: 100%;
-    overflow-y: auto;
 
     .info {
       display: grid;
       grid-template-columns: minmax(22rem, 46vh) auto 30rem;
-      grid-template-rows: minmax(33rem, 70vh) auto;
+      grid-template-rows: minmax(33rem, 100%) auto;
       grid-column-gap: 5rem;
 
-      img {
-        border-radius: 1rem;
-        width: 100%;
-        height: 100%;
+      & > div {
+        max-height: calc(#{$height} - #{$tb-padding});
+        overflow-y: auto;
+      }
+
+      .thumbnail {
+        min-width: 22rem;
+        width: 46vh;
+        min-height: 33rem;
+        height: 70vh;
+        overflow: hidden;
+
+        img {
+          border-radius: 1rem;
+          width: 100%;
+          height: 100%;
+        }
       }
 
       .about {
@@ -122,9 +138,6 @@
         }
 
         .seasons {
-          overflow-y: auto;
-          max-height: 100%;
-
           .season {
             padding: 1rem 2rem;
             border-radius: 1rem;
