@@ -1,10 +1,12 @@
 @import "../../../theme";
+@import "../../../constants";
 
 .container {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.5rem 2rem;
+  height: $navbar-height;
 
   $item-top-padding: 0.8rem;
 
