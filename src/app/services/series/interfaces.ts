@@ -18,6 +18,8 @@ export interface SeriesInterface {
   id: string;
   name: string;
   description: string;
+  storyLine: string;
+  achievement: string;
   topics: string[];
   thumbnail: string;
   slideshowImages: string[];
