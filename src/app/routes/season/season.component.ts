@@ -17,7 +17,7 @@ import { ToolsService } from "src/app/services/tools/tools.service";
 })
 export class SeasonComponent implements OnInit, OnDestroy {
   season: SeasonInterface;
-  isSidebarHidden: boolean = false;
+  isSidebarHidden: boolean = true;
   currentEpisodeId: string;
   seriesId: string;
   seasonId: string;

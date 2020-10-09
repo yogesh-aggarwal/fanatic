@@ -33,14 +33,25 @@
       </div>
     </div>
     <main>
-      <!-- <iframe
+      <div class="player-overlay">
+        <UIButton
+          [isPointed]="true"
+          (click)="isSidebarHidden = !isSidebarHidden"
+        >
+          <div class="btn">
+            <i class="las la-angle-left"></i>
+            <div class="name">Hide</div>
+          </div>
+        </UIButton>
+      </div>
+      <iframe
         width="1280"
         height="720"
         [src]="'https://www.youtube.com/embed/jUklCapWN5w' | sanitizeUrl"
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
-      ></iframe> -->
+      ></iframe>
     </main>
   </ng-container>
 </div>
