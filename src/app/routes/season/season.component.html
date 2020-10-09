@@ -24,7 +24,7 @@
           <div
             class="episode"
             *ngFor="let episode of season.episodes; let i = index"
-            [ngClass]="{ active: episode.id === currentEpisodeId }"
+            [ngClass]="{ active: episode.id === currentEpisode.id }"
             [routerLink]="['/series', seriesId, seasonId, i]"
           >
             {{ i + 1 }}. {{ episode.name }}
@@ -39,15 +39,17 @@
           (click)="isSidebarHidden = !isSidebarHidden"
         >
           <div class="btn">
-            <i class="las la-angle-left"></i>
-            <div class="name">Hide</div>
+            <i class="las la-bars"></i>
           </div>
         </UIButton>
       </div>
       <iframe
         width="1280"
         height="720"
-        [src]="'https://www.youtube.com/embed/jUklCapWN5w' | sanitizeUrl"
+        [src]="
+          'https://www.youtube.com/embed/' + currentEpisode.videoId
+            | sanitizeUrl
+        "
         frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen

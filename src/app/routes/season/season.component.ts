@@ -18,7 +18,7 @@ import { ToolsService } from "src/app/services/tools/tools.service";
 export class SeasonComponent implements OnInit, OnDestroy {
   season: SeasonInterface;
   isSidebarHidden: boolean = true;
-  currentEpisodeId: string;
+  currentEpisode: SeriesEpisodeInterface;
   seriesId: string;
   seasonId: string;
 
@@ -88,7 +88,7 @@ export class SeasonComponent implements OnInit, OnDestroy {
           season.episodes = episodes;
         }
         this.season = season;
-        this.currentEpisodeId = this.season.episodes[episodeIndex].id;
+        this.currentEpisode = this.season.episodes[episodeIndex];
       });
   }
 }
