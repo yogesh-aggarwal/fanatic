@@ -44,14 +44,10 @@ export class ToolsService {
   }
 
   openFullscreen() {
-    try {
-      document.documentElement.requestFullscreen();
-    } catch {}
+    document.documentElement.requestFullscreen();
   }
 
   exitFullscreen() {
-    try {
-      this.document.exitFullscreen();
-    } catch {}
+    if (document.fullscreenElement) this.document.exitFullscreen();
   }
 }
