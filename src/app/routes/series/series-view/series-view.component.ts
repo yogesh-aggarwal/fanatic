@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
-import { interval, Observable, timer } from "rxjs";
+import { Observable, timer } from "rxjs";
+import { take } from "rxjs/operators";
 import { AnimationsService } from "src/app/animations/animations.service";
 import { SeriesInterface } from "src/app/services/series/interfaces";
 import { SeriesService } from "src/app/services/series/series.service";
@@ -38,12 +39,15 @@ export class SeriesViewComponent implements OnInit {
       } catch {}
     });
     const id: string = this.route.snapshot.params["id"];
-    this.seriesService.getSeriesById(id).subscribe((series) => {
+    this.seriesService.getSeriesById(id).subscribe(async (series) => {
       if (!series) return;
-      this.series = series;
       if (!series.seasons) {
-        this.seriesService.getSeasons(id);
+        series.seasons = await this.seriesService
+          .getSeasons(id)
+          .pipe(take(2))
+          .toPromise();
       }
+      this.series = series;
     });
   }
 }

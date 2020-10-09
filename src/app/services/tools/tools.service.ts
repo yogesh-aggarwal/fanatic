@@ -10,6 +10,21 @@ export class ToolsService {
     return array[Math.floor(Math.random() * array.length)];
   }
 
+  findInArrayByObjectId(
+    array: { [key: string]: any }[],
+    id: string,
+    value: string
+  ): number {
+    if (!array) return;
+    let requiredItemIndex: any;
+    array.map((item, index) => {
+      if (item[id] == value) {
+        requiredItemIndex = index;
+      }
+    });
+    return requiredItemIndex;
+  }
+
   arraysOverlap(...arrays: any[][]): any[] {
     let concated: any[] = [];
     let count: { [key: string]: number } = {};
