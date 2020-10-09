@@ -2,6 +2,7 @@ import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { HomeComponent } from "./routes/home/home.component";
 import { MoviesComponent } from "./routes/movies/movies.component";
+import { SeasonComponent } from "./routes/season/season.component";
 import { SeriesListComponent } from "./routes/series/series-list/series-list.component";
 import { SeriesViewComponent } from "./routes/series/series-view/series-view.component";
 import { SeriesComponent } from "./routes/series/series.component";
@@ -19,7 +20,7 @@ const routes: Routes = [
     children: [
       { path: "", component: SeriesListComponent },
       { path: ":id", component: SeriesViewComponent },
-      { path: ":id/:season", component: SeriesViewComponent },
+      { path: ":id/:season", component: SeasonComponent },
     ],
   },
   { path: "movies", component: MoviesComponent },

@@ -26,6 +26,7 @@ import { TimelineComponent } from "./routes/user/timeline/timeline.component";
 import { LibraryComponent } from "./routes/user/library/library.component";
 import { SeriesListComponent } from "./routes/series/series-list/series-list.component";
 import { SeriesViewComponent } from './routes/series/series-view/series-view.component';
+import { SeasonComponent } from './routes/season/season.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { SeriesViewComponent } from './routes/series/series-view/series-view.com
     LibraryComponent,
     SeriesListComponent,
     SeriesViewComponent,
+    SeasonComponent,
   ],
   imports: [
     BrowserModule,
