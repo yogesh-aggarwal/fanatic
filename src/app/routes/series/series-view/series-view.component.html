@@ -15,6 +15,12 @@
             </div>
           </div>
           <div class="name">{{ series.name }}</div>
+          <div class="release-date">
+            <i class="las la-calendar-day"></i>
+            <div class="date">
+              {{ series.releaseDate.toDate() | date: "MMMM d, y" }}
+            </div>
+          </div>
           <div class="desc">{{ series.description }}</div>
           <div class="achievements">
             <div class="stats">

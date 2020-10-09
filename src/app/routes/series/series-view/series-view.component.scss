@@ -73,7 +73,19 @@
         .name {
           font-weight: 600;
           font-size: 3rem;
-          margin-bottom: 1rem;
+        }
+
+        .release-date {
+          font-weight: 600;
+          margin-bottom: 1.5rem;
+
+          display: flex;
+          align-items: center;
+
+          i {
+            font-size: 1.1rem;
+            margin-right: 0.5rem;
+          }
         }
 
         .desc {
