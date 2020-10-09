@@ -9,6 +9,9 @@ export class ButtonComponent implements OnInit {
   @Input("isPrimary")
   isPrimary: boolean = false;
 
+  @Input("isPointed")
+  isPointed: boolean = false;
+
   constructor() {}
 
   ngOnInit(): void {}

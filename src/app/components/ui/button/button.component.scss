@@ -14,4 +14,8 @@ button {
     background: $primary;
     border-color: $primary;
   }
+
+  &.pointed {
+    cursor: pointer;
+  }
 }
