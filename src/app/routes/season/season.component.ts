@@ -19,6 +19,8 @@ export class SeasonComponent implements OnInit, OnDestroy {
   season: SeasonInterface;
   isSidebarHidden: boolean = false;
   currentEpisodeId: string;
+  seriesId: string;
+  seasonId: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -48,18 +50,18 @@ export class SeasonComponent implements OnInit, OnDestroy {
 
   prepareData() {
     /// Get Route Params
-    const seriesId: string = this.route.snapshot.params["id"];
-    const seasonId: string = this.route.snapshot.params["season"];
+    this.seriesId = this.route.snapshot.params["id"];
+    this.seasonId = this.route.snapshot.params["season"];
     let episodeIndex: number = this.route.snapshot.params["episodeIndex"];
 
     /// Fetch season
     this.seriesService
-      .getSeriesById(seriesId)
+      .getSeriesById(this.seriesId)
       .subscribe(async (series: SeriesInterface) => {
         if (!series) return;
         if (!series.seasons) {
           series.seasons = await this.seriesService
-            .getSeasons(seriesId)
+            .getSeasons(this.seriesId)
             .pipe(take(2))
             .toPromise();
         }
@@ -68,21 +70,24 @@ export class SeasonComponent implements OnInit, OnDestroy {
             this.toolsService.findInArrayByObjectId(
               series.seasons,
               "id",
-              seasonId
+              this.seasonId
             )
           ];
         if (!season) return;
+        /// Adjust episode
+        if (season.nEpisodes <= episodeIndex) {
+          this.router.navigate(["/series", this.seriesId, this.seasonId, 0]);
+          return;
+        }
+
         if (!season.episodes) {
           let episodes: SeriesEpisodeInterface[] = await this.seriesService
-            .getEpisodes(seriesId, seasonId)
+            .getEpisodes(this.seriesId, this.seasonId)
             .pipe(take(2))
             .toPromise();
           season.episodes = episodes;
         }
         this.season = season;
-
-        /// Adjust episode
-        if (this.season.episodes.length >= episodeIndex) episodeIndex = 0;
         this.currentEpisodeId = this.season.episodes[episodeIndex].id;
       });
   }
