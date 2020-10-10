@@ -33,30 +33,37 @@
       </div>
     </div>
     <main>
-      <div class="player-overlay">
-        <UIButton
-          [isPointed]="true"
-          (click)="isSidebarHidden = !isSidebarHidden"
-        >
-          <div class="btn">
-            <i class="las la-bars"></i>
-          </div>
-        </UIButton>
-        <UIButton
-          [isPointed]="true"
-          (click)="isSidebarHidden = !isSidebarHidden"
-        >
-          <div class="btn"><</div>
-        </UIButton>
-        <UIButton [isPointed]="true" (click)="preparePlayer()">
-          <div class="btn">></div>
-        </UIButton>
-        <UIButton [isPointed]="true" (click)="player.playVideo()">
-          <div class="btn">Play</div>
-        </UIButton>
-        <UIButton [isPointed]="true" (click)="player.pauseVideo()">
-          <div class="btn">Pause</div>
-        </UIButton>
+      <div class="player-overlay" (click)="pause()" (mousemove)="showSeekbar()">
+        <div class="top" [ngClass]="{ show: isPaused }">
+          <UIButton
+            [isPointed]="true"
+            (click)="isSidebarHidden = !isSidebarHidden"
+          >
+            <div class="btn">
+              <i class="las la-bars"></i>
+            </div>
+          </UIButton>
+          <UIButton
+            [isPointed]="true"
+            (click)="isSidebarHidden = !isSidebarHidden"
+          >
+            <div class="btn"><</div>
+          </UIButton>
+          <UIButton [isPointed]="true" (click)="preparePlayer()">
+            <div class="btn">></div>
+          </UIButton>
+          <UIButton [isPointed]="true" (click)="play()">
+            <div class="btn">Play</div>
+          </UIButton>
+          <UIButton [isPointed]="true" (click)="pause()">
+            <div class="btn">Pause</div>
+          </UIButton>
+        </div>
+
+        <div class="bottom">
+          <div class="seek" [ngClass]="{ show: isHover || isPaused }">Seek</div>
+          <div class="comments" [ngClass]="{ show: isPaused }">Comments</div>
+        </div>
       </div>
       <div id="player"></div>
     </main>

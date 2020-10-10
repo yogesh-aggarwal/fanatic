@@ -1,4 +1,10 @@
-import { Component, OnDestroy, OnInit } from "@angular/core";
+import {
+  Component,
+  ElementRef,
+  OnDestroy,
+  OnInit,
+  ViewChild,
+} from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { take } from "rxjs/operators";
 import { NavbarService } from "src/app/services/navbar/navbar.service";
@@ -23,8 +29,12 @@ export class SeasonComponent implements OnInit, OnDestroy {
   seriesId: string;
   seasonId: string;
 
-  /// YouTube Player attributes
+  /// Player attributes
   player: any;
+  isPaused: boolean = true;
+  isHover: boolean = false;
+  hoverTimeout: any;
+  hideThreshold: number = 4000;
 
   constructor(
     private route: ActivatedRoute,
@@ -41,6 +51,7 @@ export class SeasonComponent implements OnInit, OnDestroy {
 
     /// Fetch Season & Prepare Player
     this.prepareData();
+    this.prepareListeners();
   }
 
   ngOnDestroy(): void {
@@ -99,27 +110,62 @@ export class SeasonComponent implements OnInit, OnDestroy {
       });
   }
 
+  /// Video Tools
   preparePlayer() {
     setTimeout(() => {
       this.player = new window["YT"].Player("player", {
-        videoId: "Cy5MjeXZobE",
+        // videoId: this.currentEpisode.id,
+        videoId: "aircAruvnKk",
+        width: "100%",
+        height: "100%",
         playerVars: {
-          autoplay: 1,
+          // autoplay: 1,
           modestbranding: 1,
-          controls: 0,
-          disablekb: 1,
-          rel: 0,
           showinfo: 0,
-          fs: 0,
+          controls: 0,
+          autohide: 1,
           playsinline: 1,
+          disablekb: 1,
+          fs: 0,
         },
         events: {
           onReady: () => {
-            this.player.playVideo();
+            // this.play();
           },
         },
       });
-      console.log(this.player);
     }, 10);
+  }
+
+  prepareListeners() {
+    // var timeout: any;
+    // this.playerOverlay.nativeElement.onmousemove = function () {
+    //   clearTimeout(timeout);
+    //   timeout = setTimeout(function () {
+    //     alert("move your mouse");
+    //   }, 60000);
+    // };
+  }
+
+  showSeekbar() {
+    clearTimeout(this.hoverTimeout);
+    this.isHover = true;
+    this.hoverTimeout = setTimeout(() => {
+      this.isHover = false;
+    }, 3000);
+  }
+
+  play() {
+    setTimeout(() => {
+      this.isPaused = false;
+    }, this.hideThreshold);
+    setTimeout(() => {
+      this.player.playVideo();
+    }, 100);
+  }
+
+  pause() {
+    this.isPaused = true;
+    this.player.pauseVideo();
   }
 }
