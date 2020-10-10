@@ -33,11 +33,7 @@
       </div>
     </div>
     <main>
-      <div
-        class="player-overlay"
-        (click)="isPaused ? play() : pause()"
-        (mousemove)="showSeekbar()"
-      >
+      <div class="player-overlay" (mousemove)="showSeekbar()">
         <div class="top" [ngClass]="{ show: isPaused }">
           <UIButton
             [isPointed]="true"
@@ -64,9 +60,7 @@
           </UIButton>
         </div>
 
-        <div class="spacer" (click)="isPaused ? play() : pause()">
-          {{ isPaused }}
-        </div>
+        <div class="spacer" (click)="isPaused ? play() : pause()"></div>
 
         <div class="bottom">
           <div class="actions" [ngClass]="{ show: isHover || isPaused }">
