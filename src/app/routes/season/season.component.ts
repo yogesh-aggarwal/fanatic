@@ -114,7 +114,7 @@ export class SeasonComponent implements OnInit, OnDestroy {
   preparePlayer() {
     setTimeout(() => {
       this.player = new window["YT"].Player("player", {
-        videoId: this.currentEpisode.id,
+        videoId: this.currentEpisode.videoId,
         width: "100%",
         height: "100%",
         playerVars: {
