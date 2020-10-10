@@ -43,21 +43,14 @@
               <i class="las la-bars"></i>
             </div>
           </UIButton>
-          <UIButton
-            [isPointed]="true"
-            (click)="isSidebarHidden = !isSidebarHidden"
-          >
-            <div class="btn"><</div>
-          </UIButton>
-          <UIButton [isPointed]="true" (click)="preparePlayer()">
-            <div class="btn">></div>
-          </UIButton>
-          <UIButton [isPointed]="true" (click)="play()">
-            <div class="btn">Play</div>
-          </UIButton>
-          <UIButton [isPointed]="true" (click)="pause()">
-            <div class="btn">Pause</div>
-          </UIButton>
+          <div class="info">
+            <div class="name">{{ currentEpisode.name }}</div>
+            <div class="actions">
+              <div class="action">
+                <i class="las la-plus"></i>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="spacer" (click)="isPaused ? play() : pause()"></div>
