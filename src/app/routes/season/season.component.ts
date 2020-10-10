@@ -131,20 +131,22 @@ export class SeasonComponent implements OnInit, OnDestroy {
           onReady: () => {
             this.play();
           },
+          onStateChange: ($event: any) => {
+            if ($event.data === 2) {
+              this.isPaused = true;
+            }
+            if ($event.data === 1) {
+              setTimeout(() => {
+                this.isPaused = false;
+              }, this.hideThreshold);
+            }
+          },
         },
       });
     }, 10);
   }
 
-  prepareListeners() {
-    // var timeout: any;
-    // this.playerOverlay.nativeElement.onmousemove = function () {
-    //   clearTimeout(timeout);
-    //   timeout = setTimeout(function () {
-    //     alert("move your mouse");
-    //   }, 60000);
-    // };
-  }
+  prepareListeners() {}
 
   showSeekbar() {
     clearTimeout(this.hoverTimeout);
@@ -156,15 +158,11 @@ export class SeasonComponent implements OnInit, OnDestroy {
 
   play() {
     setTimeout(() => {
-      this.isPaused = false;
-    }, this.hideThreshold);
-    setTimeout(() => {
       this.player.playVideo();
     }, 100);
   }
 
   pause() {
-    this.isPaused = true;
     this.player.pauseVideo();
   }
 }
