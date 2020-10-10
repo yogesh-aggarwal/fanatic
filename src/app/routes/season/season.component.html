@@ -42,18 +42,23 @@
             <i class="las la-bars"></i>
           </div>
         </UIButton>
+        <UIButton
+          [isPointed]="true"
+          (click)="isSidebarHidden = !isSidebarHidden"
+        >
+          <div class="btn"><</div>
+        </UIButton>
+        <UIButton [isPointed]="true" (click)="preparePlayer()">
+          <div class="btn">></div>
+        </UIButton>
+        <UIButton [isPointed]="true" (click)="player.playVideo()">
+          <div class="btn">Play</div>
+        </UIButton>
+        <UIButton [isPointed]="true" (click)="player.pauseVideo()">
+          <div class="btn">Pause</div>
+        </UIButton>
       </div>
-      <iframe
-        width="1280"
-        height="720"
-        [src]="
-          'https://www.youtube.com/embed/' + currentEpisode.videoId
-            | sanitizeUrl
-        "
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
+      <div id="player"></div>
     </main>
   </ng-container>
 </div>

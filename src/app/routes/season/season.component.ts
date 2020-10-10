@@ -16,11 +16,15 @@ import { ToolsService } from "src/app/services/tools/tools.service";
   styleUrls: ["./season.component.scss"],
 })
 export class SeasonComponent implements OnInit, OnDestroy {
+  /// Season Attributes
   season: SeasonInterface;
   isSidebarHidden: boolean = true;
   currentEpisode: SeriesEpisodeInterface;
   seriesId: string;
   seasonId: string;
+
+  /// YouTube Player attributes
+  player: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -35,7 +39,7 @@ export class SeasonComponent implements OnInit, OnDestroy {
     this.navbarService.isHidden.next(true);
     this.toolsService.openFullscreen();
 
-    /// Fetch Season
+    /// Fetch Season & Prepare Player
     this.prepareData();
   }
 
@@ -89,6 +93,33 @@ export class SeasonComponent implements OnInit, OnDestroy {
         }
         this.season = season;
         this.currentEpisode = this.season.episodes[episodeIndex];
+
+        /// Prepare the player
+        this.preparePlayer();
       });
+  }
+
+  preparePlayer() {
+    setTimeout(() => {
+      this.player = new window["YT"].Player("player", {
+        videoId: "Cy5MjeXZobE",
+        playerVars: {
+          autoplay: 1,
+          modestbranding: 1,
+          controls: 0,
+          disablekb: 1,
+          rel: 0,
+          showinfo: 0,
+          fs: 0,
+          playsinline: 1,
+        },
+        events: {
+          onReady: () => {
+            this.player.playVideo();
+          },
+        },
+      });
+      console.log(this.player);
+    }, 10);
   }
 }
