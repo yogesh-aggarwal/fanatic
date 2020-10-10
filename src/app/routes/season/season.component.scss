@@ -79,7 +79,6 @@
     .player-overlay {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
 
       position: absolute;
       width: 100%;
@@ -91,9 +90,11 @@
       @mixin panels() {
         pointer-events: none;
         background: $background;
+        display: none;
         opacity: 0;
 
         &.show {
+          display: block;
           opacity: 1;
           pointer-events: all;
         }
@@ -104,6 +105,10 @@
         padding: 1rem;
       }
 
+      .spacer {
+        height: 100%;
+      }
+
       .bottom {
         .actions {
           @include panels();
@@ -111,12 +116,7 @@
 
         .comments {
           @include panels();
-          display: none;
           min-height: 10rem;
-
-          &.show {
-            display: block;
-          }
         }
       }
     }

@@ -64,6 +64,10 @@
           </UIButton>
         </div>
 
+        <div class="spacer" (click)="isPaused ? play() : pause()">
+          {{ isPaused }}
+        </div>
+
         <div class="bottom">
           <div class="actions" [ngClass]="{ show: isHover || isPaused }">
             Seek
