@@ -34,7 +34,7 @@ export class SeasonComponent implements OnInit, OnDestroy {
   isPaused: boolean = true;
   isHover: boolean = false;
   hoverTimeout: any;
-  hideThreshold: number = 4000;
+  hideThreshold: number = 4500;
 
   constructor(
     private route: ActivatedRoute,

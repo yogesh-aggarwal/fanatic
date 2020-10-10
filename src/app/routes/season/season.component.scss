@@ -89,13 +89,11 @@
       z-index: 1e3;
 
       @mixin panels() {
-        // display: none;
         pointer-events: none;
         background: $background;
         opacity: 0;
 
         &.show {
-          // display: block;
           opacity: 1;
           pointer-events: all;
         }
@@ -107,7 +105,7 @@
       }
 
       .bottom {
-        .seek {
+        .actions {
           @include panels();
         }
 
