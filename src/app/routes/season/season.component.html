@@ -34,7 +34,7 @@
     </div>
     <main>
       <div class="player-overlay" (mousemove)="showSeekbar()">
-        <div class="top" [ngClass]="{ show: isPaused }">
+        <div class="top" [ngClass]="{ show: showControls }">
           <UIButton
             [isPointed]="true"
             (click)="isSidebarHidden = !isSidebarHidden"
@@ -53,13 +53,17 @@
           </div>
         </div>
 
-        <div class="spacer" (click)="isPaused ? play() : pause()"></div>
+        <div class="spacer" (click)="isPaused ? play() : pause()">
+          {{ isPaused }}, {{ showControls }}
+        </div>
 
         <div class="bottom">
-          <div class="actions" [ngClass]="{ show: isHover || isPaused }">
+          <div class="actions" [ngClass]="{ show: isHover || showControls }">
             Seek
           </div>
-          <div class="comments" [ngClass]="{ show: isPaused }">Comments</div>
+          <div class="comments" [ngClass]="{ show: showControls }">
+            Comments
+          </div>
         </div>
       </div>
       <div id="player"></div>

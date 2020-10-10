@@ -31,9 +31,12 @@ export class SeasonComponent implements OnInit, OnDestroy {
 
   /// Player attributes
   player: any;
+  showControls: boolean = true;
   isPaused: boolean = true;
   isHover: boolean = false;
   hoverTimeout: any;
+  controlTimeout: any;
+  playerTimeout: any;
   hideThreshold: number = 4500;
 
   constructor(
@@ -134,10 +137,13 @@ export class SeasonComponent implements OnInit, OnDestroy {
           onStateChange: ($event: any) => {
             if ($event.data === 2) {
               this.isPaused = true;
+              this.showControls = true;
             }
             if ($event.data === 1) {
-              setTimeout(() => {
+              clearTimeout(this.playerTimeout);
+              this.playerTimeout = setTimeout(() => {
                 this.isPaused = false;
+                this.showControls = false;
               }, this.hideThreshold);
             }
           },
@@ -157,12 +163,16 @@ export class SeasonComponent implements OnInit, OnDestroy {
   }
 
   play() {
-    setTimeout(() => {
+    this.isPaused = false;
+    clearTimeout(this.controlTimeout);
+    this.controlTimeout = setTimeout(() => {
       this.player.playVideo();
     }, 100);
   }
 
   pause() {
+    this.showControls = true;
+    this.isPaused = true;
     this.player.pauseVideo();
   }
 }
