@@ -33,7 +33,11 @@
       </div>
     </div>
     <main>
-      <div class="player-overlay" (click)="pause()" (mousemove)="showSeekbar()">
+      <div
+        class="player-overlay"
+        (click)="isPaused ? play() : pause()"
+        (mousemove)="showSeekbar()"
+      >
         <div class="top" [ngClass]="{ show: isPaused }">
           <UIButton
             [isPointed]="true"
