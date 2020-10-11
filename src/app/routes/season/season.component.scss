@@ -157,7 +157,6 @@
           padding: 0 $lr-padding;
 
           input {
-            margin-left: 1rem;
             -webkit-appearance: none;
             margin: 10px 0;
             width: 100%;
@@ -230,6 +229,10 @@
             &:focus::-ms-fill-upper {
               background: $hover-background;
             }
+          }
+
+          .time {
+            margin-left: 1.5rem;
           }
         }
 
