@@ -6,6 +6,7 @@ import {
   ViewChild,
 } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
+import { timer } from "rxjs";
 import { take } from "rxjs/operators";
 import { NavbarService } from "src/app/services/navbar/navbar.service";
 import {
@@ -39,6 +40,8 @@ export class SeasonComponent implements OnInit, OnDestroy {
   controlTimeout: any;
   playerTimeout: any;
   hideThreshold: number = 4500;
+  currentVideoTime: number = 0;
+  newTime: number = 0;
 
   constructor(
     private route: ActivatedRoute,
@@ -55,7 +58,6 @@ export class SeasonComponent implements OnInit, OnDestroy {
 
     /// Fetch Season & Prepare Player
     this.prepareData();
-    this.prepareListeners();
   }
 
   ngOnDestroy(): void {
@@ -134,8 +136,10 @@ export class SeasonComponent implements OnInit, OnDestroy {
           onReady: () => {
             this.videoDuration = this.player.getDuration();
             // this.play();
+            this.prepareListeners();
           },
           onStateChange: ($event: any) => {
+            console.log($event);
             if ($event.data === 2) {
               this.isPaused = true;
               this.showControls = true;
@@ -153,7 +157,12 @@ export class SeasonComponent implements OnInit, OnDestroy {
     }, 10);
   }
 
-  prepareListeners() {}
+  prepareListeners() {
+    timer(0, 1000).subscribe((time) => {
+      this.currentVideoTime = this.newTime;
+      if (!this.isPaused) this.newTime++;
+    });
+  }
 
   showSeekbar() {
     clearTimeout(this.hoverTimeout);
@@ -179,5 +188,7 @@ export class SeasonComponent implements OnInit, OnDestroy {
 
   seekTo(to: number) {
     this.player.seekTo(to);
+    this.newTime = to;
+    this.currentVideoTime = to;
   }
 }

@@ -57,9 +57,11 @@
 
         <div class="bottom">
           <div class="actions" [ngClass]="{ show: isHover || showControls }">
+            {{ currentVideoTime }}
             <input
               type="range"
               min="0"
+              [value]="currentVideoTime"
               [max]="videoDuration"
               (input)="seekTo($event.target.value)"
             />
