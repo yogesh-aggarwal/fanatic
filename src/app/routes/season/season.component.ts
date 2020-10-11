@@ -178,7 +178,7 @@ export class SeasonComponent implements OnInit, OnDestroy {
     this.isPaused = false;
     clearTimeout(this.controlTimeout);
     this.controlTimeout = setTimeout(() => {
-      this.player.playVideoAt(0);
+      this.player.playVideo(0);
     }, 100);
   }
 
