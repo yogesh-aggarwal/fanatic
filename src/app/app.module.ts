@@ -29,6 +29,7 @@ import { SeriesViewComponent } from "./routes/series/series-view/series-view.com
 import { SeasonComponent } from "./routes/season/season.component";
 import { SanitizeUrlPipe } from "./pipes/sanitize-url/sanitize-url.pipe";
 import { ContentAgePipe } from './pipes/content-age/content-age.pipe';
+import { TimePipe } from './pipes/time/time.pipe';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { ContentAgePipe } from './pipes/content-age/content-age.pipe';
     SeasonComponent,
     SanitizeUrlPipe,
     ContentAgePipe,
+    TimePipe,
   ],
   imports: [
     BrowserModule,

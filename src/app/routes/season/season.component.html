@@ -57,7 +57,9 @@
 
         <div class="bottom">
           <div class="actions" [ngClass]="{ show: isHover || showControls }">
-            {{ currentVideoTime }}
+            <div class="time">
+              {{ currentVideoTime | time: videoDuration }}
+            </div>
             <input
               type="range"
               min="0"
