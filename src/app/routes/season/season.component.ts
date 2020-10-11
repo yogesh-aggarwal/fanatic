@@ -158,9 +158,11 @@ export class SeasonComponent implements OnInit, OnDestroy {
   }
 
   prepareListeners() {
-    timer(0, 1000).subscribe((time) => {
+    timer(0, 1000).subscribe(() => {
       this.currentVideoTime = this.newTime;
-      if (!this.isPaused) this.newTime++;
+      if (!this.isPaused && this.currentVideoTime < this.videoDuration) {
+        this.newTime++;
+      }
     });
   }
 
