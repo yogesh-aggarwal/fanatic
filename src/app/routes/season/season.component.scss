@@ -153,6 +153,83 @@
       .bottom {
         .actions {
           @include panels();
+
+          padding: 0 $lr-padding;
+
+          input {
+            -webkit-appearance: none;
+            margin: 10px 0;
+            width: 100%;
+            background: $background;
+            outline: none;
+
+            &::-webkit-slider-runnable-track {
+              width: 100%;
+              height: 6px;
+              cursor: pointer;
+              animation-duration: 0.2s;
+              background: $hover-background;
+              border-radius: 50px;
+            }
+            &::-webkit-slider-thumb {
+              height: 14px;
+              width: 14px;
+              border-radius: 50px;
+              background: $primary;
+              cursor: pointer;
+              -webkit-appearance: none;
+              margin-top: -4px;
+            }
+            &:focus::-webkit-slider-runnable-track {
+              background: $hover-background;
+            }
+            &::-moz-range-track {
+              width: 100%;
+              height: 6px;
+              cursor: pointer;
+              animation-duration: 0.2s;
+              background: $hover-background;
+              border-radius: 50px;
+            }
+            &::-moz-range-thumb {
+              height: 14px;
+              width: 14px;
+              border-radius: 50px;
+              background: $primary;
+              cursor: pointer;
+            }
+            &::-ms-track {
+              width: 100%;
+              height: 6px;
+              cursor: pointer;
+              animation-duration: 0.2s;
+              background: transparent;
+              border-color: transparent;
+              color: transparent;
+            }
+            &::-ms-fill-lower {
+              background: $hover-background;
+              border-radius: 100px;
+            }
+            &::-ms-fill-upper {
+              background: $hover-background;
+              border-radius: 100px;
+            }
+            &::-ms-thumb {
+              margin-top: 1px;
+              height: 14px;
+              width: 14px;
+              border-radius: 50px;
+              background: $primary;
+              cursor: pointer;
+            }
+            &:focus::-ms-fill-lower {
+              background: $hover-background;
+            }
+            &:focus::-ms-fill-upper {
+              background: $hover-background;
+            }
+          }
         }
 
         .comments {

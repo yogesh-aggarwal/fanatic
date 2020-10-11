@@ -32,6 +32,7 @@ export class SeasonComponent implements OnInit, OnDestroy {
   /// Player attributes
   player: any;
   showControls: boolean = true;
+  videoDuration: number = 0;
   isPaused: boolean = true;
   isHover: boolean = false;
   hoverTimeout: any;
@@ -121,7 +122,6 @@ export class SeasonComponent implements OnInit, OnDestroy {
         width: "100%",
         height: "100%",
         playerVars: {
-          autoplay: 1,
           modestbranding: 1,
           showinfo: 0,
           controls: 0,
@@ -132,7 +132,8 @@ export class SeasonComponent implements OnInit, OnDestroy {
         },
         events: {
           onReady: () => {
-            this.play();
+            this.videoDuration = this.player.getDuration();
+            // this.play();
           },
           onStateChange: ($event: any) => {
             if ($event.data === 2) {
@@ -174,5 +175,9 @@ export class SeasonComponent implements OnInit, OnDestroy {
     this.showControls = true;
     this.isPaused = true;
     this.player.pauseVideo();
+  }
+
+  seekTo(to: number) {
+    this.player.seekTo(to);
   }
 }

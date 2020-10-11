@@ -57,7 +57,12 @@
 
         <div class="bottom">
           <div class="actions" [ngClass]="{ show: isHover || showControls }">
-            Seek
+            <input
+              type="range"
+              min="0"
+              [max]="videoDuration"
+              (input)="seekTo($event.target.value)"
+            />
           </div>
           <div class="comments" [ngClass]="{ show: showControls }">
             Comments
