@@ -25,7 +25,7 @@
             class="episode"
             *ngFor="let episode of season.episodes; let i = index"
             [ngClass]="{ active: episode.id === currentEpisode.id }"
-            [routerLink]="['/series', seriesId, seasonId, i]"
+            [routerLink]="['/series', seriesId, seasonId, i + 1]"
           >
             {{ i + 1 }}. {{ episode.name }}
           </div>

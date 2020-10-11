@@ -5,7 +5,7 @@ import {
   OnInit,
   ViewChild,
 } from "@angular/core";
-import { ActivatedRoute, Router } from "@angular/router";
+import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
 import { timer } from "rxjs";
 import { take } from "rxjs/operators";
 import { NavbarService } from "src/app/services/navbar/navbar.service";
@@ -56,8 +56,13 @@ export class SeasonComponent implements OnInit, OnDestroy {
     this.navbarService.isHidden.next(true);
     this.toolsService.openFullscreen();
 
-    /// Fetch Season & Prepare Player
     this.prepareData();
+    /// Fetch Season & Prepare Player
+    this.router.events.subscribe(($event) => {
+      if ($event instanceof NavigationEnd) {
+        this.prepareData();
+      }
+    });
   }
 
   ngOnDestroy(): void {
@@ -97,7 +102,7 @@ export class SeasonComponent implements OnInit, OnDestroy {
         if (!season) return;
         /// Adjust episode
         if (season.nEpisodes <= episodeIndex) {
-          this.router.navigate(["/series", this.seriesId, this.seasonId, 0]);
+          this.router.navigate(["/series", this.seriesId, this.seasonId, 1]);
           return;
         }
 
@@ -109,7 +114,8 @@ export class SeasonComponent implements OnInit, OnDestroy {
           season.episodes = episodes;
         }
         this.season = season;
-        this.currentEpisode = this.season.episodes[episodeIndex];
+        this.currentEpisode = this.season.episodes[episodeIndex - 1];
+        console.log(this.currentEpisode);
 
         /// Prepare the player
         this.preparePlayer();

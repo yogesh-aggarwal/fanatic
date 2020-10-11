@@ -57,7 +57,7 @@ export class SeriesViewComponent implements OnInit {
       "/series",
       this.series.id,
       this.series.seasons[0].id,
-      0,
+      1,
     ]);
   }
 }
