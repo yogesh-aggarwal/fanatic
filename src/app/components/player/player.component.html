@@ -12,10 +12,10 @@
       <div class="info">
         <div class="name">{{ video.name }}</div>
         <div class="actions">
-          <div class="action">
+          <div class="action" (click)="onLibraryAdd.next(null)">
             <i class="las la-plus"></i>
           </div>
-          <div class="action">
+          <div class="action" (click)="onGemFund.next(null)">
             <i class="las la-gem"></i>
           </div>
           <div

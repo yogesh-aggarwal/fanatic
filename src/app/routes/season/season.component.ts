@@ -1,6 +1,5 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { ActivatedRoute, NavigationEnd, Router } from "@angular/router";
-import { BehaviorSubject } from "rxjs";
 import { take } from "rxjs/operators";
 import { NavbarService } from "src/app/services/navbar/navbar.service";
 import {
@@ -12,6 +11,7 @@ import { SeriesService } from "src/app/services/series/series.service";
 import { ToolsService } from "src/app/services/tools/tools.service";
 import { VideoInterface } from "src/app/services/player/interfaces";
 import { PlayerService } from "src/app/services/player/player.service";
+import { BehaviorSubject } from "rxjs";
 
 @Component({
   selector: "app-season",
@@ -19,7 +19,8 @@ import { PlayerService } from "src/app/services/player/player.service";
   styleUrls: ["./season.component.scss"],
 })
 export class SeasonComponent implements OnInit, OnDestroy {
-  /// Season Attributes
+  onGemFund: BehaviorSubject<null> = new BehaviorSubject(null);
+  onLibraryAdd: BehaviorSubject<null> = new BehaviorSubject(null);
   season: SeasonInterface;
   video: VideoInterface;
   seriesId: string;
@@ -40,14 +41,7 @@ export class SeasonComponent implements OnInit, OnDestroy {
     this.toolsService.openFullscreen();
 
     this.prepareData();
-
-    /// Fetch Season
-    this.router.events.subscribe(($event) => {
-      console.log($event);
-      if ($event instanceof NavigationEnd) {
-        this.prepareData();
-      }
-    });
+    this.prepareListeners();
   }
 
   ngOnDestroy(): void {
@@ -57,6 +51,34 @@ export class SeasonComponent implements OnInit, OnDestroy {
 
   goBack() {
     this.router.navigate(["/series", this.route.snapshot.params["id"]]);
+  }
+
+  fundGems() {
+    console.log("Fund Gem");
+  }
+
+  addToLibrary() {
+    console.log("Add to Library");
+  }
+
+  prepareListeners() {
+    /// Fetch Season
+    this.router.events.subscribe(($event) => {
+      console.log($event);
+      if ($event instanceof NavigationEnd) {
+        this.prepareData();
+      }
+    });
+
+    /// Gem Fund
+    this.onGemFund.subscribe((_) => {
+      this.fundGems();
+    });
+
+    /// Add to Library
+    this.onLibraryAdd.subscribe((_) => {
+      this.addToLibrary();
+    });
   }
 
   prepareData() {

@@ -1,5 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { timer } from "rxjs";
+import { Component, Input, OnInit } from "@angular/core";
+import { BehaviorSubject, timer } from "rxjs";
 import { VideoInterface } from "src/app/services/player/interfaces";
 import { PlayerService } from "src/app/services/player/player.service";
 import { ToolsService } from "src/app/services/tools/tools.service";
@@ -10,6 +10,12 @@ import { ToolsService } from "src/app/services/tools/tools.service";
   styleUrls: ["./player.component.scss"],
 })
 export class PlayerComponent implements OnInit {
+  @Input("onGemFund")
+  onGemFund: BehaviorSubject<null> = new BehaviorSubject(null);
+
+  @Input("onLibraryAdd")
+  onLibraryAdd: BehaviorSubject<null> = new BehaviorSubject(null);
+
   video: VideoInterface;
 
   player: any;
