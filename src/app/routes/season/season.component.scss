@@ -233,6 +233,18 @@
 
           .time {
             margin-left: 1.5rem;
+            display: flex;
+            align-content: center;
+            white-space: nowrap;
+            padding: 0.2rem 1rem;
+            background: $hover-background;
+            border-radius: 0.5rem;
+
+            .seperator {
+              font-weight: 600;
+              font-size: 0.7rem;
+              margin: 0.25rem 0.3rem;
+            }
           }
         }
 

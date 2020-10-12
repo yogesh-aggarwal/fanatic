@@ -35,7 +35,7 @@ export class TimePipe implements PipeTransform {
   ): { hours: number; minutes: number; seconds: number } {
     const hours = Math.floor(time / 3600);
     const minutes = Math.floor((time - hours * 3600) / 60);
-    const seconds = time - hours * 3600 - minutes * 60;
+    const seconds = Math.ceil(time - hours * 3600 - minutes * 60);
 
     return {
       hours: hours,
