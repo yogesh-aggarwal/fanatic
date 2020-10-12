@@ -9,5 +9,5 @@ export class PlayerService {
   constructor() {}
 
   video: BehaviorSubject<VideoInterface> = new BehaviorSubject(null);
-  sidebarTrigger: BehaviorSubject<boolean> = new BehaviorSubject(true);
+  sidebarTrigger: BehaviorSubject<boolean> = new BehaviorSubject(false);
 }
