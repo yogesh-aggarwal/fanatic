@@ -40,8 +40,10 @@ export class SeasonComponent implements OnInit, OnDestroy {
     this.toolsService.openFullscreen();
 
     this.prepareData();
-    /// Fetch Season & Prepare Player
+
+    /// Fetch Season
     this.router.events.subscribe(($event) => {
+      console.log($event);
       if ($event instanceof NavigationEnd) {
         this.prepareData();
       }
