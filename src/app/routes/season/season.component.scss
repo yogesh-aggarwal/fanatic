@@ -154,11 +154,9 @@
         .actions {
           @include panels();
 
-          padding: 0 $lr-padding;
-
           input {
             -webkit-appearance: none;
-            margin: 10px 0;
+            margin: 10px $lr-padding;
             width: 100%;
             background: $background;
             outline: none;
@@ -232,7 +230,6 @@
           }
 
           .time {
-            margin-left: 1.5rem;
             display: flex;
             align-content: center;
             white-space: nowrap;
@@ -248,9 +245,21 @@
           }
         }
 
-        .comments {
+        .about {
           @include panels();
           min-height: 10rem;
+          max-height: 10rem;
+          padding: 1rem $lr-padding;
+
+          &.show {
+            display: block;
+          }
+
+          .heading {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.3rem;
+          }
         }
       }
     }

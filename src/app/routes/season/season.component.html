@@ -74,8 +74,11 @@
               </div>
             </div>
           </div>
-          <div class="comments" [ngClass]="{ show: showControls }">
-            Comments
+          <div class="about" [ngClass]="{ show: showControls }">
+            <div class="heading">Description</div>
+            <div class="content">
+              {{ currentEpisode.description }}
+            </div>
           </div>
         </div>
       </div>
