@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { timer } from "rxjs";
 import { VideoInterface } from "src/app/services/player/interfaces";
 import { PlayerService } from "src/app/services/player/player.service";
 import { ToolsService } from "src/app/services/tools/tools.service";
