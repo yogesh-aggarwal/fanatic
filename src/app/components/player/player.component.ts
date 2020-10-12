@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from "@angular/core";
-import { BehaviorSubject, timer } from "rxjs";
+import { Component, OnInit } from "@angular/core";
 import { VideoInterface } from "src/app/services/player/interfaces";
 import { PlayerService } from "src/app/services/player/player.service";
+import { ToolsService } from "src/app/services/tools/tools.service";
 
 @Component({
   selector: "player",
@@ -23,7 +23,10 @@ export class PlayerComponent implements OnInit {
   currentVideoTime: number = 0;
   newTime: number = 0;
 
-  constructor(public playerService: PlayerService) {}
+  constructor(
+    public playerService: PlayerService,
+    public toolsService: ToolsService
+  ) {}
 
   ngOnInit(): void {
     document.onkeyup = ($event: KeyboardEvent) => {

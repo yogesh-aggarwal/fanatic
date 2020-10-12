@@ -5,6 +5,8 @@ import { Inject, Injectable } from "@angular/core";
   providedIn: "root",
 })
 export class ToolsService {
+  isFullScreen: boolean = false;
+
   constructor(@Inject(DOCUMENT) private document: any) {}
 
   pickRandom(array: any[]): any {
@@ -45,9 +47,11 @@ export class ToolsService {
 
   openFullscreen() {
     document.documentElement.requestFullscreen().catch(() => {});
+    this.isFullScreen = true;
   }
 
   exitFullscreen() {
     if (document.fullscreenElement) this.document.exitFullscreen();
+    this.isFullScreen = false;
   }
 }
