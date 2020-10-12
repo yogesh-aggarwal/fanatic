@@ -116,6 +116,8 @@ export class SeasonComponent implements OnInit, OnDestroy {
         this.season = season;
         this.currentEpisode = this.season.episodes[episodeIndex - 1];
 
+        this.isSidebarHidden = true;
+
         /// Prepare the player
         if (!this.player) {
           this.preparePlayer();
