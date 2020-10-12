@@ -66,9 +66,7 @@
               [max]="videoDuration"
               (input)="seekTo($event.target.value)"
             />
-            <div class="time">
-              {{ currentVideoTime | time: videoDuration }}
-            </div>
+            <div class="time"></div>
           </div>
           <div class="comments" [ngClass]="{ show: showControls }">
             Comments
