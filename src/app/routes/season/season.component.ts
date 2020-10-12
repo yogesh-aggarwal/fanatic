@@ -19,8 +19,8 @@ import { Subject } from "rxjs";
   styleUrls: ["./season.component.scss"],
 })
 export class SeasonComponent implements OnInit, OnDestroy {
-  onGemFund: Subject<null> = new Subject(null);
-  onLibraryAdd: Subject<null> = new Subject(null);
+  onGemFund: Subject<null> = new Subject();
+  onLibraryAdd: Subject<null> = new Subject();
   season: SeasonInterface;
   video: VideoInterface;
   seriesId: string;
