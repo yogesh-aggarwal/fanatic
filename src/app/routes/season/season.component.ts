@@ -11,7 +11,7 @@ import { SeriesService } from "src/app/services/series/series.service";
 import { ToolsService } from "src/app/services/tools/tools.service";
 import { VideoInterface } from "src/app/services/player/interfaces";
 import { PlayerService } from "src/app/services/player/player.service";
-import { BehaviorSubject } from "rxjs";
+import { Subject } from "rxjs";
 
 @Component({
   selector: "app-season",
@@ -19,8 +19,8 @@ import { BehaviorSubject } from "rxjs";
   styleUrls: ["./season.component.scss"],
 })
 export class SeasonComponent implements OnInit, OnDestroy {
-  onGemFund: BehaviorSubject<null> = new BehaviorSubject(null);
-  onLibraryAdd: BehaviorSubject<null> = new BehaviorSubject(null);
+  onGemFund: Subject<null> = new Subject(null);
+  onLibraryAdd: Subject<null> = new Subject(null);
   season: SeasonInterface;
   video: VideoInterface;
   seriesId: string;
@@ -64,7 +64,6 @@ export class SeasonComponent implements OnInit, OnDestroy {
   prepareListeners() {
     /// Fetch Season
     this.router.events.subscribe(($event) => {
-      console.log($event);
       if ($event instanceof NavigationEnd) {
         this.prepareData();
       }
