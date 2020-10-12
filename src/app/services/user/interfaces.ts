@@ -11,5 +11,5 @@ export interface UserInterface {
   email: string;
   achievements: AchievementsInterface[];
   dateJoined: Date;
-  diamonds: number;
+  gems: number;
 }

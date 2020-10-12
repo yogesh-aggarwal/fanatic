@@ -35,7 +35,7 @@ export class UserService {
       ),
       achievements: [],
       dateJoined: new Date(),
-      diamonds: 0,
+      gems: 0,
     };
 
     if (!cloudUser) {

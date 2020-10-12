@@ -3,14 +3,14 @@ export interface SeriesEpisodeInterface {
   name: string;
   description: string;
   videoId: string;
-  diamonds: string[];
+  gems: string[];
 }
 
 export interface SeasonInterface {
   id: string;
   name: string;
   nEpisodes: number;
-  diamonds: string[];
+  gems: string[];
   episodes?: SeriesEpisodeInterface[];
 }
 
@@ -27,6 +27,6 @@ export interface SeriesInterface {
   slideshowImages: string[];
   fans: string[];
   views: string[];
-  diamonds: string[];
+  gems: string[];
   seasons?: SeasonInterface[];
 }
