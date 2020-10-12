@@ -1,0 +1,52 @@
+<div class="player">
+  <div class="player-overlay" (mousemove)="showSeekbar()">
+    <div class="top" [ngClass]="{ show: showControls }">
+      <UIButton [isPointed]="true">
+        <div class="btn">
+          <i class="las la-bars"></i>
+        </div>
+      </UIButton>
+      <div class="info">
+        <div class="name">{{ video.name }}</div>
+        <div class="actions">
+          <div class="action">
+            <i class="las la-gem"></i>
+          </div>
+          <div class="action">
+            <i class="las la-plus"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="spacer" (click)="isPaused ? play() : pause()"></div>
+
+    <div class="bottom">
+      <div class="actions" [ngClass]="{ show: isHover || showControls }">
+        <input
+          type="range"
+          min="0"
+          [value]="currentVideoTime"
+          [max]="videoDuration"
+          (input)="seekTo($event.target.value)"
+        />
+        <div class="time">
+          <div class="current">
+            {{ currentVideoTime | time: videoDuration }}
+          </div>
+          <div class="seperator">/</div>
+          <div class="total">
+            {{ videoDuration | time: videoDuration }}
+          </div>
+        </div>
+      </div>
+      <div class="about" [ngClass]="{ show: showControls }">
+        <div class="heading">Description</div>
+        <div class="content">
+          {{ video.description }}
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="player"></div>
+</div>

@@ -31,6 +31,7 @@ import { SanitizeUrlPipe } from "./pipes/sanitize-url/sanitize-url.pipe";
 import { ContentAgePipe } from "./pipes/content-age/content-age.pipe";
 import { TimePipe } from "./pipes/time/time.pipe";
 import { TooltipDirective } from "./directives/tooltip/tooltip.directive";
+import { PlayerComponent } from './components/player/player.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { TooltipDirective } from "./directives/tooltip/tooltip.directive";
     ContentAgePipe,
     TimePipe,
     TooltipDirective,
+    PlayerComponent,
   ],
   imports: [
     BrowserModule,
