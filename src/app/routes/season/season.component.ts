@@ -52,6 +52,12 @@ export class SeasonComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    document.onkeyup = ($event: KeyboardEvent) => {
+      if ($event.key == " ") {
+        this.isPaused ? this.play() : this.pause();
+      }
+    };
+
     /// Prepare Environment
     this.navbarService.isHidden.next(true);
     this.toolsService.openFullscreen();
