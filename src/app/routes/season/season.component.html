@@ -53,7 +53,9 @@
           </div>
         </div>
 
-        <div class="spacer" (click)="isPaused ? play() : pause()"></div>
+        <div class="spacer" (click)="isPaused ? play() : pause()">
+          {{ isPaused }} {{ showControls }}
+        </div>
 
         <div class="bottom">
           <div class="actions" [ngClass]="{ show: isHover || showControls }">

@@ -145,13 +145,12 @@ export class SeasonComponent implements OnInit, OnDestroy {
             this.prepareListeners();
           },
           onStateChange: ($event: any) => {
-            console.log($event);
+            clearTimeout(this.playerTimeout);
             if ($event.data === 2) {
               this.isPaused = true;
               this.showControls = true;
             }
             if ($event.data === 1) {
-              clearTimeout(this.playerTimeout);
               this.playerTimeout = setTimeout(() => {
                 this.isPaused = false;
                 this.showControls = false;
@@ -184,13 +183,13 @@ export class SeasonComponent implements OnInit, OnDestroy {
     this.isPaused = false;
     clearTimeout(this.controlTimeout);
     this.controlTimeout = setTimeout(() => {
-      this.player.playVideo(0);
+      this.player.playVideo();
     }, 100);
   }
 
   pause() {
-    this.showControls = true;
     this.isPaused = true;
+    this.showControls = true;
     this.player.pauseVideo();
   }
 
