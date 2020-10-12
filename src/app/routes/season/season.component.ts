@@ -126,9 +126,6 @@ export class SeasonComponent implements OnInit, OnDestroy {
             videoId: this.currentEpisode.videoId,
             startSeconds: 0,
           });
-          this.videoDuration = this.player.getDuration();
-          // this.play();
-          this.isPaused = false;
         }
       });
   }
@@ -157,16 +154,13 @@ export class SeasonComponent implements OnInit, OnDestroy {
           onStateChange: ($event: any) => {
             clearTimeout(this.playerTimeout);
             if ($event.data === 2) {
-              console.log("pause");
               this.isPaused = true;
               this.showControls = true;
             }
             if ($event.data === 1) {
               this.videoDuration = this.player.getDuration();
-              console.log(this.videoDuration);
+              this.isPaused = false;
               this.playerTimeout = setTimeout(() => {
-                console.log("play");
-                this.isPaused = false;
                 this.showControls = false;
               }, this.hideThreshold);
             }
