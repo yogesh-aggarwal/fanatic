@@ -28,8 +28,9 @@ import { SeriesListComponent } from "./routes/series/series-list/series-list.com
 import { SeriesViewComponent } from "./routes/series/series-view/series-view.component";
 import { SeasonComponent } from "./routes/season/season.component";
 import { SanitizeUrlPipe } from "./pipes/sanitize-url/sanitize-url.pipe";
-import { ContentAgePipe } from './pipes/content-age/content-age.pipe';
-import { TimePipe } from './pipes/time/time.pipe';
+import { ContentAgePipe } from "./pipes/content-age/content-age.pipe";
+import { TimePipe } from "./pipes/time/time.pipe";
+import { TooltipDirective } from "./directives/tooltip/tooltip.directive";
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { TimePipe } from './pipes/time/time.pipe';
     SanitizeUrlPipe,
     ContentAgePipe,
     TimePipe,
+    TooltipDirective,
   ],
   imports: [
     BrowserModule,
