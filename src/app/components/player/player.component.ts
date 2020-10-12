@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { timer } from "rxjs";
-import { VideoInterface } from "src/app/services/videos/interfaces";
+import { BehaviorSubject, timer } from "rxjs";
+import { VideoInterface } from "src/app/services/player/interfaces";
+import { PlayerService } from "src/app/services/player/player.service";
 
 @Component({
   selector: "player",
@@ -8,7 +9,6 @@ import { VideoInterface } from "src/app/services/videos/interfaces";
   styleUrls: ["./player.component.scss"],
 })
 export class PlayerComponent implements OnInit {
-  @Input("video")
   video: VideoInterface;
 
   player: any;
@@ -23,7 +23,7 @@ export class PlayerComponent implements OnInit {
   currentVideoTime: number = 0;
   newTime: number = 0;
 
-  constructor() {}
+  constructor(public playerService: PlayerService) {}
 
   ngOnInit(): void {
     document.onkeyup = ($event: KeyboardEvent) => {
@@ -32,6 +32,18 @@ export class PlayerComponent implements OnInit {
       }
     };
     this.preparePlayer();
+    this.playerService.video.subscribe((video) => {
+      if (!video) return;
+      this.video = video;
+
+      if (!this.player) return;
+      this.newTime = 0;
+      this.player.loadVideoById({
+        videoId: video.id,
+        startSeconds: 0,
+      });
+      this.playerService.sidebarTrigger.next(false);
+    });
   }
 
   /// Video Tools

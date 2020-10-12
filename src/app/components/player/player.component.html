@@ -1,7 +1,10 @@
 <div class="player">
   <div class="player-overlay" (mousemove)="showSeekbar()">
     <div class="top" [ngClass]="{ show: showControls }">
-      <UIButton [isPointed]="true">
+      <UIButton
+        [isPointed]="true"
+        (click)="playerService.sidebarTrigger.next(true)"
+      >
         <div class="btn">
           <i class="las la-bars"></i>
         </div>
