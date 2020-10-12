@@ -1,16 +1,21 @@
+export interface GemInterface {
+  uid: string;
+  amount: number;
+}
+
 export interface SeriesEpisodeInterface {
   id: string;
   name: string;
   description: string;
   videoId: string;
-  gems: string[];
+  gems: GemInterface[];
 }
 
 export interface SeasonInterface {
   id: string;
   name: string;
   nEpisodes: number;
-  gems: string[];
+  gems: GemInterface[];
   episodes?: SeriesEpisodeInterface[];
 }
 
@@ -27,6 +32,6 @@ export interface SeriesInterface {
   slideshowImages: string[];
   fans: string[];
   views: string[];
-  gems: string[];
+  gems: GemInterface[];
   seasons?: SeasonInterface[];
 }
