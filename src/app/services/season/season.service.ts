@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
+import { timer } from "rxjs";
 import { take } from "rxjs/operators";
 import { DialogService } from "../dialog/dialog.service";
 import {
@@ -25,62 +26,71 @@ export class SeasonService {
     try {
       const user: UserInterface = UserService.user.value;
       const uid: string = user.uid;
-      /// Update Series
-      let series: SeriesInterface = (
-        await this.firestore
-          .collection("series")
-          .doc(seriesId)
-          .snapshotChanges()
-          .pipe(take(1))
-          .toPromise()
-      ).payload.data() as SeriesInterface;
-      let seriesGems: GemsInterface = series.gems;
-      if (seriesGems[uid]) {
-        seriesGems[uid] += amount;
-      } else {
-        seriesGems[uid] = amount;
-      }
-      await this.firestore
-        .collection("series")
-        .doc(seriesId)
-        .update({ gems: seriesGems });
-
-      /// Update Season
-      let season: SeasonInterface = (
-        await this.firestore
-          .collection("series")
-          .doc(seriesId)
-          .collection("seasons")
-          .doc(seasonId)
-          .snapshotChanges()
-          .pipe(take(1))
-          .toPromise()
-      ).payload.data() as SeasonInterface;
-
-      let seasonGems: GemsInterface = season.gems;
-      if (season.id === seasonId) {
-        if (seasonGems[uid]) {
-          seasonGems[uid] += amount;
-        } else {
-          seasonGems[uid] = amount;
-        }
-
-        await this.firestore
-          .collection("series")
-          .doc(seriesId)
-          .collection("seasons")
-          .doc(seasonId)
-          .update({ gems: seasonGems });
-      }
 
       /// Update User Balance
       if (user.gems >= amount) {
+        /// Update Series
+        let series: SeriesInterface = (
+          await this.firestore
+            .collection("series")
+            .doc(seriesId)
+            .snapshotChanges()
+            .pipe(take(1))
+            .toPromise()
+        ).payload.data() as SeriesInterface;
+        let seriesGems: GemsInterface = series.gems;
+        if (seriesGems[uid]) {
+          seriesGems[uid] += amount;
+        } else {
+          seriesGems[uid] = amount;
+        }
+        await this.firestore
+          .collection("series")
+          .doc(seriesId)
+          .update({ gems: seriesGems });
+
+        /// Update Season
+        let season: SeasonInterface = (
+          await this.firestore
+            .collection("series")
+            .doc(seriesId)
+            .collection("seasons")
+            .doc(seasonId)
+            .snapshotChanges()
+            .pipe(take(1))
+            .toPromise()
+        ).payload.data() as SeasonInterface;
+
+        let seasonGems: GemsInterface = season.gems;
+        if (season.id === seasonId) {
+          if (seasonGems[uid]) {
+            seasonGems[uid] += amount;
+          } else {
+            seasonGems[uid] = amount;
+          }
+
+          await this.firestore
+            .collection("series")
+            .doc(seriesId)
+            .collection("seasons")
+            .doc(seasonId)
+            .update({ gems: seasonGems });
+        }
+
         await this.firestore
           .collection("users")
           .doc(uid)
           .update({ gems: user.gems - amount });
+        this.dialogService.open.next(false);
+      } else {
+        this.dialogService.dialog.next({
+          type: "message",
+          message: "Not enough balance",
+        });
+        timer(2000).subscribe((_) => {
+          this.dialogService.open.next(false);
+        });
       }
     } catch {}
-    this.dialogService.open.next(false);
   }
 }

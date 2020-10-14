@@ -1,5 +1,5 @@
 export interface DialogInterface {
-  type: "loading" | "question" | "confirm" | "fundGem";
+  type: "loading" | "question" | "message" | "confirm" | "fundGem";
+  message?: string;
   question?: string;
-  description?: string;
 }
