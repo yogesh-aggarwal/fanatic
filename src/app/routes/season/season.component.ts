@@ -35,7 +35,7 @@ export class SeasonComponent implements OnInit, OnDestroy {
     private seasonService: SeasonService,
     private toolsService: ToolsService,
     private navbarService: NavbarService,
-    public playerService: PlayerService
+    public playerService: PlayerService,
   ) {}
 
   ngOnInit(): void {

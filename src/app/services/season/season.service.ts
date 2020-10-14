@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { take } from "rxjs/operators";
+import { DialogService } from "../dialog/dialog.service";
 import {
   GemsInterface,
   SeasonInterface,
@@ -13,9 +14,14 @@ import { UserService } from "../user/user.service";
   providedIn: "root",
 })
 export class SeasonService {
-  constructor(private firestore: AngularFirestore) {}
+  constructor(
+    private firestore: AngularFirestore,
+    private dialogService: DialogService
+  ) {}
 
   async fundGems(amount: number, seriesId: string, seasonId: string) {
+    this.dialogService.dialog.next({ type: "loading" });
+    this.dialogService.open.next(true);
     const user: UserInterface = UserService.user.value;
     const uid: string = user.uid;
     /// Update Series
@@ -73,5 +79,6 @@ export class SeasonService {
         .doc(uid)
         .update({ gems: user.gems - amount });
     }
+    this.dialogService.open.next(true);
   }
 }
