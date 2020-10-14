@@ -1,5 +1,9 @@
-<div class="modal">
-  <div class="content">
-      
-  </div>
+<div class="modal" [ngClass]="{ open: dialogService.open | async }">
+  <ng-container *ngIf="dialog">
+    <div class="content">
+      <div class="loading" *ngIf="dialog.type === 'loading'">
+        <img src="../../../assets/loading.gif" alt="" />
+      </div>
+    </div>
+  </ng-container>
 </div>

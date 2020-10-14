@@ -1,4 +1,6 @@
 import { Component, OnInit } from "@angular/core";
+import { DialogService } from "src/app/services/dialog/dialog.service";
+import { DialogInterface } from "src/app/services/dialog/interfaces";
 
 @Component({
   selector: "content-dialog",
@@ -6,7 +8,13 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./dialog.component.scss"],
 })
 export class DialogComponent implements OnInit {
-  constructor() {}
+  dialog: DialogInterface;
 
-  ngOnInit(): void {}
+  constructor(public dialogService: DialogService) {}
+
+  ngOnInit(): void {
+    this.dialogService.dialog.subscribe((dialog) => {
+      this.dialog = dialog;
+    });
+  }
 }

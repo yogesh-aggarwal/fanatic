@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { Observable, timer } from "rxjs";
 import { take } from "rxjs/operators";
 import { AnimationsService } from "src/app/animations/animations.service";
+import { DialogService } from "src/app/services/dialog/dialog.service";
 import { SeriesInterface } from "src/app/services/series/interfaces";
 import { SeriesService } from "src/app/services/series/series.service";
 
@@ -21,10 +22,13 @@ export class SeriesViewComponent implements OnInit {
   constructor(
     private router: Router,
     private route: ActivatedRoute,
-    private seriesService: SeriesService
+    private seriesService: SeriesService,
+    private dialogService: DialogService
   ) {}
 
   async ngOnInit() {
+    this.dialogService.dialog.next({ type: "loading" });
+    this.dialogService.open.next(true);
     this.timer.subscribe((_) => {
       try {
         if (
@@ -51,6 +55,7 @@ export class SeriesViewComponent implements OnInit {
         .toPromise();
     }
     this.series = series;
+    this.dialogService.open.next(false);
   }
 
   playSeries() {
