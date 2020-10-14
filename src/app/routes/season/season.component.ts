@@ -57,7 +57,7 @@ export class SeasonComponent implements OnInit, OnDestroy {
   }
 
   fundGems() {
-    this.seasonService.fundGems(3, this.seriesId);
+    this.seasonService.fundGems(3, this.seriesId, this.seasonId);
   }
 
   addToLibrary() {
