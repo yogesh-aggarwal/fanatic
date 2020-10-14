@@ -8,7 +8,6 @@ export interface SeriesEpisodeInterface {
   name: string;
   description: string;
   videoId: string;
-  gems: GemInterface[];
 }
 
 export interface SeasonInterface {

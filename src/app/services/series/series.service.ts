@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
-import { BehaviorSubject, Observable, Subject } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
+import { take } from "rxjs/operators";
 import { ToolsService } from "../tools/tools.service";
 import {
   SeasonInterface,
@@ -21,22 +22,23 @@ export class SeriesService {
     private toolsService: ToolsService
   ) {}
 
-  getSeriesByTopic(topic: string) {
-    this.firestore
+  async getSeriesByTopic(topic: string) {
+    let docs = await this.firestore
       .collection("series", (ref) => {
         return ref.where("topics", "array-contains", topic).limit(20);
       })
       .snapshotChanges()
-      .subscribe((docs) => {
-        let newSeries = this.series.value;
-        for (const doc of docs) {
-          const id: string = doc.payload.doc.id;
-          const data = doc.payload.doc.data() as object;
-          const newDoc = { id: id, ...data } as SeriesInterface;
-          newSeries[id] = newDoc;
-        }
-        this.series.next(newSeries);
-      });
+      .pipe(take(1))
+      .toPromise();
+
+    let newSeries = this.series.value;
+    for (const doc of docs) {
+      const id: string = doc.payload.doc.id;
+      const data = doc.payload.doc.data() as object;
+      const newDoc = { id: id, ...data } as SeriesInterface;
+      newSeries[id] = newDoc;
+    }
+    this.series.next(newSeries);
   }
 
   getSeasons(id: string): Observable<SeasonInterface[]> {
@@ -101,26 +103,21 @@ export class SeriesService {
     return valueNotifier.asObservable();
   }
 
-  getSeriesById(id: string): Observable<SeriesInterface> {
-    const valueNotifier: BehaviorSubject<SeriesInterface> = new BehaviorSubject(
-      null
-    );
+  async getSeriesById(id: string): Promise<SeriesInterface> {
     if (this.series.value[id]) {
-      valueNotifier.next(this.series.value[id]);
+      return this.series.value[id];
     } else {
-      this.firestore
+      let doc = await this.firestore
         .collection("series")
         .doc(id)
         .snapshotChanges()
-        .subscribe((doc) => {
-          const id: string = doc.payload.id;
-          const data = doc.payload.data() as SeriesInterface;
-          let newSeries = this.series.value;
-          newSeries[id] = data;
-          this.series.next(newSeries);
-          valueNotifier.next(data);
-        });
+        .pipe(take(1))
+        .toPromise();
+      const data = doc.payload.data() as SeriesInterface;
+      let newSeries = this.series.value;
+      newSeries[id] = data;
+      this.series.next(newSeries);
+      return data;
     }
-    return valueNotifier.asObservable();
   }
 }

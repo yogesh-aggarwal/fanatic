@@ -24,7 +24,7 @@ export class SeriesViewComponent implements OnInit {
     private seriesService: SeriesService
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit() {
     this.timer.subscribe((_) => {
       try {
         if (
@@ -40,16 +40,17 @@ export class SeriesViewComponent implements OnInit {
       } catch {}
     });
     const id: string = this.route.snapshot.params["id"];
-    this.seriesService.getSeriesById(id).subscribe(async (series) => {
-      if (!series) return;
-      if (!series.seasons) {
-        series.seasons = await this.seriesService
-          .getSeasons(id)
-          .pipe(take(2))
-          .toPromise();
-      }
-      this.series = series;
-    });
+
+    let series: SeriesInterface = await this.seriesService.getSeriesById(id);
+
+    if (!series) return;
+    if (!series.seasons) {
+      series.seasons = await this.seriesService
+        .getSeasons(id)
+        .pipe(take(2))
+        .toPromise();
+    }
+    this.series = series;
   }
 
   playSeries() {

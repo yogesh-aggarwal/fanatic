@@ -12,6 +12,8 @@ import { ToolsService } from "src/app/services/tools/tools.service";
 import { VideoInterface } from "src/app/services/player/interfaces";
 import { PlayerService } from "src/app/services/player/player.service";
 import { Subject } from "rxjs";
+import { UserService } from "src/app/services/user/user.service";
+import { SeasonService } from "src/app/services/season/season.service";
 
 @Component({
   selector: "app-season",
@@ -30,6 +32,7 @@ export class SeasonComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private router: Router,
     private seriesService: SeriesService,
+    private seasonService: SeasonService,
     private toolsService: ToolsService,
     private navbarService: NavbarService,
     public playerService: PlayerService
@@ -54,7 +57,7 @@ export class SeasonComponent implements OnInit, OnDestroy {
   }
 
   fundGems() {
-    console.log("Fund Gem");
+    this.seasonService.fundGems(3, this.seriesId);
   }
 
   addToLibrary() {
@@ -80,61 +83,61 @@ export class SeasonComponent implements OnInit, OnDestroy {
     });
   }
 
-  prepareData() {
+  async prepareData() {
     /// Get Route Params
     this.seriesId = this.route.snapshot.params["id"];
     this.seasonId = this.route.snapshot.params["season"];
     let episodeIndex: number = this.route.snapshot.params["episodeIndex"];
 
     /// Fetch season
-    this.seriesService
-      .getSeriesById(this.seriesId)
-      .subscribe(async (series: SeriesInterface) => {
-        if (!series) return;
-        if (!series.seasons) {
-          series.seasons = await this.seriesService
-            .getSeasons(this.seriesId)
-            .pipe(take(2))
-            .toPromise();
-        }
-        let season: SeasonInterface =
-          series.seasons[
-            this.toolsService.findInArrayByObjectId(
-              series.seasons,
-              "id",
-              this.seasonId
-            )
-          ];
-        if (!season) return;
+    let series: SeriesInterface = await this.seriesService.getSeriesById(
+      this.seriesId
+    );
 
-        /// Adjust episode
-        if (season.nEpisodes <= episodeIndex) {
-          this.router.navigate(["/series", this.seriesId, this.seasonId, 1]);
-          return;
-        }
+    if (!series) return;
+    if (!series.seasons) {
+      series.seasons = await this.seriesService
+        .getSeasons(this.seriesId)
+        .pipe(take(2))
+        .toPromise();
+    }
+    let season: SeasonInterface =
+      series.seasons[
+        this.toolsService.findInArrayByObjectId(
+          series.seasons,
+          "id",
+          this.seasonId
+        )
+      ];
+    if (!season) return;
 
-        /// Adjust season
-        if (!season.episodes) {
-          let episodes: SeriesEpisodeInterface[] = await this.seriesService
-            .getEpisodes(this.seriesId, this.seasonId)
-            .pipe(take(2))
-            .toPromise();
-          season.episodes = episodes;
-        }
+    /// Adjust episode
+    if (season.nEpisodes <= episodeIndex) {
+      this.router.navigate(["/series", this.seriesId, this.seasonId, 1]);
+      return;
+    }
 
-        this.season = season;
-        const episode: SeriesEpisodeInterface = this.season.episodes[
-          episodeIndex - 1
-        ];
+    /// Adjust season
+    if (!season.episodes) {
+      let episodes: SeriesEpisodeInterface[] = await this.seriesService
+        .getEpisodes(this.seriesId, this.seasonId)
+        .pipe(take(2))
+        .toPromise();
+      season.episodes = episodes;
+    }
 
-        /// Adjust video
-        this.video = {
-          id: episode.videoId,
-          name: episode.name,
-          description: episode.description,
-          type: "series",
-        };
-        this.playerService.video.next(this.video);
-      });
+    this.season = season;
+    const episode: SeriesEpisodeInterface = this.season.episodes[
+      episodeIndex - 1
+    ];
+
+    /// Adjust video
+    this.video = {
+      id: episode.videoId,
+      name: episode.name,
+      description: episode.description,
+      type: "series",
+    };
+    this.playerService.video.next(this.video);
   }
 }
