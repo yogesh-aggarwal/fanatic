@@ -19,7 +19,7 @@
     z-index: 1e4;
     height: 100%;
     width: $width;
-    min-width: 25rem;
+    max-width: $width;
     background: $hover-background;
 
     &.hide {
