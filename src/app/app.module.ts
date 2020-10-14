@@ -32,6 +32,7 @@ import { ContentAgePipe } from "./pipes/content-age/content-age.pipe";
 import { TimePipe } from "./pipes/time/time.pipe";
 import { TooltipDirective } from "./directives/tooltip/tooltip.directive";
 import { PlayerComponent } from './components/player/player.component';
+import { DialogComponent } from './components/dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { PlayerComponent } from './components/player/player.component';
     TimePipe,
     TooltipDirective,
     PlayerComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,
