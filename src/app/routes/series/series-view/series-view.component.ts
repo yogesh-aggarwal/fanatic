@@ -6,6 +6,7 @@ import { AnimationsService } from "src/app/animations/animations.service";
 import { DialogService } from "src/app/services/dialog/dialog.service";
 import { SeriesInterface } from "src/app/services/series/interfaces";
 import { SeriesService } from "src/app/services/series/series.service";
+import { ToolsService } from "src/app/services/tools/tools.service";
 
 @Component({
   selector: "app-series-view",
@@ -23,7 +24,8 @@ export class SeriesViewComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private seriesService: SeriesService,
-    private dialogService: DialogService
+    private dialogService: DialogService,
+    public toolsService: ToolsService
   ) {}
 
   async ngOnInit() {

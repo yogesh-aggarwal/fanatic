@@ -28,6 +28,12 @@ export class ToolsService {
     return requiredItemIndex;
   }
 
+  sumValuesOfObject(obj: { [key: string]: number }): number {
+    let sum: number = 0;
+    Object.values(obj).forEach((v) => (sum += v));
+    return sum;
+  }
+
   arraysOverlap(...arrays: any[][]): any[] {
     let concated: any[] = [];
     let count: { [key: string]: number } = {};

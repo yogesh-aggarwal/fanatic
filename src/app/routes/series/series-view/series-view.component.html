@@ -30,7 +30,9 @@
               </div>
               <div class="stat">
                 <i class="las la-gem"></i>
-                <div class="quantity">{{ series.gems.length }}</div>
+                <div class="quantity">
+                  {{ toolsService.sumValuesOfObject(series.gems) | quantity }}
+                </div>
               </div>
               <div class="stat">
                 <i class="las la-hand-paper"></i>
