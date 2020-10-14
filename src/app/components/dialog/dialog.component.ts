@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: "dialog",
+  selector: "content-dialog",
   templateUrl: "./dialog.component.html",
   styleUrls: ["./dialog.component.scss"],
 })

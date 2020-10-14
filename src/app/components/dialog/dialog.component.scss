@@ -1,0 +1,25 @@
+@import "../../../theme";
+@import "../../../constants";
+
+.modal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1e5;
+  backdrop-filter: brightness(30%);
+
+  .content {
+    border-radius: 1rem;
+    background: lighten($background, 10%);
+    padding: 2rem 3rem;
+
+    max-width: 50vw;
+    max-height: 50vh;
+  }
+}
