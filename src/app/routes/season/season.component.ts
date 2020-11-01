@@ -35,7 +35,7 @@ export class SeasonComponent implements OnInit, OnDestroy {
     private seasonService: SeasonService,
     private toolsService: ToolsService,
     private navbarService: NavbarService,
-    public playerService: PlayerService,
+    public playerService: PlayerService
   ) {}
 
   ngOnInit(): void {
@@ -123,9 +123,19 @@ export class SeasonComponent implements OnInit, OnDestroy {
         .getEpisodes(this.seriesId, this.seasonId)
         .pipe(take(2))
         .toPromise();
+      /// Sort Episodes
+      episodes.sort((first, second) => {
+        if (first.index < second.index) {
+          return -1;
+        }
+        if (first.index > second.index) {
+          return 1;
+        }
+      });
       season.episodes = episodes;
     }
 
+    /// Update Season Class Variable
     this.season = season;
     const episode: SeriesEpisodeInterface = this.season.episodes[
       episodeIndex - 1

@@ -5,6 +5,7 @@ export interface GemsInterface {
 export interface SeriesEpisodeInterface {
   id: string;
   name: string;
+  index: number;
   description: string;
   videoId: string;
 }

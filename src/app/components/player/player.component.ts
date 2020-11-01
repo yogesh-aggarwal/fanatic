@@ -74,6 +74,7 @@ export class PlayerComponent implements OnInit {
         },
         events: {
           onReady: () => {
+            this.seekTo(0);
             this.play();
             this.prepareListeners();
           },
