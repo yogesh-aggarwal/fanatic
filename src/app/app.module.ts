@@ -6,15 +6,13 @@ import { AngularFireModule } from "@angular/fire";
 import { AngularFirestoreModule } from "@angular/fire/firestore";
 import { AppRoutingModule } from "./app-routing.module";
 import { AngularFireAuthModule } from "@angular/fire/auth";
+import { PipesModule } from "./pipes/pipes.module";
 
 /// Components
 import { AppComponent } from "./app.component";
 import { HomeComponent } from "./routes/home/home.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { UiModule } from "./components/ui/ui.module";
-
-/// Pipes
-import { QuantityPipe } from "./pipes/quantity/quantity.pipe";
 
 /// Environment
 import { environment } from "src/environments/environment.prod";
@@ -27,19 +25,15 @@ import { LibraryComponent } from "./routes/user/library/library.component";
 import { SeriesListComponent } from "./routes/series/series-list/series-list.component";
 import { SeriesViewComponent } from "./routes/series/series-view/series-view.component";
 import { SeasonComponent } from "./routes/season/season.component";
-import { SanitizeUrlPipe } from "./pipes/sanitize-url/sanitize-url.pipe";
-import { ContentAgePipe } from "./pipes/content-age/content-age.pipe";
-import { TimePipe } from "./pipes/time/time.pipe";
 import { TooltipDirective } from "./directives/tooltip/tooltip.directive";
-import { PlayerComponent } from './components/player/player.component';
-import { DialogComponent } from './components/dialog/dialog.component';
+import { PlayerComponent } from "./components/player/player.component";
+import { DialogComponent } from "./components/dialog/dialog.component";
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    QuantityPipe,
     TrendsComponent,
     SeriesComponent,
     MoviesComponent,
@@ -49,9 +43,6 @@ import { DialogComponent } from './components/dialog/dialog.component';
     SeriesListComponent,
     SeriesViewComponent,
     SeasonComponent,
-    SanitizeUrlPipe,
-    ContentAgePipe,
-    TimePipe,
     TooltipDirective,
     PlayerComponent,
     DialogComponent,
@@ -64,6 +55,7 @@ import { DialogComponent } from './components/dialog/dialog.component';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
     AngularFireAuthModule,
+    PipesModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

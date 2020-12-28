@@ -13,41 +13,12 @@
   </div>
   <div class="cards">
     <ng-container *ngFor="let card of seriesService.series | async | keyvalue">
-      <div
-        class="card"
-        [routerLink]="'/series/' + card.value.id"
+      <UISeriesCard
+        [card]="card.value"
         *ngIf="
-          toolsService.arraysOverlap(card.value.topics, activeTopics).length
+          toolsService.arraysOverlap(card.value['topics'], activeTopics).length
         "
-      >
-        <div class="info">
-          <div class="name">{{ card.value.name }}</div>
-          <main>
-            <div class="tags">
-              <div class="tag" *ngFor="let tag of card.value.topics">
-                <UIChip [isActive]="true"> {{ tag }} </UIChip>
-              </div>
-            </div>
-            <div class="stats">
-              <div class="stat">
-                <i class="las la-hand-paper"></i>
-                <div class="quantity">
-                  {{ card.value.fans.length | quantity }}
-                </div>
-              </div>
-              <div class="stat">
-                <i class="las la-gem"></i>
-                <div class="quantity">
-                  {{
-                    toolsService.sumValuesOfObject(card.value.gems) | quantity
-                  }}
-                </div>
-              </div>
-            </div>
-          </main>
-        </div>
-        <img [src]="card.value.thumbnail" alt="" />
-      </div>
+      ></UISeriesCard>
     </ng-container>
   </div>
 </div>
