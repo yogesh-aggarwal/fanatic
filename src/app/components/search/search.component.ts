@@ -29,7 +29,10 @@ export class SearchComponent implements OnInit {
   }
 
   searchQuery(query: string) {
-    console.log(`Search: ${query}`);
-    this.results = [{ name: query }];
+    let results: SearchResultInterface[] = [];
+
+    // Showing Results
+    if (results.length) this.results = results;
+    else this.results = [];
   }
 }
