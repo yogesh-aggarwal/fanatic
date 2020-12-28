@@ -31,7 +31,7 @@
             </div>
           </div>
           <div class="name">{{ result.name }}</div>
-          <div class="release-date">
+          <div class="release-date" *ngIf="result.releaseDate">
             <i class="las la-calendar-day"></i>
             <div class="date">
               {{
