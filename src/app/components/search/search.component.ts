@@ -3,6 +3,9 @@ import { SearchService } from "src/app/services/search/search.service";
 
 interface SearchResultInterface {
   name: string;
+  thumbnail: string;
+  releaseDate: any;
+  topics: string[];
 }
 
 @Component({
@@ -29,6 +32,10 @@ export class SearchComponent implements OnInit {
   }
 
   searchQuery(query: string) {
+    if (!query.length) {
+      this.results = [];
+      return;
+    }
     let results: SearchResultInterface[] = [];
 
     // Showing Results

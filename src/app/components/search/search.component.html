@@ -11,7 +11,23 @@
     </div>
     <div class="results">
       <div class="result" *ngFor="let result of results">
-        {{ result.name }}
+        <div class="thumbnail">
+          <img [src]="result.thumbnail" alt="" />
+        </div>
+        <div class="info">
+          <div class="topics">
+            <div class="topic" *ngFor="let topic of result.topics">
+              <UIChip>{{ topic }}</UIChip>
+            </div>
+          </div>
+          <div class="name">{{ result.name }}</div>
+          <div class="release-date">
+            <i class="las la-calendar-day"></i>
+            <div class="date">
+              {{ result.releaseDate.toDate() | date: "MMMM d, y" }}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>

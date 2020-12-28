@@ -5,7 +5,7 @@ import { BehaviorSubject } from "rxjs";
   providedIn: "root",
 })
 export class SearchService {
-  isActive: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  isActive: BehaviorSubject<boolean> = new BehaviorSubject(true);
 
   constructor() {}
 }
