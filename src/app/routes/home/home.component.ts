@@ -56,7 +56,7 @@ export class HomeComponent implements OnInit {
 
   assignActiveTopics(): void {
     this.activeTopics = [];
-    const activeTopicsLength: number = this.toolsService.getRandomInt(3, 6);
+    const activeTopicsLength: number = this.toolsService.getRandomInt(3, 7);
     for (let i = 0; i < activeTopicsLength; i++) {
       this.activeTopics.push(this.topics[i]);
     }
