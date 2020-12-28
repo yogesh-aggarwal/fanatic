@@ -19,7 +19,8 @@
   }
 
   .content {
-    $padding: 1.5rem 2rem;
+    $padding-tb: 1.5rem;
+    $padding-lr: 2rem;
     border-radius: 1rem;
     background: lighten($background, 10%);
     box-shadow: 0 1rem 6rem #000;
@@ -29,19 +30,34 @@
     .search {
       display: flex;
       align-items: center;
-      padding: $padding;
+      padding: 0 $padding-lr;
 
-      i {
-        font-size: 1.2rem;
-        margin-right: 1rem;
+      .bar {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        padding: $padding-tb 0;
+
+        i {
+          font-size: 1.2rem;
+          margin-right: 1rem;
+        }
+
+        input {
+          width: 100%;
+          outline: none;
+          border: none;
+          background: none;
+          font-size: 1.1rem;
+        }
       }
 
-      input {
-        width: 100%;
-        outline: none;
-        border: none;
-        background: none;
-        font-size: 1.1rem;
+      .loading {
+        @include center();
+
+        img {
+          width: 3rem;
+        }
       }
     }
 
@@ -50,7 +66,7 @@
       overflow-y: auto;
 
       .result {
-        padding: $padding;
+        padding: $padding-tb $padding-lr;
         border-radius: 1rem;
         display: grid;
         grid-template-columns: 5rem auto;

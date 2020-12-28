@@ -15,6 +15,7 @@ interface SearchResultInterface {
 })
 export class SearchComponent implements OnInit {
   isActive: boolean;
+  isSearching: boolean;
   results: SearchResultInterface[] = [];
   @ViewChild("search")
   searchBox: ElementRef;
@@ -32,6 +33,7 @@ export class SearchComponent implements OnInit {
   }
 
   searchQuery(query: string) {
+    this.isSearching = true;
     if (!query.length) {
       this.results = [];
       return;
@@ -41,5 +43,7 @@ export class SearchComponent implements OnInit {
     // Showing Results
     if (results.length) this.results = results;
     else this.results = [];
+
+    this.isSearching = false;
   }
 }
