@@ -60,7 +60,6 @@ export class HomeComponent implements OnInit {
     for (let i = 0; i < activeTopicsLength; i++) {
       this.activeTopics.push(this.topics[i]);
     }
-    console.log(this.activeTopics);
   }
 
   toggleTopic(topic: string) {
