@@ -44,12 +44,23 @@ export class SearchComponent implements OnInit {
     const indeces: SearchIndex[] = this.dataService.searchData.value;
 
     indeces.forEach((index) => {
-      if (
-        index.name.includes(query) ||
-        index.topics.includes(this.toolsService.toTitleCase(query))
-      ) {
+      let isResult = false;
+      // Check in name
+      if (index.name.includes(query)) {
         results.push(index);
+        isResult = true;
       }
+      if (isResult) return;
+      // Check in topics
+      for (const topic of index.topics) {
+        if (topic.includes(this.toolsService.toTitleCase(query))) {
+          isResult = true;
+          results.push(index);
+          break;
+        }
+      }
+      // Check in date
+      /// Pending
     });
 
     return results;
