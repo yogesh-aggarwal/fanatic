@@ -53,15 +53,6 @@ export class NavbarComponent implements OnInit {
     };
   }
 
-  showSearchResults(results: SearchResultInterface[]) {}
-
-  searchQuery(query: string) {
-    let results: SearchResultInterface[] = [];
-    console.log(query);
-
-    this.showSearchResults(results);
-  }
-
   initSearch() {
     this.isSearchActive.subscribe((isActive) => {
       if (isActive) {
