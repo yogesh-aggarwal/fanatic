@@ -3,12 +3,13 @@
     <img src="../../../assets/logo.png" alt="" />
   </div>
 
-  <div class="search" [ngClass]="{ active: isSearchActive | async }">
+  <div class="search">
     <i class="las la-search"></i>
     <input
       type="text"
-      (focus)="isSearchActive.next(true)"
-      (blur)="isSearchActive.next(false)"
+      readonly
+      (focus)="searchService.isActive.next(true)"
+      (blur)="searchService.isActive.next(false)"
       placeholder="Search your anime"
       #search
     />

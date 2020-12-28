@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { AuthService } from "src/app/services/auth/auth.service";
 import { NavbarService } from "src/app/services/navbar/navbar.service";
+import { SearchService } from "src/app/services/search/search.service";
 import { UserInterface } from "src/app/services/user/interfaces";
 import { UserService } from "src/app/services/user/user.service";
 
@@ -21,7 +22,6 @@ interface SearchResultInterface {}
 export class NavbarComponent implements OnInit {
   @ViewChild("search")
   searchBox: ElementRef;
-  isSearchActive: BehaviorSubject<boolean> = new BehaviorSubject(false);
   user: UserInterface;
 
   routes: RouteInterface[] = [
@@ -33,15 +33,14 @@ export class NavbarComponent implements OnInit {
 
   constructor(
     public authService: AuthService,
-    public navbarService: NavbarService
+    public navbarService: NavbarService,
+    public searchService: SearchService
   ) {}
 
   ngOnInit(): void {
     UserService.user.subscribe((user) => {
       this.user = user;
     });
-
-    this.initSearch();
 
     document.onkeyup = ($event: KeyboardEvent) => {
       if ($event.key == "/") {
@@ -51,15 +50,5 @@ export class NavbarComponent implements OnInit {
         this.searchBox.nativeElement.blur();
       }
     };
-  }
-
-  initSearch() {
-    this.isSearchActive.subscribe((isActive) => {
-      if (isActive) {
-        console.log("Init Search!");
-      } else {
-        console.log("Destroy Search!");
-      }
-    });
   }
 }

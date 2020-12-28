@@ -28,6 +28,7 @@ import { SeasonComponent } from "./routes/season/season.component";
 import { TooltipDirective } from "./directives/tooltip/tooltip.directive";
 import { PlayerComponent } from "./components/player/player.component";
 import { DialogComponent } from "./components/dialog/dialog.component";
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { DialogComponent } from "./components/dialog/dialog.component";
     TooltipDirective,
     PlayerComponent,
     DialogComponent,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,
