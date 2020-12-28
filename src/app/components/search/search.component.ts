@@ -4,13 +4,6 @@ import { SearchIndex } from "src/app/services/data/interfaces";
 import { SearchService } from "src/app/services/search/search.service";
 import { ToolsService } from "src/app/services/tools/tools.service";
 
-interface SearchResultInterface {
-  name: string;
-  thumbnail: string;
-  releaseDate: any;
-  topics: string[];
-}
-
 @Component({
   selector: "search-dialog",
   templateUrl: "./search.component.html",
@@ -19,13 +12,13 @@ interface SearchResultInterface {
 export class SearchComponent implements OnInit {
   isActive: boolean;
   isSearching: boolean;
-  results: SearchResultInterface[] = [];
+  results: SearchIndex[] = [];
   @ViewChild("search")
   searchBox: ElementRef;
 
   constructor(
     private dataService: DataService,
-    private toolsService: ToolsService,
+    public toolsService: ToolsService,
     public searchService: SearchService
   ) {}
 
@@ -48,14 +41,14 @@ export class SearchComponent implements OnInit {
     };
   }
 
-  performSearch(query: string): SearchResultInterface[] {
-    let results: SearchResultInterface[] = [];
+  performSearch(query: string): SearchIndex[] {
+    let results: SearchIndex[] = [];
     const indeces: SearchIndex[] = this.dataService.searchData.value;
 
     indeces.forEach((index) => {
       let isResult = false;
       // Check in name
-      if (index.name.includes(query)) {
+      if (index.name.toLowerCase().includes(query.toLowerCase())) {
         results.push(index);
         isResult = true;
       }
@@ -82,12 +75,17 @@ export class SearchComponent implements OnInit {
       this.isSearching = false;
       return;
     }
-    let results: SearchResultInterface[] = this.performSearch(query);
+    let results: SearchIndex[] = this.performSearch(query);
 
     // Showing Results
     if (results.length) this.results = results;
     else this.results = [];
 
     this.isSearching = false;
+  }
+
+  navigateToResult(id: string) {
+    this.searchService.isActive.next(false);
+    this.toolsService.routeTo(["/series/" + id]);
   }
 }

@@ -16,7 +16,11 @@
       </div>
     </div>
     <div class="results">
-      <div class="result" *ngFor="let result of results">
+      <div
+        class="result"
+        *ngFor="let result of results"
+        (click)="navigateToResult(result.id)"
+      >
         <div class="thumbnail">
           <img [src]="result.thumbnail" alt="" />
         </div>
@@ -30,7 +34,10 @@
           <div class="release-date">
             <i class="las la-calendar-day"></i>
             <div class="date">
-              {{ result.releaseDate.toDate() | date: "MMMM d, y" }}
+              {{
+                toolsService.timestampToDate(result.releaseDate)
+                  | date: "MMMM d, y"
+              }}
             </div>
           </div>
         </div>

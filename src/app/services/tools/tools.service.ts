@@ -1,5 +1,6 @@
 import { DOCUMENT } from "@angular/common";
 import { Inject, Injectable } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root",
@@ -7,7 +8,10 @@ import { Inject, Injectable } from "@angular/core";
 export class ToolsService {
   isFullScreen: boolean = false;
 
-  constructor(@Inject(DOCUMENT) private document: any) {}
+  constructor(
+    @Inject(DOCUMENT) private document: any,
+    private router: Router
+  ) {}
 
   pickRandom(array: any[]): any {
     return array[Math.floor(Math.random() * array.length)];
@@ -26,6 +30,14 @@ export class ToolsService {
       else return a[1] - b[1];
     });
     return sorted;
+  }
+
+  timestampToDate(timestamp: number): Date {
+    return new Date(timestamp);
+  }
+
+  routeTo(route: any[]) {
+    this.router.navigate(route);
   }
 
   findInArrayByObjectId(
