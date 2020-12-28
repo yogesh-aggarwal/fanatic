@@ -13,6 +13,21 @@ export class ToolsService {
     return array[Math.floor(Math.random() * array.length)];
   }
 
+  getRandomInt(min: number, max: number): number {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  getObjectKeysBySortingValues(obj: Object, isReverse = false): any[] {
+    let entries = Object.entries(obj);
+    let sorted = entries.sort((a, b) => {
+      if (isReverse) return b[1] - a[1];
+      else return a[1] - b[1];
+    });
+    return sorted;
+  }
+
   findInArrayByObjectId(
     array: { [key: string]: any }[],
     id: string,
