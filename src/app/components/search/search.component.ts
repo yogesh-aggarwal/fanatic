@@ -32,13 +32,18 @@ export class SearchComponent implements OnInit {
     }, 100);
   }
 
+  performSearch(query: string): SearchResultInterface[] {
+    let results: SearchResultInterface[] = [];
+    return results;
+  }
+
   searchQuery(query: string) {
     this.isSearching = true;
     if (!query.length) {
       this.results = [];
       return;
     }
-    let results: SearchResultInterface[] = [];
+    let results: SearchResultInterface[] = this.performSearch(query);
 
     // Showing Results
     if (results.length) this.results = results;
