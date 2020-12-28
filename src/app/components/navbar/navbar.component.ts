@@ -1,4 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { BehaviorSubject } from "rxjs";
 import { AuthService } from "src/app/services/auth/auth.service";
 import { NavbarService } from "src/app/services/navbar/navbar.service";
 import { UserInterface } from "src/app/services/user/interfaces";
@@ -10,6 +11,8 @@ interface RouteInterface {
   path: string;
 }
 
+interface SearchResultInterface {}
+
 @Component({
   selector: "navbar",
   templateUrl: "./navbar.component.html",
@@ -18,6 +21,7 @@ interface RouteInterface {
 export class NavbarComponent implements OnInit {
   @ViewChild("search")
   searchBox: ElementRef;
+  isSearchActive: BehaviorSubject<boolean> = new BehaviorSubject(false);
   user: UserInterface;
 
   routes: RouteInterface[] = [
@@ -37,6 +41,8 @@ export class NavbarComponent implements OnInit {
       this.user = user;
     });
 
+    this.initSearch();
+
     document.onkeyup = ($event: KeyboardEvent) => {
       if ($event.key == "/") {
         this.searchBox.nativeElement.focus();
@@ -45,5 +51,24 @@ export class NavbarComponent implements OnInit {
         this.searchBox.nativeElement.blur();
       }
     };
+  }
+
+  showSearchResults(results: SearchResultInterface[]) {}
+
+  searchQuery(query: string) {
+    let results: SearchResultInterface[] = [];
+    console.log(query);
+
+    this.showSearchResults(results);
+  }
+
+  initSearch() {
+    this.isSearchActive.subscribe((isActive) => {
+      if (isActive) {
+        console.log("Init Search!");
+      } else {
+        console.log("Destroy Search!");
+      }
+    });
   }
 }

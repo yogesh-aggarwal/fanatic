@@ -3,9 +3,16 @@
     <img src="../../../assets/logo.png" alt="" />
   </div>
 
-  <div class="search">
+  <div class="search" [ngClass]="{ active: isSearchActive | async }">
     <i class="las la-search"></i>
-    <input type="text" placeholder="Search your anime" #search />
+    <input
+      type="text"
+      (focus)="isSearchActive.next(true)"
+      (blur)="isSearchActive.next(false)"
+      (input)="searchQuery($event.target.value)"
+      placeholder="Search your anime"
+      #search
+    />
   </div>
 
   <div class="routes">
