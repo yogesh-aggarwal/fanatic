@@ -1,5 +1,6 @@
 @import "../../../../constants";
 @import "../../../../theme";
+@import "../../../../classes";
 
 .container {
   $height: calc(100vh - #{$navbar-height});
@@ -39,7 +40,7 @@
       display: grid;
       grid-template-columns: minmax(22rem, 46vh) auto 30rem;
       grid-template-rows: minmax(33rem, 100%) auto;
-      grid-column-gap: 5rem;
+      grid-column-gap: 2rem;
 
       & > div {
         max-height: calc(#{$height} - #{$tb-padding});
@@ -61,11 +62,17 @@
       }
 
       .about {
+        padding: 0 2rem;
+        overflow-x: hidden;
+
         .tags {
-          margin-bottom: 2rem;
+          @include hidden-scroll;
+          margin-bottom: 1.5rem;
           display: flex;
+          max-width: 100%;
 
           .tag {
+            margin-bottom: 0.5rem;
             margin-right: 1rem;
           }
         }
