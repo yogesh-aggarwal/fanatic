@@ -24,7 +24,7 @@
     background: lighten($background, 10%);
     box-shadow: 0 1rem 6rem #000;
     width: 50vw;
-    border: 2px solid #000;
+    border: 2px solid $background;
 
     .search {
       display: flex;
