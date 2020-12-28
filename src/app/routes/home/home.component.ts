@@ -1,10 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
 import { DataService } from "src/app/services/data/data.service";
-import { SeriesInterface } from "src/app/services/series/interfaces";
 import { SeriesService } from "src/app/services/series/series.service";
 import { ToolsService } from "src/app/services/tools/tools.service";
-import { createLogicalAnd } from "typescript";
 
 @Component({
   selector: "app-home",
