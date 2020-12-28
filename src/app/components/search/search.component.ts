@@ -1,5 +1,8 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { DataService } from "src/app/services/data/data.service";
+import { SearchIndex } from "src/app/services/data/interfaces";
 import { SearchService } from "src/app/services/search/search.service";
+import { ToolsService } from "src/app/services/tools/tools.service";
 
 interface SearchResultInterface {
   name: string;
@@ -20,7 +23,11 @@ export class SearchComponent implements OnInit {
   @ViewChild("search")
   searchBox: ElementRef;
 
-  constructor(public searchService: SearchService) {}
+  constructor(
+    private dataService: DataService,
+    private toolsService: ToolsService,
+    public searchService: SearchService
+  ) {}
 
   ngOnInit(): void {
     setTimeout(() => {
@@ -34,6 +41,17 @@ export class SearchComponent implements OnInit {
 
   performSearch(query: string): SearchResultInterface[] {
     let results: SearchResultInterface[] = [];
+    const indeces: SearchIndex[] = this.dataService.searchData.value;
+
+    indeces.forEach((index) => {
+      if (
+        index.name.includes(query) ||
+        index.topics.includes(this.toolsService.toTitleCase(query))
+      ) {
+        results.push(index);
+      }
+    });
+
     return results;
   }
 
