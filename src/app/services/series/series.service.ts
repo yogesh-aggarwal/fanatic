@@ -46,8 +46,6 @@ export class SeriesService {
     const valueNotifier: BehaviorSubject<
       SeasonInterface[]
     > = new BehaviorSubject(null);
-    console.log(`season ${id}`);
-
     this.firestore
       .collection(`series/${id}/seasons`)
       .get()
