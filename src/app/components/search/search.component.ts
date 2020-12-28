@@ -41,6 +41,7 @@ export class SearchComponent implements OnInit {
     this.isSearching = true;
     if (!query.length) {
       this.results = [];
+      this.isSearching = false;
       return;
     }
     let results: SearchResultInterface[] = this.performSearch(query);
