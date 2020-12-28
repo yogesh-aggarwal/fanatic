@@ -34,6 +34,12 @@ export class ToolsService {
     return sum;
   }
 
+  toTitleCase(str: string) {
+    return str.replace(/\w\S*/g, function (txt) {
+      return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+    });
+  }
+
   arraysOverlap(...arrays: any[][]): any[] {
     let concated: any[] = [];
     let count: { [key: string]: number } = {};

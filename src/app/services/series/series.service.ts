@@ -23,6 +23,7 @@ export class SeriesService {
   ) {}
 
   async getSeriesByTopic(topic: string) {
+    // topic = this.toolsService.toTitleCase(topic);
     let docs = await this.firestore
       .collection("series", (ref) => {
         return ref.where("topics", "array-contains", topic).limit(20);

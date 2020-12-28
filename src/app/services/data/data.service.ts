@@ -37,6 +37,6 @@ export class DataService {
         const data: GeneralDataInterface = res.payload.data() as GeneralDataInterface;
         this.generalData.next(data);
       });
-    this.seriesService.getSeriesByTopic("Action");
+    this.seriesService.getSeriesByTopic("New");
   }
 }

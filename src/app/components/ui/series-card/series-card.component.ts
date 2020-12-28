@@ -19,11 +19,10 @@ export class SeriesCardComponent implements OnInit {
     public toolsService: ToolsService
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit() {
     if (!this.card && this.id) {
-      this.seriesService.series.subscribe((series) => {
-        this.card = series[this.id];
-      });
+      this.card = await this.seriesService.getSeriesById(this.id);
+      console.log("this.card", this.card);
     }
   }
 }

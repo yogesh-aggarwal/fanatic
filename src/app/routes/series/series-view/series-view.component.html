@@ -104,9 +104,14 @@
           </ng-container>
         </div>
       </div>
-      <ng-container *ngIf="series.related.length != 0">
+      <ng-container *ngIf="series.related && series.related.length != 0">
         <div class="heading">Related Series</div>
-        <div class="more"></div>
+        <div class="more">
+          <UISeriesCard
+            [id]="cardId"
+            *ngFor="let cardId of series.related"
+          ></UISeriesCard>
+        </div>
       </ng-container>
     </main>
   </ng-container>

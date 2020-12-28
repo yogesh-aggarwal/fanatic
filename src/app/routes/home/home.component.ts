@@ -11,7 +11,7 @@ import { ToolsService } from "src/app/services/tools/tools.service";
   styleUrls: ["./home.component.scss"],
 })
 export class HomeComponent implements OnInit {
-  activeTopics: string[] = ["Action"];
+  activeTopics: string[] = ["New", "Action"];
   topics: string[];
 
   constructor(
