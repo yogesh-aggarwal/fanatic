@@ -1,4 +1,5 @@
 <div class="modal" [ngClass]="{ open: searchService.isActive | async }">
+  <div class="backdrop" (click)="searchService.isActive.next(false)"></div>
   <div class="content">
     <div class="search">
       <div class="bar">

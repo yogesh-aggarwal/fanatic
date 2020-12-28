@@ -39,14 +39,5 @@ export class NavbarComponent implements OnInit {
     UserService.user.subscribe((user) => {
       this.user = user;
     });
-
-    document.onkeyup = ($event: KeyboardEvent) => {
-      if ($event.key == "/") {
-        this.searchService.isActive.next(true);
-      }
-      if ($event.key == "Escape") {
-        this.searchService.isActive.next(false);
-      }
-    };
   }
 }

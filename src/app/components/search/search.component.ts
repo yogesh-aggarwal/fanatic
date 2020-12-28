@@ -37,6 +37,15 @@ export class SearchComponent implements OnInit {
         else this.searchBox.nativeElement.blur();
       });
     }, 100);
+
+    document.onkeyup = ($event: KeyboardEvent) => {
+      if ($event.key == "/") {
+        this.searchService.isActive.next(true);
+      }
+      if ($event.key == "Escape") {
+        this.searchService.isActive.next(false);
+      }
+    };
   }
 
   performSearch(query: string): SearchResultInterface[] {
