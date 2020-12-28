@@ -42,6 +42,12 @@ export class SeriesService {
     this.series.next(newSeries);
   }
 
+  getSeriesByTopics(topics: string[]) {
+    topics.forEach(topic => {
+      this.getSeriesByTopic(topic);
+    })
+  };
+
   getSeasons(id: string): Observable<SeasonInterface[]> {
     const valueNotifier: BehaviorSubject<
       SeasonInterface[]
