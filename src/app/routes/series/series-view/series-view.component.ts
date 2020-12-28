@@ -19,6 +19,7 @@ export class SeriesViewComponent implements OnInit {
   currentBackgroundImage: string;
   timer: Observable<number> = timer(0, 3000);
   currentBackgroundIndex: number = 0;
+  Object = Object;
 
   constructor(
     private router: Router,

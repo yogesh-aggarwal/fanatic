@@ -83,18 +83,20 @@
           </div>
         </div>
         <div class="sidebar">
-          <ng-container *ngIf="series.seasons.length > 0">
+          <ng-container *ngIf="series.seasons">
             <div class="heading">{{ series.seasons.length }} Seasons</div>
             <div class="seasons">
               <div
                 class="season"
-                *ngFor="let season of series.seasons"
-                [routerLink]="season.id + '/' + 1"
+                *ngFor="let season of series.seasons | keyvalue"
+                [routerLink]="season.value['id'] + '/' + 1"
               >
                 <i class="las la-pizza-slice"></i>
                 <div class="info">
-                  <div class="name">{{ season.name }}</div>
-                  <div class="n-episodes">{{ season.nEpisodes }} episodes</div>
+                  <div class="name">{{ season.value["name"] }}</div>
+                  <div class="n-episodes">
+                    {{ season.value["nEpisodes"] }} episodes
+                  </div>
                 </div>
               </div>
             </div>
