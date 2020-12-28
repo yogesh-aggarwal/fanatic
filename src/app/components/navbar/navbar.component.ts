@@ -42,11 +42,9 @@ export class NavbarComponent implements OnInit {
 
     document.onkeyup = ($event: KeyboardEvent) => {
       if ($event.key == "/") {
-        this.searchBox.nativeElement.focus();
         this.searchService.isActive.next(true);
       }
       if ($event.key == "Escape") {
-        this.searchBox.nativeElement.blur();
         this.searchService.isActive.next(false);
       }
     };

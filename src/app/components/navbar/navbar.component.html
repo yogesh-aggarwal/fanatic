@@ -2,16 +2,9 @@
   <div class="logo" routerLink="/">
     <img src="../../../assets/logo.png" alt="" />
   </div>
-  <div class="search">
+  <div class="search" (click)="searchService.isActive.next(true)">
     <i class="las la-search"></i>
-    <input
-      type="text"
-      readonly
-      (focus)="searchService.isActive.next(true)"
-      (blur)="searchService.isActive.next(false)"
-      placeholder="Search your anime"
-      #search
-    />
+    <input type="text" readonly placeholder="Search your anime" #search />
   </div>
 
   <div class="routes">
