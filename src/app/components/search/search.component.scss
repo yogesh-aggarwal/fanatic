@@ -1,0 +1,55 @@
+@import "../../../theme";
+@import "../../../classes";
+
+.modal {
+  @include center();
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1e5;
+  backdrop-filter: brightness(70%);
+  opacity: 0;
+  pointer-events: none;
+
+  &.open {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .content {
+    $padding: 1.5rem 2rem;
+    border-radius: 1rem;
+    background: lighten($background, 10%);
+    box-shadow: 0 1rem 6rem #000;
+    width: 50vw;
+
+    .search {
+      display: flex;
+      align-items: center;
+      padding: $padding;
+
+      i {
+        font-size: 1.2rem;
+        margin-right: 1rem;
+      }
+
+      input {
+        width: 100%;
+        outline: none;
+        border: none;
+        background: none;
+        font-size: 1.1rem;
+      }
+    }
+
+    .results {
+      max-height: 50vh;
+
+      .result {
+        padding: $padding;
+      }
+    }
+  }
+}

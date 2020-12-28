@@ -1,2 +1,18 @@
-<p>search works!</p>
-{{ searchService.isActive | async }}
+<div class="modal" [ngClass]="{ open: searchService.isActive | async }">
+  <div class="content">
+    <div class="search">
+      <i class="las la-search"></i>
+      <input
+        type="text"
+        (input)="searchQuery($event.target.value)"
+        placeholder="Search your anime"
+        #search
+      />
+    </div>
+    <div class="results">
+      <div class="result" *ngFor="let result of results">
+        {{ result.name }}
+      </div>
+    </div>
+  </div>
+</div>
