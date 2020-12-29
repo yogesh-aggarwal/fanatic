@@ -4,7 +4,22 @@
       <div class="loading" *ngIf="dialog.type === 'loading'">
         <img src="../../../assets/loading.gif" alt="" />
       </div>
-      {{ dialog.message }}
+      <div class="confirm" *ngIf="dialog.type == 'question'">
+        <div class="question">{{ dialog.question }}</div>
+        <div class="actions">
+          <UIButton
+            class="yes"
+            [isPointed]="true"
+            [isPrimary]="true"
+            (click)="answerConfirm(true)"
+          >
+            Yes
+          </UIButton>
+          <UIButton [isPointed]="true" (click)="answerConfirm(false)">
+            No
+          </UIButton>
+        </div>
+      </div>
     </div>
   </ng-container>
 </div>

@@ -35,5 +35,18 @@
         height: 10rem;
       }
     }
+
+    .confirm {
+      .actions {
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        .yes {
+          margin-right: 0.8rem;
+        }
+      }
+    }
   }
 }

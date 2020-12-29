@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { DialogService } from "src/app/services/dialog/dialog.service";
-import { DialogInterface } from "src/app/services/dialog/interfaces";
+import {
+  DialogConfirmResult,
+  DialogInterface,
+} from "src/app/services/dialog/interfaces";
 
 @Component({
   selector: "content-dialog",
@@ -16,5 +19,12 @@ export class DialogComponent implements OnInit {
     this.dialogService.dialog.subscribe((dialog) => {
       this.dialog = dialog;
     });
+  }
+
+  answerConfirm(isAccepted: boolean): void {
+    this.dialogService.confirmResult.next(
+      isAccepted ? DialogConfirmResult.yes : DialogConfirmResult.no
+    );
+    this.dialogService.open.next(false);
   }
 }

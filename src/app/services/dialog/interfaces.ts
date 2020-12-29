@@ -3,3 +3,8 @@ export interface DialogInterface {
   message?: string;
   question?: string;
 }
+
+export enum DialogConfirmResult {
+  yes,
+  no,
+}
