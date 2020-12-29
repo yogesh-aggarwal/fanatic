@@ -6,11 +6,8 @@ import { DialogConfirmResult, DialogInterface } from "./interfaces";
   providedIn: "root",
 })
 export class DialogService {
-  open: BehaviorSubject<boolean> = new BehaviorSubject(true);
-  dialog: BehaviorSubject<DialogInterface> = new BehaviorSubject({
-    type: "confirm",
-    question: "Do you wanna purchase gems?",
-  });
+  open: BehaviorSubject<boolean> = new BehaviorSubject(false);
+  dialog: BehaviorSubject<DialogInterface> = new BehaviorSubject(null);
   confirmResult: BehaviorSubject<DialogConfirmResult> = new BehaviorSubject(
     null
   );

@@ -28,8 +28,9 @@ import { SeasonComponent } from "./routes/season/season.component";
 import { TooltipDirective } from "./directives/tooltip/tooltip.directive";
 import { PlayerComponent } from "./components/player/player.component";
 import { DialogComponent } from "./components/dialog/dialog.component";
-import { SearchComponent } from './components/search/search.component';
-import { NotificationComponent } from './components/notification/notification.component';
+import { SearchComponent } from "./components/search/search.component";
+import { NotificationComponent } from "./components/notification/notification.component";
+import { BannerComponent } from "./routes/home/banner/banner.component";
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { NotificationComponent } from './components/notification/notification.co
     DialogComponent,
     SearchComponent,
     NotificationComponent,
+    BannerComponent,
   ],
   imports: [
     BrowserModule,
