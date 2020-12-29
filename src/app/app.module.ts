@@ -29,6 +29,7 @@ import { TooltipDirective } from "./directives/tooltip/tooltip.directive";
 import { PlayerComponent } from "./components/player/player.component";
 import { DialogComponent } from "./components/dialog/dialog.component";
 import { SearchComponent } from './components/search/search.component';
+import { NotificationComponent } from './components/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { SearchComponent } from './components/search/search.component';
     PlayerComponent,
     DialogComponent,
     SearchComponent,
+    NotificationComponent,
   ],
   imports: [
     BrowserModule,
