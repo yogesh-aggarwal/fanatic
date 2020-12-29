@@ -1,1 +1,20 @@
-<p>notification works!</p>
+<div
+  class="notification"
+  [ngClass]="{ open: notificationService.isOpen | async }"
+>
+  <i [class]="content.icon" *ngIf="content.icon"></i>
+  <i class="lab la-accessible-icon"></i>
+  <div class="message">New Anime Released!</div>
+  <div class="action">
+    <UIButton [isPointed]="true" [isPrimary]="true"> Watch </UIButton>
+  </div>
+  <div class="action" *ngIf="content.action">
+    <UIButton
+      [isPointed]="true"
+      [isPrimary]="true"
+      (click)="(content.action.onClick)"
+    >
+      {{ content.action.text }}df
+    </UIButton>
+  </div>
+</div>

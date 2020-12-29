@@ -1,0 +1,34 @@
+@import "../../../theme";
+
+.notification {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+
+  display: flex;
+  align-items: center;
+
+  padding: 1rem 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 1rem 5rem #000;
+  background: rgba($color: $hover-background, $alpha: 1);
+  z-index: 1e8;
+  max-width: 30vw;
+  pointer-events: none;
+  opacity: 0;
+  transition: all .3s ease-in-out;
+
+  .open {
+      pointer-events: all;
+      opacity: 1;
+  }
+
+  i {
+    margin-right: 0.8rem;
+    font-size: 1.6rem;
+  }
+
+  .action {
+    margin-left: 1.5rem;
+  }
+}

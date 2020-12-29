@@ -1,4 +1,8 @@
 import { Component, OnInit } from "@angular/core";
+import {
+  NotificationContentInterface,
+  NotificationService,
+} from "src/app/services/notification/notification.service";
 
 @Component({
   selector: "notification",
@@ -6,7 +10,12 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./notification.component.scss"],
 })
 export class NotificationComponent implements OnInit {
-  constructor() {}
+  content: NotificationContentInterface;
+  constructor(public notificationService: NotificationService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.notificationService.content.subscribe((content) => {
+      this.content = content;
+    });
+  }
 }
