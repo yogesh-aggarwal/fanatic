@@ -1,5 +1,4 @@
 <div class="container">
-  <banner></banner>
   <div class="chips">
     <ng-container *ngIf="topics">
       <UIChip
@@ -12,14 +11,37 @@
       </UIChip>
     </ng-container>
   </div>
-  <div class="cards">
-    <ng-container *ngFor="let card of seriesService.series | async | keyvalue">
-      <UISeriesCard
-        [card]="card.value"
-        *ngIf="
-          toolsService.arraysOverlap(card.value['topics'], activeTopics).length
-        "
-      ></UISeriesCard>
-    </ng-container>
-  </div>
+  <banner></banner>
+  <section>
+    <div class="heading">Hand picked for you</div>
+    <div class="cards">
+      <ng-container
+        *ngFor="let card of seriesService.series | async | keyvalue"
+      >
+        <UISeriesCard
+          [card]="card.value"
+          *ngIf="
+            toolsService.arraysOverlap(card.value['topics'], activeTopics)
+              .length
+          "
+        ></UISeriesCard>
+      </ng-container>
+    </div>
+  </section>
+  <section>
+    <div class="heading">Hand picked for you</div>
+    <div class="cards">
+      <ng-container
+        *ngFor="let card of seriesService.series | async | keyvalue"
+      >
+        <UISeriesCard
+          [card]="card.value"
+          *ngIf="
+            toolsService.arraysOverlap(card.value['topics'], activeTopics)
+              .length
+          "
+        ></UISeriesCard>
+      </ng-container>
+    </div>
+  </section>
 </div>

@@ -1,0 +1,11 @@
+@import "../../../../theme";
+@import "../../../../constants";
+
+.banner {
+  margin: 0 $lr-padding;
+  height: 45vh;
+  max-height: 45vh;
+  margin-top: 2rem;
+  border-radius: 1rem;
+  background: $hover-background;
+}

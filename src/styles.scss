@@ -47,14 +47,13 @@ img {
 }
 
 .container {
-  padding: 0 $lr-padding;
   overflow: hidden;
   overflow-y: auto;
   max-height: calc(100vh - 7rem);
 }
 
 .heading {
-          font-weight: 600;
-          font-size: 2rem;
-          margin-bottom: 1rem;
-        }
+  font-weight: 600;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}

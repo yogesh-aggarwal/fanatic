@@ -1,8 +1,10 @@
 @import "../../../classes";
+@import "../../../constants";
 
 .container {
   .chips {
-    @include hidden-scroll;
+    @include hidden-scroll();
+    padding: 0 $lr-padding;
 
     white-space: nowrap;
 
@@ -11,10 +13,19 @@
     }
   }
 
-  .cards {
-    @include hidden-scroll();
+  section {
+    margin: 3.5rem 0;
 
-    display: flex;
-    margin-top: 2rem;
+    .heading {
+      padding: 0 $lr-padding;
+    }
+
+    .cards {
+      @include hidden-scroll();
+      padding: 0 $lr-padding;
+
+      display: flex;
+      margin-top: 2rem;
+    }
   }
 }

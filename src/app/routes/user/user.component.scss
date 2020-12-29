@@ -22,7 +22,7 @@
     .cover {
       height: 60vh;
       min-height: 25rem;
-      width: calc(100vw - (#{$lr-padding} * 2));
+      width: 100%;
       border-radius: inherit;
 
       img {
@@ -101,6 +101,7 @@
     display: grid;
     grid-template-columns: 22rem auto;
     grid-column-gap: 3rem;
+    padding: 0 $lr-padding;
 
     .sidebar {
       padding-top: calc(#{$profile-img-offset} + 1rem);
