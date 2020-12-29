@@ -14,10 +14,19 @@
   }
 
   section {
-    margin: 3.5rem 0;
+    margin-top: 3.5rem;
+    margin-bottom: 4rem;
 
-    .heading {
+    .header {
       padding: 0 $lr-padding;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      img {
+        width: 4rem;
+      }
     }
 
     .cards {

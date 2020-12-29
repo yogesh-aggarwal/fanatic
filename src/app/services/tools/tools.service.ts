@@ -67,6 +67,10 @@ export class ToolsService {
     });
   }
 
+  isObjectEmpty(obj: Object): boolean {
+    return !!Object.keys(obj).length;
+  }
+
   arraysOverlap(...arrays: any[][]): any[] {
     let concated: any[] = [];
     let count: { [key: string]: number } = {};

@@ -13,23 +13,13 @@
   </div>
   <banner></banner>
   <section>
-    <div class="heading">Hand picked for you</div>
-    <div class="cards">
-      <ng-container
-        *ngFor="let card of seriesService.series | async | keyvalue"
-      >
-        <UISeriesCard
-          [card]="card.value"
-          *ngIf="
-            toolsService.arraysOverlap(card.value['topics'], activeTopics)
-              .length
-          "
-        ></UISeriesCard>
-      </ng-container>
+    <div class="header">
+      <div class="heading">Hand picked for you</div>
+      <img
+        src="../../../assets/loading.gif"
+        *ngIf="!toolsService.isObjectEmpty(seriesService.series | async)"
+      />
     </div>
-  </section>
-  <section>
-    <div class="heading">Hand picked for you</div>
     <div class="cards">
       <ng-container
         *ngFor="let card of seriesService.series | async | keyvalue"
