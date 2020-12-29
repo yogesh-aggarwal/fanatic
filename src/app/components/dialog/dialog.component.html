@@ -4,7 +4,7 @@
       <div class="loading" *ngIf="dialog.type === 'loading'">
         <img src="../../../assets/loading.gif" alt="" />
       </div>
-      <div class="confirm" *ngIf="dialog.type == 'question'">
+      <div class="confirm" *ngIf="dialog.type == 'confirm'">
         <div class="question">{{ dialog.question }}</div>
         <div class="actions">
           <UIButton
