@@ -12,6 +12,11 @@
       <i [class]="'las la-' + route.icon"></i>
       <div class="name">{{ route.name }}</div>
     </div>
+    <div class="status">
+      <img src="../../../assets/loading.gif" *ngIf="status == 0" />
+      <i class="las la-sync" *ngIf="status == 1"></i>
+      <i class="las la-check" *ngIf="status == 2"></i>
+    </div>
     <div class="route outlined" *ngIf="!user" (click)="authService.signIn()">
       <i class="las la-sign-in-alt"></i>
       <div class="name">Login</div>

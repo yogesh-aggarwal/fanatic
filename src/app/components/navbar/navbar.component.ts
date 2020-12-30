@@ -1,7 +1,10 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { BehaviorSubject } from "rxjs";
 import { AuthService } from "src/app/services/auth/auth.service";
-import { NavbarService } from "src/app/services/navbar/navbar.service";
+import {
+  NavbarService,
+  NavbarStatus,
+} from "src/app/services/navbar/navbar.service";
 import { SearchService } from "src/app/services/search/search.service";
 import { UserInterface } from "src/app/services/user/interfaces";
 import { UserService } from "src/app/services/user/user.service";
@@ -21,6 +24,7 @@ export class NavbarComponent implements OnInit {
   @ViewChild("search")
   searchBox: ElementRef;
   user: UserInterface;
+  status: NavbarStatus;
 
   routes: RouteInterface[] = [
     { name: "Home", icon: "home", path: "" },
@@ -38,6 +42,9 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     UserService.user.subscribe((user) => {
       this.user = user;
+    });
+    this.navbarService.status.subscribe((status) => {
+      this.status = status;
     });
   }
 }
