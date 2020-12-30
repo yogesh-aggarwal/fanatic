@@ -5,6 +5,7 @@ import { LibraryInterface, UserInterface } from "./interfaces";
 import { take } from "rxjs/operators";
 import { ToolsService } from "../tools/tools.service";
 import { DataService } from "../data/data.service";
+import { NavbarService, NavbarStatus } from "../navbar/navbar.service";
 
 @Injectable({
   providedIn: "root",
@@ -17,10 +18,13 @@ export class UserService {
   constructor(
     private firestore: AngularFirestore,
     private dataService: DataService,
-    private toolsService: ToolsService
+    private toolsService: ToolsService,
+    private navbarService: NavbarService
   ) {}
 
   async parseUserData(user: firebase.User) {
+    this.navbarService.status.next(NavbarStatus.loading);
+
     const cloudUser: UserInterface = ((await this.firestore
       .collection("users")
       .doc(user.uid)
@@ -49,6 +53,7 @@ export class UserService {
     } else {
       UserService.user.next(cloudUser);
     }
+    this.navbarService.status.next(NavbarStatus.synced);
 
     this.firestore
       .collection("users")

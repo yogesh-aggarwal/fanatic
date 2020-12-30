@@ -15,16 +15,12 @@
   }
 }
 
-.loading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.quote {
   padding: 1rem;
 
-  .heading {
+  .text {
   }
 
-  img {
-    width: 4rem;
+  .by {
   }
 }

@@ -1,18 +1,10 @@
-<div class="loading" *ngIf="libraries">
-  <div class="quote">
-    <img
-      src="https://animemotivation.com/wp-content/uploads/2016/06/Anime-Motivation-Quotes-16.png"
-      alt=""
-    />
-    <div class="content">
-      <div class="text">
-        If your life can change once, your life can change again.
-      </div>
-      <div class="by">By - d</div>
-    </div>
+<div class="quote" *ngIf="!libraries">
+  <div class="text">
+    If your life can change once, your life can change again.
   </div>
-  <img src="../../../../assets/loading.gif" alt="" />
+  <div class="by">By - d</div>
 </div>
+
 <div class="libraries" *ngIf="libraries">
   <div class="library" *ngFor="let library of libraries | keyvalue">
     <div class="heading">{{ library.value["name"] }}</div>
