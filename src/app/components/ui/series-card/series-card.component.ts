@@ -22,7 +22,6 @@ export class SeriesCardComponent implements OnInit {
   async ngOnInit() {
     if (!this.card && this.id) {
       this.card = await this.seriesService.getSeriesById(this.id);
-      console.log("this.card", this.card);
     }
   }
 }

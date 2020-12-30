@@ -8,7 +8,7 @@ import { UserService } from "src/app/services/user/user.service";
   styleUrls: ["./library.component.scss"],
 })
 export class LibraryComponent implements OnInit {
-  library: LibraryInterface;
+  libraries: LibraryInterface;
 
   constructor(private userService: UserService) {}
 
@@ -24,7 +24,7 @@ export class LibraryComponent implements OnInit {
         this.userService.fetchUserLibrary();
         return;
       }
-      this.library = library;
+      this.libraries = library;
     });
   }
 }

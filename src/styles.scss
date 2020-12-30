@@ -31,7 +31,7 @@ img {
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
+  width: $scrollbar-width;
 }
 
 ::-webkit-scrollbar-track {

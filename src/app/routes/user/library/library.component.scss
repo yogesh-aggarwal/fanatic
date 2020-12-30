@@ -1,0 +1,30 @@
+@import "../../../../classes";
+@import "../../../../constants";
+
+.libraries {
+  margin-top: 1.5rem;
+
+  .library {
+    margin-bottom: 4rem;
+
+    .cards {
+      @include hidden-scroll();
+      display: flex;
+      width: $user-profile-content-width;
+    }
+  }
+}
+
+.loading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+
+  .heading {
+  }
+
+  img {
+    width: 4rem;
+  }
+}

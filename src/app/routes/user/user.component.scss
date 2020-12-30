@@ -1,5 +1,5 @@
-@import "../../../constants";
 @import "../../../theme";
+@import "../../../constants";
 
 @mixin align-seperately-to-bottom {
   display: flex;
@@ -100,8 +100,8 @@
 
   .content {
     display: grid;
-    grid-template-columns: 22rem auto;
-    grid-column-gap: 3rem;
+    grid-template-columns: $user-profile-sidebar-width $user-profile-content-width;
+    grid-column-gap: $user-profile-content-gap;
     padding: 0 $lr-padding;
 
     .sidebar {

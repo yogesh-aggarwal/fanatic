@@ -1,3 +1,10 @@
 $lr-padding: 2rem;
 $backdrop: blur(4px);
 $navbar-height: 7rem;
+$scrollbar-width: 8px;
+$user-profile-sidebar-width: 22rem;
+$user-profile-content-gap: 3rem;
+$user-profile-content-width: calc(
+  100vw - (#{$user-profile-sidebar-width} + #{$user-profile-content-gap}) - #{$scrollbar-width} -
+    #{$lr-padding}
+);
