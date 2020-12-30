@@ -31,7 +31,7 @@
         height: inherit;
         min-height: inherit;
         border-radius: inherit;
-        object-fit: cover;
+        // object-fit: cover;
       }
     }
 
@@ -64,11 +64,12 @@
       border-radius: inherit;
 
       .wrapper {
-        backdrop-filter: $backdrop;
+        backdrop-filter: $backdrop brightness(55%);
+        background: $hover-background;
         display: flex;
         justify-content: center;
         align-items: center;
-        border-radius: 0.5rem;
+        border-radius: 2rem;
 
         .route {
           padding: 0.8rem 2rem;
@@ -88,10 +89,6 @@
 
           &.outlined {
             border: 2px solid $color-disabled;
-          }
-
-          &:hover {
-            background: $hover-background;
           }
         }
       }
