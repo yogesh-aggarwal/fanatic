@@ -85,6 +85,18 @@
       i {
         font-size: 1.5rem;
         padding: 0 0.75rem;
+
+        &#syncing {
+          @keyframes rotation {
+            from {
+              transform: rotate(0deg);
+            }
+            to {
+              transform: rotate(360deg);
+            }
+          }
+          animation: rotation 1.5s infinite linear;
+        }
       }
     }
 
