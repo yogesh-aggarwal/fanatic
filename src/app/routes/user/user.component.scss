@@ -43,11 +43,11 @@
         justify-content: center;
         align-items: center;
 
-        margin-left: 2rem;
+        margin-left: 5rem;
         margin-bottom: -$profile-img-offset;
         // padding: 1.5rem;
         border-radius: 10rem;
-        border: 5px solid $primary;
+        border: 10px solid $hover-background;
         backdrop-filter: $backdrop;
 
         img {
@@ -105,7 +105,7 @@
     padding: 0 $lr-padding;
 
     .sidebar {
-      padding-top: calc(#{$profile-img-offset} + 1rem);
+      padding-top: calc(#{$profile-img-offset} + 0.5rem);
 
       .name {
         text-align: center;
@@ -116,14 +116,22 @@
       .heading {
         font-size: 1.5rem;
         font-weight: 500;
-        margin-top: 1rem;
-        margin-bottom: 0.5rem;
+        margin-top: 2rem;
+        margin-bottom: 0.8rem;
+
+        display: flex;
+        align-items: center;
+
+        .text {
+          margin: 0 0.8rem;
+        }
       }
 
       .stats {
         .stat {
           display: flex;
           align-items: center;
+          margin-left: 2.5rem;
 
           i {
             font-size: 1.5rem;

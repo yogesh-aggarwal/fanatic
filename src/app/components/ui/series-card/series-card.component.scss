@@ -5,9 +5,11 @@
   position: relative;
   border-radius: 1rem;
   /// 2:3 Ratio
-  min-height: 60vh;
+  min-height: 25.6rem;
+  height: 60vh;
   max-height: 37.5rem;
-  min-width: 40vh;
+  min-width: 18rem;
+  width: 40vh;
   max-width: 25rem;
   cursor: pointer;
 
@@ -78,10 +80,15 @@
   }
 
   .background {
+    // Width
     min-width: inherit;
+    width: inherit;
     max-width: inherit;
+    // Height
     min-height: inherit;
+    height: inherit;
     max-height: inherit;
+
     border-radius: inherit;
     background-size: cover;
   }
