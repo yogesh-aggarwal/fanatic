@@ -67,7 +67,7 @@ export class UserService {
 
   async fetchUserLibrary() {
     UserService.isLibraryFetching = true;
-    const library: LibraryInterface = (
+    let library: LibraryInterface = (
       await this.firestore
         .collection("users")
         .doc(UserService.user.value.uid)
@@ -77,6 +77,10 @@ export class UserService {
         .pipe(take(1))
         .toPromise()
     ).payload.data() as LibraryInterface;
+
+    // User doesn't have any library
+    if (!library) library = {};
+
     UserService.isLibraryFetching = false;
 
     UserService.library.next(library);

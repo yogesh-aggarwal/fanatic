@@ -1,5 +1,4 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
 import { AuthService } from "src/app/services/auth/auth.service";
 import {
   NavbarService,
