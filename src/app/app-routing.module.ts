@@ -8,6 +8,7 @@ import { SeriesViewComponent } from "./routes/series/series-view/series-view.com
 import { SeriesComponent } from "./routes/series/series.component";
 import { TrendsComponent } from "./routes/trends/trends.component";
 import { LibraryComponent } from "./routes/user/library/library.component";
+import { SettingsComponent } from "./routes/user/settings/settings.component";
 import { TimelineComponent } from "./routes/user/timeline/timeline.component";
 import { UserComponent } from "./routes/user/user.component";
 
@@ -30,6 +31,7 @@ const routes: Routes = [
     children: [
       { path: "", component: TimelineComponent },
       { path: "library", component: LibraryComponent },
+      { path: "settings", component: SettingsComponent },
     ],
   },
   { path: "**", redirectTo: "" },

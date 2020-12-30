@@ -31,6 +31,7 @@ import { DialogComponent } from "./components/dialog/dialog.component";
 import { SearchComponent } from "./components/search/search.component";
 import { NotificationComponent } from "./components/notification/notification.component";
 import { BannerComponent } from "./routes/home/banner/banner.component";
+import { SettingsComponent } from './routes/user/settings/settings.component';
 
 @NgModule({
   declarations: [
@@ -52,6 +53,7 @@ import { BannerComponent } from "./routes/home/banner/banner.component";
     SearchComponent,
     NotificationComponent,
     BannerComponent,
+    SettingsComponent,
   ],
   imports: [
     BrowserModule,
