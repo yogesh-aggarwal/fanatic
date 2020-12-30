@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { auth } from "firebase/app";
 import { AngularFireAuth } from "@angular/fire/auth";
 import { UserService } from "../user/user.service";
+import { Router } from "@angular/router";
 
 @Injectable({
   providedIn: "root",
@@ -9,7 +10,8 @@ import { UserService } from "../user/user.service";
 export class AuthService {
   constructor(
     private auth: AngularFireAuth,
-    private userService: UserService
+    private userService: UserService,
+    private router: Router
   ) {}
 
   async getCurrentUser() {
@@ -20,6 +22,8 @@ export class AuthService {
 
   async signOut() {
     await this.auth.signOut();
+    UserService.user.next(null);
+    this.router.navigate([""]);
   }
 
   async signIn() {

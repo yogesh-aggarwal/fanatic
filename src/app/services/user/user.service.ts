@@ -23,8 +23,9 @@ export class UserService {
   ) {}
 
   async parseUserData(user: firebase.User) {
-    this.navbarService.status.next(NavbarStatus.loading);
+    if (!user) return;
 
+    this.navbarService.status.next(NavbarStatus.loading);
     const cloudUser: UserInterface = ((await this.firestore
       .collection("users")
       .doc(user.uid)
