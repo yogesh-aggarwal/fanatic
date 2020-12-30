@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Subscription } from "rxjs";
 import { DataService } from "src/app/services/data/data.service";
 import { SeriesService } from "src/app/services/series/series.service";
 import { ToolsService } from "src/app/services/tools/tools.service";
@@ -8,9 +9,13 @@ import { ToolsService } from "src/app/services/tools/tools.service";
   templateUrl: "./home.component.html",
   styleUrls: ["./home.component.scss"],
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   activeTopics: string[] = [];
   topics: string[] = [];
+
+  // ------- Subscription |Start ------- //
+  seriesSubscription: Subscription;
+  // ------- Subscription |End ------- //
 
   constructor(
     public dataService: DataService,
@@ -22,10 +27,14 @@ export class HomeComponent implements OnInit {
     this.getTopics();
   }
 
+  ngOnDestroy() {
+    this.seriesSubscription.unsubscribe();
+  }
+
   getTopics(): void {
     let topicsLength: number;
     let finalTopics: { [key: string]: number } = {};
-    this.seriesService.series.subscribe((series) => {
+    this.seriesSubscription = this.seriesService.series.subscribe((series) => {
       finalTopics = {};
       topicsLength = this.toolsService.getRandomInt(12, 15);
       if (Object.keys(series).length == 0) return;

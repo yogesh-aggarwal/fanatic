@@ -1,4 +1,5 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
+import { Subscription } from "rxjs";
 import {
   NavbarService,
   NavbarStatus,
@@ -11,8 +12,13 @@ import { UserService } from "src/app/services/user/user.service";
   templateUrl: "./library.component.html",
   styleUrls: ["./library.component.scss"],
 })
-export class LibraryComponent implements OnInit {
+export class LibraryComponent implements OnInit, OnDestroy {
   libraries: LibraryInterface;
+
+  // ------- Subscriptions |Start ------- //
+  userSubscription: Subscription;
+  librarySubscription: Subscription;
+  // ------- Subscriptions |End ------- //
 
   constructor(
     private userService: UserService,
@@ -20,13 +26,13 @@ export class LibraryComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    UserService.user.subscribe((user) => {
+    this.userSubscription = UserService.user.subscribe((user) => {
       if (!user) return;
       if (!UserService.isLibraryFetching) {
         UserService.library.next(null);
       }
     });
-    UserService.library.subscribe((library) => {
+    this.librarySubscription = UserService.library.subscribe((library) => {
       if (!library && !UserService.isLibraryFetching) {
         this.userService.fetchUserLibrary();
         return;
@@ -36,5 +42,10 @@ export class LibraryComponent implements OnInit {
       );
       this.libraries = library;
     });
+  }
+
+  ngOnDestroy() {
+    this.userSubscription.unsubscribe();
+    this.librarySubscription.unsubscribe();
   }
 }
