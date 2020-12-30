@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { AngularFirestore } from "@angular/fire/firestore";
 import { BehaviorSubject } from "rxjs";
-import { UserInterface } from "./interfaces";
+import { LibraryInterface, UserInterface } from "./interfaces";
 import { take } from "rxjs/operators";
 import { ToolsService } from "../tools/tools.service";
 import { DataService } from "../data/data.service";
@@ -11,6 +11,8 @@ import { DataService } from "../data/data.service";
 })
 export class UserService {
   static user: BehaviorSubject<UserInterface> = new BehaviorSubject(null);
+  static library: BehaviorSubject<LibraryInterface> = new BehaviorSubject(null);
+  static isLibraryFetching: boolean = false;
 
   constructor(
     private firestore: AngularFirestore,
@@ -55,5 +57,22 @@ export class UserService {
       .subscribe((user) => {
         UserService.user.next(user.payload.data() as UserInterface);
       });
+  }
+
+  async fetchUserLibrary() {
+    UserService.isLibraryFetching = true;
+    const library: LibraryInterface = (
+      await this.firestore
+        .collection("users")
+        .doc(UserService.user.value.uid)
+        .collection("data")
+        .doc("library")
+        .snapshotChanges()
+        .pipe(take(1))
+        .toPromise()
+    ).payload.data() as LibraryInterface;
+    UserService.isLibraryFetching = false;
+
+    UserService.library.next(library);
   }
 }

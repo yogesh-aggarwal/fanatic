@@ -12,6 +12,14 @@ export interface TimelineItemInterface {
   dateFirstWatched: Date;
 }
 
+export interface LibraryInterface {
+  [key: string]: {
+    name: string;
+    seriesIds: string[];
+    lastUpdated: any;
+  };
+}
+
 export interface UserInterface {
   name: string;
   uid: string;
@@ -21,5 +29,4 @@ export interface UserInterface {
   achievements: AchievementsInterface[];
   dateJoined: Date;
   gems: number;
-  timeline?: TimelineItemInterface[];
 }
