@@ -1,1 +1,17 @@
-<UIButton [isPointed]="true" (click)="authService.signOut()">Sign Out</UIButton>
+<div class="container">
+  <div class="section">
+    <div class="heading">Session Management</div>
+    <div class="content">
+      <div class="heading">Login</div>
+      <div class="actions">
+        <UIButton [isPointed]="true" (click)="changeAccount()">
+          Change Account
+        </UIButton>
+        <div class="lrspace"></div>
+        <UIButton [isPointed]="true" (click)="authService.signOut()">
+          Sign Out
+        </UIButton>
+      </div>
+    </div>
+  </div>
+</div>
