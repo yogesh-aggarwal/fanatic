@@ -43,10 +43,10 @@ export class SeriesService {
   }
 
   getSeriesByTopics(topics: string[]) {
-    topics.forEach(topic => {
+    topics.forEach((topic) => {
       this.getSeriesByTopic(topic);
-    })
-  };
+    });
+  }
 
   getSeasons(id: string): Observable<SeasonInterface[]> {
     const valueNotifier: BehaviorSubject<
